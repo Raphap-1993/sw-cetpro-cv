@@ -4,12 +4,20 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_ROOT="${APP_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
+requested_pm2_prefix="${PM2_APP_PREFIX:-}"
+requested_legacy_unprefixed="${REHEARSAL_LEGACY_UNPREFIXED:-}"
 
 # shellcheck disable=SC1091
 source "$SCRIPT_DIR/load-env.sh"
 
-rehearsal_prefix="${PM2_APP_PREFIX:-rehearsal-}"
-legacy_unprefixed="${REHEARSAL_LEGACY_UNPREFIXED:-0}"
+rehearsal_prefix="${requested_pm2_prefix:-${PM2_APP_PREFIX:-rehearsal-}}"
+legacy_unprefixed="${requested_legacy_unprefixed:-${REHEARSAL_LEGACY_UNPREFIXED:-0}}"
+
+if [[ "$rehearsal_prefix" == "prod-" || "$rehearsal_prefix" == "production-" ]]; then
+  echo "Refusing to teardown production PM2 prefix: $rehearsal_prefix" >&2
+  exit 1
+fi
+
 targets=("${rehearsal_prefix}swcv-api" "${rehearsal_prefix}swcv-web")
 
 if [[ "$legacy_unprefixed" == "1" ]]; then
