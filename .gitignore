@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+.release-meta.env
+
+# Runtime data
+var/
+
+# Logs
+*.log
+
+# OS/editor
+.DS_Store
+.vscode/

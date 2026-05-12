@@ -1,0 +1,411 @@
+.sectionLink {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brand-strong);
+  font-weight: 800;
+}
+
+.catalogHero,
+.programDetailHero {
+  padding: 40px 0 24px;
+  background:
+    radial-gradient(circle at top left, rgba(11, 99, 206, 0.16), transparent 34%),
+    linear-gradient(180deg, #f4f8fc 0%, #ffffff 100%);
+}
+
+.catalogHeroGrid,
+.programDetailLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 400px);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.heroPanel,
+.detailPanel,
+.detailSectionCard,
+.programAsideCard,
+.emptyState {
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 48px rgba(16, 32, 51, 0.08);
+}
+
+.heroPanel,
+.detailPanel {
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+}
+
+.pageBackLink,
+.programBreadcrumbs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.heroPanel h1,
+.detailPanel h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  line-height: 0.94;
+}
+
+.heroPanel p,
+.detailPanel p {
+  margin: 0;
+}
+
+.heroLead,
+.programSummary {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.metricCard {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(11, 99, 206, 0.14);
+  border-radius: 18px;
+  background: #f8fbff;
+  padding: 18px;
+}
+
+.metricCard span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.metricCard strong {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.heroAside,
+.programHeroMedia {
+  border-radius: 24px;
+  background: linear-gradient(
+    160deg,
+    rgba(11, 99, 206, 0.94),
+    rgba(16, 32, 51, 0.92)
+  );
+  background-position: center;
+  background-size: cover;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.heroAside {
+  display: grid;
+  align-content: end;
+  gap: 14px;
+  min-height: 100%;
+  padding: 28px;
+}
+
+.heroAside p,
+.heroAside h2,
+.heroAside strong {
+  margin: 0;
+}
+
+.heroAside p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.programGrid,
+.relatedProgramsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.programCard {
+  display: grid;
+  grid-template-rows: 180px minmax(0, 1fr);
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 16px 42px rgba(16, 32, 51, 0.08);
+  overflow: hidden;
+}
+
+.programCardMedia {
+  background:
+    linear-gradient(180deg, rgba(16, 32, 51, 0.08), rgba(16, 32, 51, 0.42)),
+    linear-gradient(135deg, rgba(11, 99, 206, 0.92), rgba(16, 32, 51, 0.88));
+  background-position: center;
+  background-size: cover;
+}
+
+.programCardBody {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+}
+
+.programCardHeader {
+  display: grid;
+  gap: 8px;
+}
+
+.programCardEyebrow {
+  margin: 0;
+  color: var(--brand-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.programCardTitle {
+  margin: 0;
+  font-size: 1.36rem;
+}
+
+.programCardTitle a {
+  color: inherit;
+}
+
+.programCardSummary {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.programMetaList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.programMetaItem {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.programMetaItem dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.programMetaItem dd {
+  margin: 4px 0 0;
+  font-weight: 800;
+}
+
+.programCardFooter {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.programCardLink,
+.ghostAction {
+  min-height: 44px;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 800;
+  padding: 0 16px;
+}
+
+.programCardLink {
+  background: rgba(11, 99, 206, 0.1);
+  color: var(--brand-strong);
+}
+
+.ghostAction {
+  border: 1px solid rgba(16, 32, 51, 0.14);
+  color: var(--ink);
+}
+
+.emptyState {
+  display: grid;
+  gap: 10px;
+  padding: 24px;
+}
+
+.emptyState h3,
+.emptyState p {
+  margin: 0;
+}
+
+.emptyState p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.programDetailLayout {
+  align-items: center;
+}
+
+.detailPanel {
+  gap: 20px;
+}
+
+.programActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primaryAction {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--brand);
+  color: var(--white);
+  font-weight: 800;
+  padding: 0 18px;
+}
+
+.programHeroMedia {
+  min-height: 440px;
+  display: grid;
+  align-items: end;
+  padding: 28px;
+}
+
+.programHeroCaption {
+  max-width: 260px;
+  display: grid;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.programHeroCaption p,
+.programHeroCaption strong {
+  margin: 0;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.detailSectionCard,
+.programAsideCard {
+  padding: 28px;
+}
+
+.detailSectionHeading {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.detailSectionHeading h2,
+.programAsideCard h2,
+.heroAside h2 {
+  margin: 0;
+}
+
+.textStack {
+  display: grid;
+  gap: 14px;
+}
+
+.textStack p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.studyPlanList,
+.noteList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.studyPlanList li,
+.noteList li {
+  line-height: 1.65;
+}
+
+.programAsideCard {
+  display: grid;
+  gap: 16px;
+}
+
+.contactPanel {
+  display: grid;
+  gap: 12px;
+}
+
+.contactPanel h2,
+.contactPanel p {
+  margin: 0;
+}
+
+.contactPanel p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 920px) {
+  .catalogHeroGrid,
+  .programDetailLayout,
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .programHeroMedia {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroPanel,
+  .detailPanel,
+  .detailSectionCard,
+  .programAsideCard,
+  .heroAside,
+  .programHeroMedia,
+  .emptyState {
+    padding: 22px;
+  }
+
+  .programMetaList,
+  .metricGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .programCard {
+    grid-template-rows: 160px minmax(0, 1fr);
+  }
+
+  .programCardLink,
+  .ghostAction,
+  .primaryAction {
+    width: 100%;
+  }
+}

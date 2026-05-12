@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102033" />
+      <stop offset="58%" stop-color="#123B66" />
+      <stop offset="100%" stop-color="#0C1726" />
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#D8E0EA" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1600" height="900" rx="56" fill="url(#bgGradient)" />
+  <rect x="64" y="64" width="1472" height="772" rx="44" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect width="1600" height="900" rx="56" fill="url(#grid)" />
+  <path d="M 90 708 C 308 468 562 416 792 504 C 1024 592 1208 662 1512 406" stroke="#C4A46A" stroke-width="8" stroke-linecap="round" stroke-opacity="0.85"/>
+  <path d="M 168 620 L 412 620 L 412 340 L 720 340 L 720 540 L 986 540 L 986 250 L 1328 250" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1080" y="468" width="280" height="186" rx="26" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <rect x="1130" y="510" width="180" height="20" rx="10" fill="#FFFFFF" fill-opacity="0.62"/>
+  <rect x="1130" y="554" width="132" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.24"/>
+  <rect x="1130" y="592" width="166" height="16" rx="8" fill="#0B63CE" fill-opacity="0.45"/>
+  <path d="M 118 206 H 360" stroke="#C4A46A" stroke-width="3" stroke-linecap="round" />
+  <path d="M 118 236 H 324" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round" />
+  <circle cx="1118" cy="186" r="132" fill="#0B63CE" fill-opacity="0.12" filter="url(#softGlow)" />
+  <circle cx="348" cy="242" r="10" fill="#C4A46A" />
+  <circle cx="480" cy="620" r="10" fill="#C4A46A" />
+  <circle cx="866" cy="538" r="10" fill="#C4A46A" />
+  <circle cx="986" cy="250" r="10" fill="#C4A46A" />
+  <text x="118" y="168" fill="#FFFFFF" fill-opacity="0.86" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2.4">FORMACION TECNICA PRESENCIAL</text>
+  
+</svg>

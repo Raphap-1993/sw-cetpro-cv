@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" fill="none">
+  
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102033" />
+      <stop offset="58%" stop-color="#123B66" />
+      <stop offset="100%" stop-color="#0C1726" />
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#D8E0EA" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  
+  
+  <rect width="1200" height="1200" rx="48" fill="url(#bgGradient)" />
+  <rect x="44" y="44" width="1112" height="1112" rx="36" fill="url(#bgGradient)" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect width="1200" height="1200" rx="48" fill="url(#grid)" />
+  <circle cx="980" cy="136" r="92" fill="#0B63CE" fill-opacity="0.12" filter="url(#softGlow)" />
+  <rect x="88" y="88" rx="999" ry="999" width="176" height="42" fill="#FFFFFF" fill-opacity="0.1" />
+  <text x="116" y="116" fill="#FFFFFF" fill-opacity="0.9" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1.6">MANTENIMIENTO ELECTRONICO</text>
+  <rect x="88" y="1026" rx="28" ry="28" width="1024" height="90" fill="#102033" fill-opacity="0.5" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <text x="128" y="1078" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="44" font-weight="700" letter-spacing="6">ELE</text>
+  
+  
+  <path d="M 236 504 H 456 V 332 H 646 V 572 H 904" stroke="#FFFFFF" stroke-opacity="0.44" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 312 238 V 402 H 468" stroke="#C4A46A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 728 270 V 408 H 870" stroke="#0B63CE" stroke-opacity="0.52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="236" cy="504" r="18" fill="#C4A46A" />
+  <circle cx="456" cy="332" r="18" fill="#FFFFFF" fill-opacity="0.78" />
+  <circle cx="646" cy="572" r="18" fill="#0B63CE" />
+  <circle cx="904" cy="572" r="18" fill="#FFFFFF" fill-opacity="0.78" />
+  <circle cx="312" cy="238" r="18" fill="#0B63CE" />
+  <circle cx="870" cy="408" r="18" fill="#C4A46A" />
+  
+  
+</svg>

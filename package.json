@@ -1,0 +1,42 @@
+{
+  "name": "sw-cetpro-cv",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @swcv/web dev",
+    "dev:api": "pnpm --filter @swcv/api dev",
+    "build": "pnpm -r build",
+    "build:release": "./ops/bin/build-release.sh",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "start:web": "./ops/bin/start-web.sh",
+    "start:api": "./ops/bin/start-api.sh",
+    "prisma:generate": "export APP_ROOT=\"$PWD\"; ENV_FILE=\"${APP_ENV_FILE:-${ENV_FILE:-$PWD/.env}}\"; set -a && . \"$ENV_FILE\" && set +a && pnpm --filter @swcv/api prisma:generate",
+    "prisma:migrate": "export APP_ROOT=\"$PWD\"; ENV_FILE=\"${APP_ENV_FILE:-${ENV_FILE:-$PWD/.env}}\"; set -a && . \"$ENV_FILE\" && set +a && pnpm --filter @swcv/api prisma:migrate",
+    "prisma:deploy": "./ops/bin/migrate-deploy.sh",
+    "prisma:seed": "export APP_ROOT=\"$PWD\"; ENV_FILE=\"${APP_ENV_FILE:-${ENV_FILE:-$PWD/.env}}\"; set -a && . \"$ENV_FILE\" && set +a && pnpm --filter @swcv/api prisma:seed",
+    "prisma:studio": "export APP_ROOT=\"$PWD\"; ENV_FILE=\"${APP_ENV_FILE:-${ENV_FILE:-$PWD/.env}}\"; set -a && . \"$ENV_FILE\" && set +a && pnpm --filter @swcv/api prisma:studio",
+    "deploy:migrate": "./ops/bin/migrate-deploy.sh",
+    "deploy:backup": "./ops/bin/backup.sh",
+    "deploy:readiness": "./ops/bin/check-readiness.sh",
+    "deploy:brand-assets": "node ops/scripts/generate-brand-assets.mjs",
+    "deploy:brand-legacy-source": "./ops/bin/build-legacy-media-source.sh",
+    "deploy:production": "./ops/bin/deploy-production.sh",
+    "deploy:rehearsal": "./ops/bin/deploy-rehearsal.sh",
+    "deploy:smoke:public": "./ops/bin/smoke-public.sh",
+    "deploy:rehearsal:teardown": "./ops/bin/teardown-rehearsal.sh",
+    "release:meta": "./ops/bin/write-release-meta.sh",
+    "release:preflight": "./ops/bin/release-preflight.sh",
+    "release:tag": "./ops/bin/release-tag.sh",
+    "pm2:start": "pm2 start ops/pm2/ecosystem.config.cjs --env production",
+    "pm2:reload": "pm2 reload ops/pm2/ecosystem.config.cjs --env production --update-env"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "globals": "^15.14.0",
+    "typescript-eslint": "^8.18.0",
+    "typescript": "^5.7.0"
+  }
+}

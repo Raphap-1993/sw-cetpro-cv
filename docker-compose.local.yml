@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sw_cetpro_cv_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sw_cetpro_cv
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "54325:5432"
+    volumes:
+      - sw_cetpro_cv_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sw_cetpro_cv"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  sw_cetpro_cv_pgdata:
+

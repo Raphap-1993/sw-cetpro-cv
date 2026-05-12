@@ -1,0 +1,1426 @@
+:root {
+  color-scheme: light;
+  --ink: #102033;
+  --muted: #526173;
+  --line: #d8e0ea;
+  --brand: #0b63ce;
+  --brand-strong: #084b9c;
+  --surface: #f6f8fb;
+  --surface-soft: #eef3f8;
+  --accent-metal: #c4a46a;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family:
+    "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.skipLink {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 60;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 800;
+  padding: 10px 14px;
+}
+
+.skipLink:focus {
+  top: 12px;
+}
+
+.publicHeader {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid rgba(16, 32, 51, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92));
+  backdrop-filter: blur(16px);
+}
+
+.publicHeaderInner {
+  min-height: 76px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.publicBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.publicBrandMark {
+  min-width: 76px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(11, 99, 206, 0.18);
+  border-radius: 999px;
+  background: linear-gradient(145deg, rgba(11, 99, 206, 0.12), rgba(8, 75, 156, 0.16));
+  color: var(--brand-strong);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  padding: 0 12px;
+}
+
+.publicBrandCopy {
+  display: grid;
+  gap: 2px;
+}
+
+.publicBrandCopy strong,
+.publicBrandCopy small {
+  display: block;
+}
+
+.publicBrandCopy strong {
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.publicBrandCopy small {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.publicNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.publicNav a,
+.publicMenuPanel a {
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.publicHeaderCta,
+.publicMenuCta {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--brand);
+  color: var(--white);
+  font-weight: 800;
+  padding: 0 16px;
+}
+
+.publicMenu {
+  display: none;
+  position: relative;
+}
+
+.publicMenuButton {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(16, 32, 51, 0.12);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.publicMenuPanel {
+  position: absolute;
+  right: 0;
+  min-width: 220px;
+  display: none;
+  gap: 10px;
+  margin-top: 10px;
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 18px 48px rgba(16, 32, 51, 0.12);
+  padding: 14px;
+}
+
+.publicMenuPanel.isOpen {
+  display: grid;
+}
+
+.publicMain {
+  min-height: calc(100vh - 76px);
+}
+
+.publicFooter {
+  background:
+    radial-gradient(circle at top left, rgba(11, 99, 206, 0.22), transparent 32%),
+    linear-gradient(180deg, #102033 0%, #0d1a2b 100%);
+  color: var(--white);
+  padding: 32px 0 40px;
+}
+
+.publicFooterGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) repeat(2, minmax(0, 0.8fr));
+  gap: 24px;
+}
+
+.publicFooterBrand,
+.publicFooterLinks,
+.publicFooterNote {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.publicBrandFooter .publicBrandCopy small,
+.publicFooterBrand p,
+.publicFooterNote p {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.publicFooterBrand p,
+.publicFooterNote p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.publicFooterLinks strong,
+.publicFooterNote strong {
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.publicFooterLinks a {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 700;
+}
+
+.hero {
+  min-height: 76vh;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(120deg, rgba(11, 99, 206, 0.92), rgba(16, 32, 51, 0.84)),
+    url("/brand/hero-campus.svg");
+  background-position: center;
+  background-size: cover;
+  color: var(--white);
+}
+
+.homeHero {
+  min-height: auto;
+  padding: 52px 0 72px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 400px);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.heroPanel,
+.heroProofCard,
+.admissionPanel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.heroPanel {
+  padding: 24px 0 8px;
+}
+
+.heroMetaLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.heroMetaLine span {
+  position: relative;
+  padding-left: 16px;
+}
+
+.heroMetaLine span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent-metal);
+  transform: translateY(-50%);
+}
+
+.heroProofCard {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  background: rgba(8, 21, 38, 0.3);
+  padding: 24px;
+}
+
+.heroEvidenceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.evidenceCard {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 18px 18px 20px;
+  color: var(--white);
+}
+
+.evidenceCard p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+}
+
+.heroProofHeader {
+  display: grid;
+  gap: 8px;
+}
+
+.heroProofHeader h2,
+.heroProofHeader p,
+.heroStatCard strong,
+.heroStatCard span {
+  margin: 0;
+}
+
+.heroProofHeader h2 {
+  font-size: 1.8rem;
+}
+
+.heroProofHeader p,
+.heroChecklist {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.heroStatGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.heroStatCard {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 18px 16px;
+}
+
+.heroStatCard strong {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  line-height: 0.95;
+}
+
+.heroStatCard span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.heroChecklist {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.hero h1 {
+  max-width: 820px;
+  margin: 16px 0;
+  font-size: clamp(2.8rem, 8vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.lead {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  margin: 0;
+  color: inherit;
+  font-family:
+    ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.actions a,
+.leadForm button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--brand-strong);
+  font-weight: 800;
+  padding: 0 18px;
+}
+
+.actions .secondary {
+  border-color: rgba(255, 255, 255, 0.52);
+  background: transparent;
+  color: var(--white);
+}
+
+.section {
+  padding: 76px 0;
+}
+
+.sectionMuted {
+  background:
+    radial-gradient(circle at top left, rgba(11, 99, 206, 0.1), transparent 30%),
+    var(--surface);
+}
+
+.section:nth-of-type(even) {
+  background: var(--surface);
+}
+
+.sectionHeader {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.section h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0;
+}
+
+.sectionCopy {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.narrativeCard {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  padding: 28px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.statCard {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  padding: 22px;
+}
+
+.statValue {
+  display: block;
+  margin-bottom: 10px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 0.95;
+}
+
+.statCard p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.programGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.programCard {
+  min-height: 100%;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.programCardMedia {
+  min-height: 180px;
+  background:
+    linear-gradient(135deg, rgba(11, 99, 206, 0.18), rgba(16, 32, 51, 0.58)),
+    linear-gradient(135deg, rgba(11, 99, 206, 0.82), rgba(16, 32, 51, 0.74));
+  background-position: center;
+  background-size: cover;
+}
+
+.programCardBody {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.programCardCopy {
+  display: grid;
+  gap: 10px;
+}
+
+.programCard h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.programCard p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.programCardFooter {
+  display: grid;
+  gap: 18px;
+  margin-top: auto;
+}
+
+.programCard dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0;
+}
+
+.programCard dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.programCard dd {
+  margin: 4px 0 0;
+  font-weight: 800;
+}
+
+.programCardLink,
+.inlineAction {
+  width: fit-content;
+  color: var(--brand-strong);
+  font-weight: 800;
+}
+
+.sectionActions {
+  margin-top: 24px;
+}
+
+.pageHero {
+  padding: 112px 0 80px;
+  background:
+    linear-gradient(120deg, rgba(11, 99, 206, 0.94), rgba(16, 32, 51, 0.9)),
+    url("/brand/hero-campus.svg");
+  background-position: center;
+  background-size: cover;
+  color: var(--white);
+}
+
+.pageHeroContent {
+  display: grid;
+  gap: 16px;
+}
+
+.pageHero h1 {
+  max-width: 860px;
+  margin: 0;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 0.96;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+}
+
+.pageHeroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.metaPill {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0 16px;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.sideStack {
+  display: grid;
+  gap: 16px;
+}
+
+.detailCard,
+.emptyStatePanel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+  padding: 24px;
+}
+
+.detailCard h2,
+.detailCard h3,
+.emptyStatePanel h1,
+.emptyStatePanel h2 {
+  margin: 0 0 12px;
+}
+
+.richCopy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.detailMetaList,
+.detailList {
+  margin: 0;
+}
+
+.detailMetaList {
+  display: grid;
+  gap: 14px;
+}
+
+.detailMetaList div {
+  display: grid;
+  gap: 4px;
+}
+
+.detailMetaList dt {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.detailMetaList dd {
+  margin: 0;
+  font-weight: 800;
+}
+
+.detailList {
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+  line-height: 1.6;
+  padding-left: 20px;
+}
+
+.emptyStatePanel {
+  display: grid;
+  gap: 12px;
+}
+
+.emptyStatePanel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 32px;
+  align-items: start;
+}
+
+.admissionPanel {
+  display: grid;
+  gap: 14px;
+  border-color: rgba(16, 32, 51, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(11, 99, 206, 0.12), transparent 28%),
+    var(--white);
+  color: var(--ink);
+  padding: 28px;
+}
+
+.admissionPanel h2,
+.admissionPanel p {
+  margin: 0;
+}
+
+.admissionPanel p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.ctaPanel {
+  display: grid;
+  gap: 14px;
+  border-radius: 18px;
+  background:
+    linear-gradient(120deg, rgba(11, 99, 206, 0.96), rgba(16, 32, 51, 0.9)),
+    url("/brand/hero-campus.svg");
+  background-position: center;
+  background-size: cover;
+  color: var(--white);
+  padding: 28px;
+}
+
+.ctaPanel h2,
+.ctaPanel p {
+  margin: 0;
+}
+
+.ctaPanel p {
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+}
+
+.ctaPanel a {
+  min-height: 44px;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--brand-strong);
+  font-weight: 800;
+  padding: 0 18px;
+}
+
+.leadForm {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  padding: 20px;
+}
+
+.leadForm label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.leadForm input,
+.leadForm select,
+.leadForm textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+}
+
+.leadForm input,
+.leadForm select {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.leadForm textarea {
+  min-height: 108px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.leadForm button {
+  width: 100%;
+  background: var(--brand);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.leadForm button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.formStatus {
+  margin: 0;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.45;
+  padding: 10px 12px;
+}
+
+.formStatus.success {
+  background: #e6f5ed;
+  color: #16603a;
+}
+
+.formStatus.error {
+  background: #fdecea;
+  color: #a23026;
+}
+
+.formStatus.submitting {
+  background: #eaf2ff;
+  color: var(--brand-strong);
+}
+
+@media (max-width: 980px) {
+  .heroEvidenceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .publicHeaderInner {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .publicNav,
+  .publicHeaderCta {
+    display: none;
+  }
+
+  .publicMenu {
+    display: block;
+  }
+
+  .publicFooterGrid,
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .pageHero {
+    padding: 88px 0 64px;
+  }
+
+  .detailGrid,
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroStatGrid,
+  .heroEvidenceGrid,
+  .programCard dl {
+    grid-template-columns: 1fr;
+  }
+
+  .heroPanel {
+    padding: 12px 0 0;
+  }
+
+  .ctaPanel a {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.adminLoginPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(11, 99, 206, 0.18), transparent 38%),
+    linear-gradient(180deg, #eef4fb 0%, #f7f9fc 52%, #ffffff 100%);
+}
+
+.adminLoginHero {
+  width: min(1160px, calc(100% - 32px));
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 420px);
+  gap: 28px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.adminLoginCopy h1 {
+  max-width: 680px;
+  margin: 16px 0;
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  line-height: 0.94;
+}
+
+.adminLoginCopy .lead {
+  max-width: 640px;
+  color: var(--muted);
+}
+
+.adminLoginHighlights {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.adminLoginHighlights p {
+  margin: 0;
+  border: 1px solid rgba(11, 99, 206, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 16px 18px;
+  backdrop-filter: blur(12px);
+}
+
+.adminLoginPanel,
+.adminEditorCard,
+.adminSummaryCard,
+.adminModuleCard,
+.adminLeadCard,
+.adminEmptyState,
+.adminPageGroup {
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 22px 60px rgba(16, 32, 51, 0.08);
+}
+
+.adminLoginPanel {
+  padding: 24px;
+}
+
+.adminLoginHeader {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.adminLoginHeader h2,
+.adminPageHeader h3,
+.adminModuleCard h4,
+.adminEditorHeader h4,
+.adminEmptyState h4,
+.adminLeadCard h4,
+.adminGroupHeader h4 {
+  margin: 0;
+}
+
+.adminShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  background:
+    radial-gradient(circle at top left, rgba(11, 99, 206, 0.12), transparent 28%),
+    #f3f7fb;
+}
+
+.adminSidebar {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+  border-right: 1px solid rgba(16, 32, 51, 0.08);
+  background: linear-gradient(180deg, #0f2942 0%, #16395d 100%);
+  color: var(--white);
+  padding: 28px 22px;
+}
+
+.adminBrand {
+  display: grid;
+  gap: 12px;
+}
+
+.adminBrand h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.adminBrand p:not(.eyebrow) {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.adminNav {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.adminNavLink {
+  display: grid;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px 16px;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.adminNavLink:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.adminNavLink span {
+  font-weight: 800;
+}
+
+.adminNavLink small {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.adminSidebarFooter {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 18px;
+}
+
+.adminUserName,
+.adminUserMeta {
+  margin: 0;
+}
+
+.adminUserName {
+  font-weight: 800;
+}
+
+.adminUserMeta {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.adminContentArea {
+  min-width: 0;
+  padding: 28px;
+}
+
+.adminTopbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.adminTopbar h2 {
+  margin: 8px 0 0;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.adminInlineLink {
+  color: var(--brand-strong);
+  font-weight: 800;
+}
+
+.adminContentBody {
+  display: grid;
+}
+
+.adminPage {
+  display: grid;
+  gap: 20px;
+}
+
+.adminPageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.adminPageIntro {
+  max-width: 540px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.adminSummaryGrid,
+.adminModuleGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.adminSummaryGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.adminModuleGrid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.adminSummaryCard,
+.adminModuleCard,
+.adminEmptyState,
+.adminPageGroup {
+  padding: 22px;
+}
+
+.adminSummaryCard strong,
+.adminModuleCard h4 {
+  display: block;
+  margin: 8px 0;
+  font-size: 1.24rem;
+}
+
+.adminSummaryCard p,
+.adminModuleCard p,
+.adminEmptyState p,
+.adminLongText,
+.adminMetric {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.adminMetric {
+  display: inline-flex;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.adminEditorList,
+.adminStack,
+.adminLeadGrid {
+  display: grid;
+  gap: 18px;
+}
+
+.adminLeadGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.adminEditorCard,
+.adminLeadCard {
+  padding: 22px;
+}
+
+.adminEditorHeader,
+.adminLeadHeader,
+.adminGroupHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.adminEditorMeta {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: right;
+}
+
+.adminForm,
+.adminFormGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.adminFormGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.adminField {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.adminField.wide {
+  grid-column: 1 / -1;
+}
+
+.adminField input,
+.adminField select,
+.adminField textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(16, 32, 51, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--ink);
+  font: inherit;
+  padding: 0 14px;
+}
+
+.adminField textarea {
+  min-height: 120px;
+  line-height: 1.55;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.adminInlineForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px;
+}
+
+.adminField.compact {
+  min-width: 180px;
+  flex: 1 1 180px;
+}
+
+.adminPrimaryButton,
+.adminGhostButton {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: 800;
+  padding: 0 18px;
+}
+
+.adminPrimaryButton {
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.adminGhostButton {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: var(--white);
+}
+
+.adminNotice {
+  margin: 0;
+  border-radius: 14px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 12px 14px;
+}
+
+.adminNotice.success {
+  background: #e6f5ed;
+  color: #16603a;
+}
+
+.adminNotice.error {
+  background: #fdecea;
+  color: #a23026;
+}
+
+.adminStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.adminStatusBadge.new {
+  background: #e8f1ff;
+  color: #1457b7;
+}
+
+.adminStatusBadge.contacted {
+  background: #fff2d8;
+  color: #8f5b00;
+}
+
+.adminStatusBadge.closed {
+  background: #e6f5ed;
+  color: #16603a;
+}
+
+.adminStatusBadge.discarded {
+  background: #f2f4f7;
+  color: #4f5d6b;
+}
+
+.adminMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 16px;
+}
+
+.adminMetaGrid div {
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 12px;
+  background: rgba(11, 99, 206, 0.03);
+  padding: 12px;
+}
+
+.adminMetaGrid dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.adminMetaGrid dd {
+  margin: 6px 0 0;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.adminLongText {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1080px) {
+  .adminShell {
+    grid-template-columns: 1fr;
+  }
+
+  .adminSidebar {
+    grid-template-rows: auto;
+  }
+
+  .adminSummaryGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .adminLoginHero {
+    grid-template-columns: 1fr;
+  }
+
+  .adminContentArea {
+    padding: 18px;
+  }
+
+  .adminFormGrid,
+  .adminMetaGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .adminSidebar,
+  .adminEditorCard,
+  .adminLeadCard,
+  .adminSummaryCard,
+  .adminModuleCard,
+  .adminEmptyState,
+  .adminPageGroup,
+  .adminLoginPanel {
+    padding: 18px;
+  }
+
+  .adminTopbar,
+  .adminPageHeader,
+  .adminEditorHeader,
+  .adminLeadHeader,
+  .adminGroupHeader {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .adminEditorMeta {
+    justify-items: start;
+    text-align: left;
+  }
+}

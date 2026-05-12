@@ -1,0 +1,19 @@
+[Unit]
+Description=sw-cetpro-cv API
+After=network.target
+
+[Service]
+Type=simple
+User=__APP_USER__
+WorkingDirectory=__APP_ROOT__
+Environment=NODE_ENV=production
+Environment=APP_ROOT=__APP_ROOT__
+Environment=APP_ENV_FILE=__ENV_FILE__
+ExecStart=__APP_ROOT__/ops/bin/start-api.sh
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" fill="none">
+  
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102033" />
+      <stop offset="58%" stop-color="#123B66" />
+      <stop offset="100%" stop-color="#0C1726" />
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#D8E0EA" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  
+  
+  <rect width="1200" height="1200" rx="48" fill="url(#bgGradient)" />
+  <rect x="44" y="44" width="1112" height="1112" rx="36" fill="url(#bgGradient)" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <rect width="1200" height="1200" rx="48" fill="url(#grid)" />
+  <circle cx="980" cy="136" r="92" fill="#0B63CE" fill-opacity="0.12" filter="url(#softGlow)" />
+  <rect x="88" y="88" rx="999" ry="999" width="176" height="42" fill="#FFFFFF" fill-opacity="0.1" />
+  <text x="116" y="116" fill="#FFFFFF" fill-opacity="0.9" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1.6">PROGRAMACION DE SISTEMAS</text>
+  <rect x="88" y="1026" rx="28" ry="28" width="1024" height="90" fill="#102033" fill-opacity="0.5" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <text x="128" y="1078" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="44" font-weight="700" letter-spacing="6">DEV</text>
+  
+  
+  <path d="M 252 286 L 162 404 L 252 522" stroke="#C4A46A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 846 286 L 936 404 L 846 522" stroke="#C4A46A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 506 230 L 406 576" stroke="#FFFFFF" stroke-opacity="0.62" stroke-width="14" stroke-linecap="round"/>
+  <rect x="314" y="302" width="442" height="208" rx="28" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.18"/>
+  <circle cx="404" cy="404" r="16" fill="#0B63CE" />
+  <circle cx="526" cy="404" r="16" fill="#FFFFFF" fill-opacity="0.8" />
+  <circle cx="648" cy="404" r="16" fill="#C4A46A" />
+  <path d="M 404 404 H 648" stroke="#FFFFFF" stroke-opacity="0.32" stroke-width="6" />
+  
+  
+</svg>
