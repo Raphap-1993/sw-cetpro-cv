@@ -27,26 +27,22 @@ get_latest_rotation_file() {
   find "$rotation_root" -maxdepth 1 -type f -name 'admin-credentials-*.env' | sort | tail -n 1
 }
 
-read_secret_file() {
+read_secret_field() {
   local file_path="$1"
-  node - "$file_path" <<'EOF'
+  local field_name="$2"
+  node - "$file_path" "$field_name" <<'EOF'
 const fs = require("node:fs");
 const filePath = process.argv[2];
+const fieldName = process.argv[3];
 const content = fs.readFileSync(filePath, "utf8").trim();
-const passwordMatch = content.match(/^ADMIN_PASSWORD="?(.*?)"?$/m);
-const emailMatch = content.match(/^ADMIN_EMAIL="?(.*?)"?$/m);
+const match = content.match(new RegExp(`^${fieldName}="?(.*?)"?$`, "m"));
 
-if (!process.env.SMOKE_ADMIN_PASSWORD && passwordMatch?.[1]) {
-  process.stdout.write(passwordMatch[1]);
+if (match?.[1]) {
+  process.stdout.write(match[1]);
   process.exit(0);
 }
 
-if (!process.env.SMOKE_ADMIN_EMAIL && emailMatch?.[1]) {
-  process.stdout.write(emailMatch[1]);
-  process.exit(0);
-}
-
-process.stdout.write(content);
+process.exit(1);
 EOF
 }
 
@@ -55,8 +51,8 @@ API_BASE="$(trim_trailing_slash "${SMOKE_API_BASE_URL:-${NEXT_PUBLIC_API_URL:-}}
 WEB_LEADS_URL="$(trim_trailing_slash "${SMOKE_WEB_LEADS_URL:-$WEB_BASE/api/leads}")"
 PROGRAM_SLUG="${SMOKE_PROGRAM_SLUG:-programacion-de-sistemas-de-informacion}"
 LEAD_MARKER="${SMOKE_LEAD_MARKER:-SMOKE-$(date +%Y%m%d-%H%M%S)}"
-ADMIN_EMAIL="${SMOKE_ADMIN_EMAIL:-${SEED_ADMIN_EMAIL:-}}"
-ADMIN_PASSWORD="${SMOKE_ADMIN_PASSWORD:-${SEED_ADMIN_PASSWORD:-}}"
+ADMIN_EMAIL="${SMOKE_ADMIN_EMAIL:-}"
+ADMIN_PASSWORD="${SMOKE_ADMIN_PASSWORD:-}"
 ROTATION_ROOT="${ADMIN_ROTATION_ARCHIVE_DIR:-$(dirname "$APP_ENV_FILE")/rotations}"
 default_credentials_file=""
 normalized_marker="$(to_lower_ascii "$LEAD_MARKER")"
@@ -79,12 +75,15 @@ if [[ -z "${SMOKE_ADMIN_EMAIL_FILE:-}" && -n "$default_credentials_file" ]]; the
 fi
 
 if [[ -z "$ADMIN_PASSWORD" && -n "${SMOKE_ADMIN_PASSWORD_FILE:-}" ]]; then
-  ADMIN_PASSWORD="$(read_secret_file "$SMOKE_ADMIN_PASSWORD_FILE")"
+  ADMIN_PASSWORD="$(read_secret_field "$SMOKE_ADMIN_PASSWORD_FILE" "ADMIN_PASSWORD")"
 fi
 
 if [[ -z "$ADMIN_EMAIL" && -n "${SMOKE_ADMIN_EMAIL_FILE:-}" ]]; then
-  ADMIN_EMAIL="$(read_secret_file "$SMOKE_ADMIN_EMAIL_FILE")"
+  ADMIN_EMAIL="$(read_secret_field "$SMOKE_ADMIN_EMAIL_FILE" "ADMIN_EMAIL")"
 fi
+
+ADMIN_EMAIL="${ADMIN_EMAIL:-${SEED_ADMIN_EMAIL:-}}"
+ADMIN_PASSWORD="${ADMIN_PASSWORD:-${SEED_ADMIN_PASSWORD:-}}"
 
 health_file="$(mktemp)"
 home_file="$(mktemp)"
