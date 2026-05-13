@@ -1,12 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-type PublicNavItem = {
-  href: string;
-  label: string;
-};
+import type { PublicNavItem } from "../public-site";
 
 type PublicSiteHeaderProps = {
   ctaHref?: string;
@@ -23,10 +20,18 @@ export function PublicSiteHeader({
   siteName,
   tagline
 }: PublicSiteHeaderProps) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
   const toggleMenu = () => setIsMenuOpen((current) => !current);
+  const isCurrentPath = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className="publicHeader">
@@ -48,7 +53,12 @@ export function PublicSiteHeader({
 
         <nav aria-label="Navegación principal" className="publicNav">
           {navItems.map((item) => (
-            <Link key={`${item.href}:${item.label}`} href={item.href}>
+            <Link
+              aria-current={isCurrentPath(item.href) ? "page" : undefined}
+              className={isCurrentPath(item.href) ? "isCurrent" : undefined}
+              key={`${item.href}:${item.label}`}
+              href={item.href}
+            >
               {item.label}
             </Link>
           ))}
@@ -78,6 +88,8 @@ export function PublicSiteHeader({
           >
             {navItems.map((item) => (
               <Link
+                aria-current={isCurrentPath(item.href) ? "page" : undefined}
+                className={isCurrentPath(item.href) ? "isCurrent" : undefined}
                 key={`mobile:${item.href}:${item.label}`}
                 href={item.href}
                 onClick={closeMenu}

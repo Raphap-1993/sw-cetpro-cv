@@ -129,6 +129,17 @@ function revalidateContentPage(page: string) {
     return;
   }
 
+  if (normalized === "site") {
+    revalidatePath("/");
+    revalidatePath("/institucion");
+    revalidatePath("/admision");
+    revalidatePath("/programas");
+    revalidatePath("/programas/[slug]", "page");
+    revalidatePath("/gestion-institucional");
+    revalidatePath("/libro-de-reclamaciones");
+    return;
+  }
+
   revalidatePath(getPublicPathForPage(page));
 }
 

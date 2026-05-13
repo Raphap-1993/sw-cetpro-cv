@@ -1,0 +1,107 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
+import { getPageContent } from "@/app/page-content";
+import styles from "@/app/public-site.module.css";
+import { managementDocuments } from "@/app/public-site";
+
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPageContent("gestion-institucional");
+
+  return {
+    title: content.seo.title,
+    description: content.seo.body,
+    alternates: {
+      canonical: "/gestion-institucional"
+    }
+  };
+}
+
+export default async function ManagementPage() {
+  const content = await getPageContent("gestion-institucional");
+  const keyNotes = [
+    "La web pública ayuda a ordenar evidencia, pero no sustituye el expediente institucional.",
+    "Publicar resúmenes y enlaces validados reduce fricción para estudiantes, familias y evaluación externa.",
+    "La exposición pública debe evitar datos personales o anexos internos no preparados para difusión."
+  ];
+
+  return (
+    <PublicSiteFrame ctaHref="/admision">
+      <section className={styles.pageHero}>
+        <div className={`shell ${styles.pageHeroGrid}`}>
+          <div>
+            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+              <Link href="/">Inicio</Link>
+              <span>/</span>
+              <span>Gestión institucional</span>
+            </nav>
+            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
+            <h1 className={styles.pageTitle}>{content["hero-main"].title}</h1>
+            <p className={styles.pageLead}>{content["hero-body"].body}</p>
+          </div>
+
+          <aside className={styles.sideNote}>
+            <p className={styles.pageLabel}>{content["hero-note"].title}</p>
+            <h2>{content["section-secondary"].title}</h2>
+            <p>{content["section-secondary"].body}</p>
+            <ul className={styles.heroList}>
+              {keyNotes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section className={styles.sectionBlock}>
+        <div className="shell">
+          <div className={styles.sectionHeading}>
+            <p className={styles.pageLabel}>{content["section-main"].title}</p>
+            <h2>Páginas resumen para licenciamiento, gestión y mejora institucional.</h2>
+            <p>{content["section-main"].body}</p>
+          </div>
+
+          <div className={styles.documentGrid}>
+            {managementDocuments.map((document) => (
+              <article className={styles.documentCard} key={document.slug}>
+                <span className={styles.documentMeta}>Gestión / evaluación</span>
+                <h3 className={styles.documentCardTitle}>{document.title}</h3>
+                <p>{document.summary}</p>
+                <ul className={styles.documentHighlights}>
+                  {document.highlights.slice(0, 2).map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+                <Link
+                  className={styles.documentCardLink}
+                  href={`/gestion-institucional/${document.slug}`}
+                >
+                  Abrir página
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.sectionBlock}>
+        <div className="shell">
+          <article className={styles.calloutCard}>
+            <p className={styles.pageLabel}>Siguiente capa operativa</p>
+            <div className={styles.spacedBlock}>
+              <h2>Lo recomendable es conectar cada página con su PDF o medio de verificación validado.</h2>
+              <p>
+                En este slice dejamos la arquitectura pública, el copy institucional
+                y las páginas base. El siguiente nivel será enlazar documentos o
+                anexos definitivos desde media controlada cuando la institución los
+                valide para difusión.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </PublicSiteFrame>
+  );
+}

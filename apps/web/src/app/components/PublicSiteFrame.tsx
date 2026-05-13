@@ -1,28 +1,26 @@
 import Link from "next/link";
 import { PublicSiteHeader } from "./PublicSiteHeader";
 import { getSiteContent } from "../site-content";
-
-type PublicNavItem = {
-  href: string;
-  label: string;
-};
+import {
+  institutionAddress,
+  publicPrimaryNav,
+  type PublicNavItem
+} from "../public-site";
 
 type PublicSiteFrameProps = {
   children: React.ReactNode;
-  contactHref: string;
+  contactHref?: string;
   ctaHref?: string;
   ctaLabel?: string;
-  navItems: PublicNavItem[];
+  navItems?: PublicNavItem[];
 };
-
-const institutionAddress = "Jr. Comandante Barrera 458, Pucallpa";
 
 export async function PublicSiteFrame({
   children,
-  contactHref,
+  contactHref = "/admision",
   ctaHref,
   ctaLabel = "Solicitar orientación",
-  navItems
+  navItems = publicPrimaryNav
 }: PublicSiteFrameProps) {
   const siteContent = await getSiteContent();
   const siteName = siteContent["default-title"].title || "CETPRO Cesar Vallejo";
@@ -52,14 +50,14 @@ export async function PublicSiteFrame({
         <div className="shell publicFooterCallout">
           <div className="publicFooterCalloutCopy">
             <p className="eyebrow">Admisión y orientación</p>
-            <h2>Explora la oferta pública y solicita acompañamiento institucional.</h2>
+            <h2>Explora la oferta, revisa la institución y continúa la admisión con más contexto.</h2>
             <p>
-              Una experiencia más clara desde la consulta inicial hasta el
-              contacto con el equipo administrativo.
+              La web pública ya no funciona como landing única: organiza
+              programas, gestión y atención administrativa por páginas reales.
             </p>
           </div>
           <Link className="publicFooterCta" href={contactHref}>
-            Iniciar consulta
+            Ir a admisión
           </Link>
         </div>
 
@@ -80,16 +78,19 @@ export async function PublicSiteFrame({
               </span>
             </div>
             <p>
-              Formación técnico-productiva presencial orientada al desempeño,
-              la continuidad formativa y la proyección al trabajo.
+              Formación técnico-productiva presencial orientada a práctica,
+              continuidad formativa y una lectura institucional más clara.
             </p>
           </div>
 
           <div className="publicFooterLinks">
             <strong>Explorar</strong>
             <Link href="/">Inicio</Link>
+            <Link href="/institucion">Institución</Link>
             <Link href="/programas">Programas</Link>
-            <Link href={contactHref}>Contacto y admisión</Link>
+            <Link href="/gestion-institucional">Gestión institucional</Link>
+            <Link href="/libro-de-reclamaciones">Libro de reclamaciones</Link>
+            <Link href={contactHref}>Admisión</Link>
           </div>
 
           <div className="publicFooterNote">
@@ -102,10 +103,10 @@ export async function PublicSiteFrame({
           </div>
 
           <div className="publicFooterNote">
-            <strong>Ruta pública</strong>
+            <strong>Portal institucional</strong>
             <p>
-              Catálogo, detalle de programas, evidencia institucional y
-              formulario de contacto en una sola experiencia coherente.
+              Programas, admisión, gestión institucional y libro de
+              reclamaciones en una arquitectura pública más verificable.
             </p>
           </div>
         </div>

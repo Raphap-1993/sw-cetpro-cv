@@ -16,7 +16,7 @@ const fallbackSiteContent: Record<SiteContentKey, SiteContentEntry> = {
   },
   "default-description": {
     title: "",
-    body: "Web institucional del CETPRO Cesar Vallejo de Pucallpa"
+    body: "Portal institucional del CETPRO Cesar Vallejo de Pucallpa"
   }
 };
 

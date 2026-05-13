@@ -9,6 +9,35 @@ const publishStatuses = ["DRAFT", "PUBLISHED", "ARCHIVED"] as const;
 const blockTypes = ["HERO", "SECTION", "CTA", "TEXT", "IMAGE", "FAQ"] as const;
 const programsEditorialGuide = [
   {
+    page: "home",
+    title: "Inicio /",
+    keys: "hero-main, intro-main, programs-header, admission-main, cta-main"
+  },
+  {
+    page: "institucion",
+    title: "Institución /institucion",
+    keys:
+      "seo, hero-main, hero-body, section-main, section-secondary, cta-primary"
+  },
+  {
+    page: "admision",
+    title: "Admisión /admision",
+    keys:
+      "seo, hero-main, hero-body, section-main, section-secondary, cta-primary"
+  },
+  {
+    page: "gestion-institucional",
+    title: "Gestión /gestion-institucional",
+    keys:
+      "seo, hero-main, hero-body, section-main, section-secondary, cta-primary"
+  },
+  {
+    page: "libro-de-reclamaciones",
+    title: "Libro /libro-de-reclamaciones",
+    keys:
+      "seo, hero-main, hero-body, section-main, section-secondary, cta-primary"
+  },
+  {
     page: "programs",
     title: "Catálogo /programas",
     keys: "seo, hero-main, hero-summary, catalog-section, card-eyebrow, card-cta"

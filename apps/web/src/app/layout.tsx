@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { getSiteContent } from "./site-content";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans"
+});
 
 function getMetadataBase() {
   const origin = process.env.WEB_ORIGIN?.split(",")[0]?.trim();
@@ -33,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className={manrope.variable}>{children}</body>
     </html>
   );
 }

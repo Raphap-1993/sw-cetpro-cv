@@ -27,11 +27,11 @@ export function ProgramCard({
 }: ProgramCardProps) {
   const programSummary = getProgramCopy(program);
   const studyPlanState = program.studyPlan
-    ? "Plan base disponible"
-    : "Ficha académica en actualización";
+    ? "Plan base visible"
+    : "Resumen académico inicial";
   const mediaStyle = program.imageUrl
     ? {
-        backgroundImage: `linear-gradient(180deg, rgba(16, 32, 51, 0.08), rgba(16, 32, 51, 0.42)), url("${program.imageUrl}")`
+        backgroundImage: `linear-gradient(180deg, rgba(16, 32, 51, 0.06), rgba(16, 32, 51, 0.24)), url("${program.imageUrl}")`
       }
     : undefined;
 
@@ -73,8 +73,7 @@ export function ProgramCard({
 
         <div className={styles.programCardFooter}>
           <p className={styles.programCardFootnote}>
-            Consulta el detalle para revisar enfoque formativo y orientación de
-            admisión.
+            Abre la ficha para revisar orientación y siguiente paso de admisión.
           </p>
           <Link className={styles.programCardLink} href={getProgramPath(program.slug)}>
             {copy.ctaLabel}

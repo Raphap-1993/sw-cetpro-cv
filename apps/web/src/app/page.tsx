@@ -1,14 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { listPageContent, type PublicContentBlock } from "@/lib/public-data";
-import { LeadForm } from "./components/LeadForm";
 import { PublicSiteFrame } from "./components/PublicSiteFrame";
 import { ProgramCard } from "./programas/ProgramCard";
-import {
-  getProgramCardCopy,
-  getProgramsCatalogContent
-} from "./programas/content";
+import { getProgramCardCopy, getProgramsCatalogContent } from "./programas/content";
 import { listPublishedPrograms } from "./programas/programs";
+import styles from "./public-site.module.css";
+import {
+  getFeaturedManagementDocuments,
+  institutionAddress,
+  institutionDistrict
+} from "./public-site";
 
 export const dynamic = "force-dynamic";
 
@@ -43,59 +45,57 @@ const statKeys: HomeContentKey[] = [
   "stats-item-03"
 ];
 
-const institutionAddress = "Jr. Comandante Barrera 458, Pucallpa";
-
 const fallbackHomeContent: Record<HomeContentKey, HomeContentEntry> = {
   "hero-main": {
     title:
-      "Formación técnico-productiva para integrarte al trabajo con práctica, criterio y continuidad formativa.",
+      "Formación técnico-productiva presencial, organizada como portal institucional y no solo como una campaña de matrícula.",
     body:
-      "CETPRO César Vallejo de Pucallpa forma estudiantes en rutas aplicadas de servicios, tecnología, confección, logística y producción, con orientación institucional desde la consulta hasta la matrícula.",
+      "El CETPRO César Vallejo de Pucallpa presenta aquí su oferta académica, la ruta de admisión y la capa pública de gestión institucional en páginas separadas, con un tono más sobrio y verificable.",
     mediaUrl: "/brand/hero-campus.svg"
   },
   "intro-main": {
-    title: "¿Quiénes somos?",
+    title: "Institución orientada a práctica y continuidad formativa",
     body:
-      "El CETPRO César Vallejo de Pucallpa es un centro de educación técnico-productiva orientado a la formación aplicada. Nuestra propuesta combina práctica guiada, evaluación por ciclos y una ruta académica clara para que cada estudiante avance con base técnica y acompañamiento institucional.",
+      "El sitio se reorganiza para que estudiantes y familias puedan entender qué ofrece el CETPRO, cómo se ingresa y qué evidencia institucional respalda el servicio educativo antes de iniciar contacto.",
     mediaUrl: null
   },
   "programs-header": {
-    title: "Oferta académica para aprender haciendo",
+    title: "Programas para revisar con más contexto",
     body:
-      "Especialidades y carreras técnicas diseñadas para desarrollar desempeño real, criterio técnico y una base productiva útil para empleo, continuidad formativa o emprendimiento.",
+      "Cada especialidad conduce a una ficha académica específica y a una página de admisión donde la consulta puede llegar con mejor contexto.",
     mediaUrl: null
   },
   "stats-header": {
-    title: "Admisión y orientación académica",
+    title: "Qué puedes resolver desde esta web",
     body:
-      "Consulta la oferta vigente, revisa duración y recibe orientación para elegir la especialidad que mejor responde a tu perfil y al momento de matrícula.",
+      "Explora la institución, compara programas, revisa gestión institucional y ubica el libro de reclamaciones sin depender de una sola landing extensa.",
     mediaUrl: null
   },
   "stats-item-01": {
-    title: "6",
-    body: "carreras técnicas",
+    title: "Programas",
+    body: "Catálogo y fichas por especialidad",
     mediaUrl: null
   },
   "stats-item-02": {
-    title: "1",
-    body: "auxiliar técnico",
+    title: "Admisión",
+    body: "Proceso y formulario institucional",
     mediaUrl: null
   },
   "stats-item-03": {
-    title: "2 años",
-    body: "duración de los programas técnicos",
+    title: "Gestión",
+    body: "Licenciamiento e instrumentos de gestión",
     mediaUrl: null
   },
   "admission-main": {
-    title: "Solicita orientación de matrícula",
+    title: "Admisión con menos fricción",
     body:
-      "Déjanos tus datos para revisar vacantes, turnos, requisitos y el programa de tu interés. El equipo administrativo te responde con la ruta de matrícula disponible para tu consulta.",
+      "La consulta de matrícula se mueve a una página propia para centralizar requisitos, pasos y la solicitud digital del estudiante.",
     mediaUrl: null
   },
   "cta-main": {
-    title: "Una formación pensada para desempeño técnico real",
+    title: "Gestión institucional visible, sin confundir web con expediente",
     body:
-      "El valor del CETPRO no está solo en la malla: está en la práctica guiada, la continuidad por ciclos y la claridad para avanzar hacia trabajo o emprendimiento con una base técnica sólida.",
+      "La capa pública de gestión ordena información y mejora trazabilidad, pero no reemplaza los documentos aprobados ni el respaldo documental exigible ante la autoridad.",
     mediaUrl: null
   }
 };
@@ -126,313 +126,203 @@ export default async function Home() {
     getHomeContent(),
     getProgramsCatalogContent()
   ]);
-  const featuredPrograms = programs.slice(0, 4);
+  const featuredPrograms = programs.slice(0, 3);
+  const managementPreview = getFeaturedManagementDocuments();
   const programCardCopy = getProgramCardCopy(programsContent);
-  const modalities = new Set(
-    programs
-      .map((program) => program.modality)
-      .filter((modality): modality is string => !!modality)
-  );
-  const modalityLabel =
-    modalities.size === 0
-      ? "Presencial"
-      : modalities.size === 1
-        ? (Array.from(modalities)[0] ?? "Presencial")
-        : `${modalities.size} modalidades vigentes`;
-  const institutionalHighlights = [
+  const homeActions = [
     {
-      title: "Sede institucional",
-      body: institutionAddress
+      title: "Institución",
+      body:
+        "Identidad, enfoque formativo y señales de formalidad para entender la propuesta completa del CETPRO.",
+      href: "/institucion"
     },
     {
-      title: "Oferta vigente",
-      body: `${homeContent["stats-item-01"].title} ${homeContent["stats-item-01"].body} y ${homeContent["stats-item-02"].title} ${homeContent["stats-item-02"].body}.`
+      title: "Programas",
+      body:
+        "Catálogo comparativo con fichas académicas por especialidad, duración y modalidad.",
+      href: "/programas"
     },
     {
-      title: "Certificación",
-      body: "Certificado por ciclo y título técnico al culminar la carrera correspondiente."
+      title: "Admisión",
+      body:
+        "Proceso, requisitos y formulario institucional para iniciar la consulta con mejor contexto.",
+      href: "/admision"
     },
     {
-      title: "Atención de matrícula",
-      body: "Orientación institucional para revisar programa, modalidad, turnos y vacantes."
+      title: "Gestión institucional",
+      body:
+        "Licenciamiento, PEI, RI, PAT y seguimiento institucional organizados como evidencia pública.",
+      href: "/gestion-institucional"
     }
   ];
-  const academicPillars = [
+  const institutionalSignals = [
     {
-      title: "Aprendizaje aplicado",
-      body:
-        "Sesiones presenciales, práctica guiada y especialidades pensadas para desempeño real, continuidad formativa y criterio técnico."
+      label: "Sede institucional",
+      value: institutionAddress
     },
     {
-      title: "Elección informada",
-      body:
-        "Catálogo público, fichas comparables y orientación inicial para elegir programa, turno y ruta de matrícula con mayor claridad."
+      label: "Cobertura pública",
+      value: "Oferta académica, admisión y gestión institucional"
     },
     {
-      title: "Trayectoria certificable",
-      body:
-        "Cada ciclo acompaña el avance del estudiante con evidencias de aprendizaje y la proyección hacia un título técnico."
+      label: "Libro de reclamaciones",
+      value: "Visible desde la navegación principal"
     }
   ];
-  const institutionFacts = [
-    "Atención presencial en Pucallpa con acompañamiento para vacantes y turnos.",
-    "Ruta por ciclos con certificados de aprobación y continuidad hacia título técnico.",
-    "Oferta pensada para estudiantes que requieren una decisión formativa clara y accionable."
-  ];
-  const catalogHighlights = [
-    {
-      value: `${programs.length || featuredPrograms.length || 0}`,
-      label: "especialidades visibles"
-    },
-    {
-      value: modalityLabel,
-      label: "modalidad vigente"
-    },
-    {
-      value: "Por ciclos",
-      label: "ruta certificable"
-    }
-  ];
-  const admissionSteps = [
-    {
-      title: "1. Explora la oferta",
-      body:
-        "Revisa programas, duración y modalidad para llegar a la consulta con una preferencia inicial."
-    },
-    {
-      title: "2. Solicita orientación",
-      body:
-        "Comparte tus datos y el programa de interés para confirmar vacantes, turnos y requisitos de matrícula."
-    },
-    {
-      title: "3. Continúa el proceso",
-      body:
-        "El equipo administrativo responde según disponibilidad para ordenar el siguiente paso de tu inscripción."
-    }
-  ];
-
-  const heroBackground = homeContent["hero-main"].mediaUrl
-    ? {
-        backgroundImage: `linear-gradient(120deg, rgba(11, 99, 206, 0.92), rgba(16, 32, 51, 0.84)), url("${homeContent["hero-main"].mediaUrl}")`
-      }
-    : undefined;
 
   return (
-    <PublicSiteFrame
-      contactHref="#contacto"
-      ctaHref="#contacto"
-      navItems={[
-        { href: "#programas", label: "Programas" },
-        { href: "#cetpro", label: "El CETPRO" },
-        { href: "#admision", label: "Admisión" },
-        { href: "#contacto", label: "Contacto" }
-      ]}
-    >
-      <section className="hero homeHero" style={heroBackground}>
-        <div className="shell heroGrid">
-          <div className="heroPanel">
-            <div className="heroIdentityRow">
-              <span className="heroIdentityBadge">Web institucional pública</span>
-              <span className="heroIdentityBadge">Pucallpa, Ucayali</span>
-            </div>
-            <p className="eyebrow">CETPRO Cesar Vallejo de Pucallpa</p>
-            <h1>{homeContent["hero-main"].title}</h1>
-            <p className="lead">{homeContent["hero-main"].body}</p>
-            <div className="heroMetaLine">
-              <span>Formación presencial</span>
-              <span>Orientación de matrícula</span>
-              <span>Rutas técnicas con aplicación real</span>
-            </div>
+    <PublicSiteFrame ctaHref="/admision">
+      <section className={styles.homeHero}>
+        <div className={`shell ${styles.homeHeroGrid}`}>
+          <div>
+            <p className={styles.pageLabel}>Portal institucional</p>
+            <h1 className={styles.homeTitle}>{homeContent["hero-main"].title}</h1>
+            <p className={styles.homeLead}>{homeContent["hero-main"].body}</p>
 
-            <div className="actions">
-              <Link href="/programas">Explorar programas</Link>
-              <a className="secondary" href="#contacto">
-                Solicitar orientación
-              </a>
-            </div>
-
-            <div className="heroQuickFacts">
-              {catalogHighlights.map((item) => (
-                <article className="heroQuickFact" key={item.label}>
-                  <strong>{item.value}</strong>
-                  <span>{item.label}</span>
-                </article>
-              ))}
+            <div className={styles.actionRow}>
+              <Link className={styles.primaryLink} href="/programas">
+                Explorar programas
+              </Link>
+              <Link className={styles.secondaryLink} href="/admision">
+                Ir a admisión
+              </Link>
             </div>
           </div>
 
-          <aside className="heroProofCard">
-            <div className="heroProofHeader">
-              <p className="eyebrow">Admisión y orientación</p>
-              <h2>{homeContent["stats-header"].title}</h2>
-              <p>{homeContent["stats-header"].body}</p>
-            </div>
-
-            <div className="heroStatGrid">
+          <aside className={styles.heroAside}>
+            <p className={styles.pageLabel}>{homeContent["stats-header"].title}</p>
+            <h2>{homeContent["intro-main"].title}</h2>
+            <p>{homeContent["stats-header"].body}</p>
+            <ul className={styles.heroList}>
               {statKeys.map((key) => (
-                <article className="heroStatCard" key={key}>
-                  <strong>{homeContent[key].title}</strong>
-                  <span>{homeContent[key].body}</span>
-                </article>
+                <li key={key}>
+                  <strong>{homeContent[key].title}:</strong> {homeContent[key].body}
+                </li>
               ))}
-            </div>
-
-            <ul className="heroChecklist">
-              <li>Revisa la oferta vigente y compara especialidades.</li>
-              <li>Define programa, modalidad y consulta de matrícula.</li>
-              <li>Continúa con una ruta de atención institucional clara.</li>
             </ul>
           </aside>
         </div>
       </section>
 
-      <section className="section trustSection">
-        <div className="shell heroEvidenceGrid">
-          {institutionalHighlights.map((item) => (
-            <article className="evidenceCard" key={item.title}>
-              <p className="eyebrow">{item.title}</p>
-              <strong>{item.body}</strong>
+      <section className={styles.sectionBlock}>
+        <div className="shell">
+          <div className={styles.sectionHeading}>
+            <p className={styles.pageLabel}>Mapa de páginas</p>
+            <h2>{homeContent["programs-header"].title}</h2>
+            <p>{homeContent["programs-header"].body}</p>
+          </div>
+
+          <div className={styles.quickGrid}>
+            {homeActions.map((item) => (
+              <article className={styles.quickCard} key={item.href}>
+                <span className={styles.quickCardMeta}>Ruta pública</span>
+                <h3 className={styles.quickCardTitle}>{item.title}</h3>
+                <p>{item.body}</p>
+                <Link className={styles.quickCardLink} href={item.href}>
+                  Abrir página
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.sectionBlock}>
+        <div className="shell">
+          <div className={styles.sectionHeading}>
+            <p className={styles.pageLabel}>Oferta destacada</p>
+            <h2>Especialidades visibles con acceso directo a su ficha.</h2>
+            <p>
+              El catálogo ahora se lee como un conjunto de páginas conectadas:
+              catálogo comparativo, ficha de programa y admisión.
+            </p>
+          </div>
+
+          {featuredPrograms.length > 0 ? (
+            <div className={styles.quickGrid}>
+              {featuredPrograms.map((program) => (
+                <ProgramCard key={program.id} copy={programCardCopy} program={program} />
+              ))}
+            </div>
+          ) : null}
+
+          <div className={styles.actionRow}>
+            <Link className={styles.inlineLink} href="/programas">
+              Ver catálogo completo
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.sectionBlock}>
+        <div className={`shell ${styles.stripGrid}`}>
+          {institutionalSignals.map((signal) => (
+            <article className={styles.stripCard} key={signal.label}>
+              <span>{signal.label}</span>
+              <strong>{signal.value}</strong>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section" id="programas">
+      <section className={styles.sectionBlock}>
         <div className="shell">
-          <div className="sectionSplit">
-            <div className="sectionHeader">
-              <p className="eyebrow">Programas</p>
-              <h2>{homeContent["programs-header"].title}</h2>
-              <p className="sectionCopy">{homeContent["programs-header"].body}</p>
-            </div>
-
-            <aside className="sectionNoteCard">
-              <p className="eyebrow">Curaduría inicial</p>
-              <h3>Empieza por una lectura comparativa y luego profundiza en cada ficha.</h3>
-              <p>
-                Esta portada prioriza una selección inicial para mostrar duración,
-                modalidad, enfoque y continuidad hacia el detalle completo del
-                programa.
-              </p>
-            </aside>
+          <div className={styles.sectionHeading}>
+            <p className={styles.pageLabel}>Gestión institucional</p>
+            <h2>{homeContent["cta-main"].title}</h2>
+            <p>{homeContent["cta-main"].body}</p>
           </div>
 
-          <div className="programGrid">
-            {programs.length > 0 ? (
-              featuredPrograms.map((program) => (
-                <ProgramCard copy={programCardCopy} key={program.id} program={program} />
-              ))
-            ) : (
-              <article className="programCard">
-                <div className="programCardBody">
-                  <div className="programCardCopy">
-                    <h3>Programas en preparacion</h3>
-                    <p>
-                      La oferta académica se encuentra en actualización.
-                      Solicita orientación al equipo institucional para conocer
-                      vacantes y especialidades disponibles.
-                    </p>
-                  </div>
-                </div>
+          <div className={styles.documentGrid}>
+            {managementPreview.map((document) => (
+              <article className={styles.documentCard} key={document.slug}>
+                <span className={styles.documentMeta}>Documento / evaluación</span>
+                <h3 className={styles.documentCardTitle}>{document.title}</h3>
+                <p>{document.summary}</p>
+                <Link
+                  className={styles.documentCardLink}
+                  href={`/gestion-institucional/${document.slug}`}
+                >
+                  Ver página resumen
+                </Link>
               </article>
-            )}
+            ))}
           </div>
 
-          {programs.length > 0 ? (
-            <div className="sectionActions">
-              <Link className="inlineAction" href="/programas">
-                Ver oferta académica completa
-              </Link>
-            </div>
-          ) : null}
-        </div>
-      </section>
-
-      <section className="section sectionMuted">
-        <div className="shell">
-          <div className="institutionGrid" id="cetpro">
-            <article className="institutionNarrativeCard">
-              <div className="sectionHeader">
-                <p className="eyebrow">El CETPRO</p>
-                <h2>{homeContent["intro-main"].title}</h2>
-                <p className="sectionCopy">{homeContent["intro-main"].body}</p>
-              </div>
-
-              <div className="institutionSignalGrid">
-                {academicPillars.map((pillar) => (
-                  <article className="institutionSignalCard" key={pillar.title}>
-                    <p className="eyebrow">{pillar.title}</p>
-                    <p>{pillar.body}</p>
-                  </article>
-                ))}
-              </div>
-            </article>
-
-            <aside className="institutionSummaryCard">
-              <p className="eyebrow">Base institucional</p>
-              <h3>{homeContent["cta-main"].title}</h3>
-              <p>{homeContent["cta-main"].body}</p>
-
-              <ul className="detailList">
-                {institutionFacts.map((fact) => (
-                  <li key={fact}>{fact}</li>
-                ))}
-              </ul>
-            </aside>
+          <div className={styles.actionRow}>
+            <Link className={styles.secondaryLink} href="/gestion-institucional">
+              Abrir gestión institucional
+            </Link>
+            <Link className={styles.secondaryLink} href="/libro-de-reclamaciones">
+              Libro de reclamaciones
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="section contact" id="admision">
+      <section className={styles.sectionBlock}>
         <div className="shell">
-          <div className="sectionSplit">
-            <div className="sectionHeader">
-              <p className="eyebrow">Admisión</p>
-              <h2>{homeContent["admission-main"].title}</h2>
-              <p className="sectionCopy">{homeContent["admission-main"].body}</p>
-            </div>
-
-            <aside className="sectionNoteCard">
-              <p className="eyebrow">Orientación institucional</p>
-              <h3>Ruta clara desde la consulta digital hasta la atención administrativa.</h3>
-              <p>
-                La web pública funciona como primer punto de contacto para ordenar
-                interés, documentos, turnos y continuidad del proceso de
-                matrícula.
-              </p>
-            </aside>
-          </div>
-
-          <div className="contactGrid admissionExperienceGrid">
-            <article className="admissionPanel">
-              <div className="admissionStepsGrid">
-                {admissionSteps.map((step) => (
-                  <article className="admissionStep" key={step.title}>
-                    <strong>{step.title}</strong>
-                    <p>{step.body}</p>
-                  </article>
-                ))}
-              </div>
-
-              <ul className="detailList">
-                <li>Orientación para vacantes, turnos y programa de interés.</li>
-                <li>Respuesta administrativa para continuar el proceso de matrícula.</li>
-                <li>Ubicación institucional: {institutionAddress}.</li>
-              </ul>
-            </article>
-
-            <div className="formColumn" id="contacto">
-              <div className="formIntroCard">
-                <p className="eyebrow">Contacto</p>
-                <h3>Deja tus datos y recibe acompañamiento inicial.</h3>
-                <p>
-                  El formulario centraliza nombre, contacto y programa de interés
-                  para reducir fricción en la primera respuesta institucional.
+          <article className={styles.calloutCard}>
+            <p className={styles.pageLabel}>{homeContent["admission-main"].title}</p>
+            <div className={styles.splitGrid}>
+              <div className={styles.spacedBlock}>
+                <h2>{homeContent["admission-main"].body}</h2>
+                <p className={styles.pageLeadStrong}>
+                  La sede institucional se encuentra en {institutionAddress}. La
+                  web pública organiza el primer contacto y la lectura inicial de
+                  la oferta desde {institutionDistrict}.
                 </p>
               </div>
-              <LeadForm programs={programs} />
+              <div className={styles.spacedBlock}>
+                <Link className={styles.primaryLink} href="/admision">
+                  Revisar proceso de admisión
+                </Link>
+                <Link className={styles.inlineLink} href="/institucion">
+                  Conocer la institución
+                </Link>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
     </PublicSiteFrame>

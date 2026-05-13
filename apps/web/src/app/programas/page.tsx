@@ -16,17 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
     description: content.seo.body,
     alternates: {
       canonical: "/programas"
-    },
-    openGraph: {
-      title: content.seo.title,
-      description: content.seo.body,
-      images: content.seo.mediaUrl ? [content.seo.mediaUrl] : undefined
-    },
-    twitter: {
-      card: content.seo.mediaUrl ? "summary_large_image" : "summary",
-      title: content.seo.title,
-      description: content.seo.body,
-      images: content.seo.mediaUrl ? [content.seo.mediaUrl] : undefined
     }
   };
 }
@@ -36,6 +25,12 @@ export default async function ProgramsCatalogPage() {
     listPublishedPrograms(),
     getProgramsCatalogContent()
   ]);
+  const cardCopy: ProgramCardCopy = {
+    eyebrow: content["card-eyebrow"].title,
+    durationLabel: content["card-duration-label"].title,
+    modalityLabel: content["card-modality-label"].title,
+    ctaLabel: content["card-cta"].title
+  };
   const durations = Array.from(
     new Set(
       programs
@@ -43,153 +38,74 @@ export default async function ProgramsCatalogPage() {
         .filter((duration): duration is string => !!duration)
     )
   );
-  const modalities = new Set(
-    programs
-      .map((program) => program.modality)
-      .filter((modality): modality is string => !!modality)
+  const modalities = Array.from(
+    new Set(
+      programs
+        .map((program) => program.modality)
+        .filter((modality): modality is string => !!modality)
+    )
   );
-  const cardCopy: ProgramCardCopy = {
-    eyebrow: content["card-eyebrow"].title,
-    durationLabel: content["card-duration-label"].title,
-    modalityLabel: content["card-modality-label"].title,
-    ctaLabel: content["card-cta"].title
-  };
-  const modalityLabel =
-    modalities.size === 0
-      ? "Presencial"
-      : modalities.size === 1
-        ? (Array.from(modalities)[0] ?? "Presencial")
-        : `${modalities.size} modalidades`;
-  const durationLabel =
-    durations.length === 0
-      ? "Por confirmar"
-      : durations.length === 1
-        ? durations[0]
-        : durations.join(" / ");
-  const selectionSignals = [
+  const metrics = [
     {
       label: "Oferta visible",
-      value: `${programs.length}`
+      value: String(programs.length)
     },
     {
       label: "Duración referencial",
-      value: durationLabel
+      value: durations.length <= 1 ? (durations[0] ?? "Por confirmar") : "Mixta"
     },
     {
-      label: "Modalidad vigente",
-      value: modalityLabel
+      label: "Modalidad",
+      value: modalities.length <= 1 ? (modalities[0] ?? "Por confirmar") : "Varias"
     }
   ];
-  const catalogEvidence = [
-    {
-      label: "Lectura comparativa",
-      value: "Primero catálogo",
-      detail: "Explora enfoque, duración y modalidad antes de pasar a la ficha completa."
-    },
-    {
-      label: "Decisión informada",
-      value: "Luego detalle",
-      detail: "Cada programa amplía perfil formativo, plan base y orientación de matrícula."
-    },
-    {
-      label: "Ruta de contacto",
-      value: "Después orientación",
-      detail: "La consulta institucional te ayuda a aterrizar vacantes, turnos y siguiente paso."
-    }
-  ];
-  const heroAsideStyle = content["hero-summary"].mediaUrl
-    ? {
-        backgroundImage: `linear-gradient(160deg, rgba(11, 99, 206, 0.94), rgba(16, 32, 51, 0.92)), url("${content["hero-summary"].mediaUrl}")`
-      }
-    : undefined;
 
   return (
-    <PublicSiteFrame
-      contactHref="/#contacto"
-      ctaHref="/#contacto"
-      navItems={[
-        { href: "/", label: "Inicio" },
-        { href: "#catalogo", label: "Catálogo" },
-        { href: "/#admision", label: "Admisión" },
-        { href: "/#contacto", label: "Contacto" }
-      ]}
-    >
+    <PublicSiteFrame ctaHref="/admision">
       <section className={styles.catalogHero}>
         <div className={`shell ${styles.catalogHeroGrid}`}>
-          <div className={styles.heroPanel}>
-            <Link className={styles.pageBackLink} href="/">
-              {content["hero-back-link"].title}
-            </Link>
-            <p className="eyebrow">{content["hero-eyebrow"].title}</p>
+          <div>
+            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+              <Link href="/">Inicio</Link>
+              <span>/</span>
+              <span>Programas</span>
+            </nav>
+            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
             <h1>{content["hero-main"].title}</h1>
             <p className={styles.heroLead}>{content["hero-main"].body}</p>
-            <div className={styles.programActionRow}>
+
+            <div className={styles.actionRow}>
               <a className={styles.primaryAction} href="#catalogo">
                 {content["hero-primary-cta"].title}
               </a>
-              <Link className={styles.ghostAction} href="/#contacto">
+              <Link className={styles.secondaryAction} href="/admision">
                 {content["hero-secondary-cta"].title}
               </Link>
             </div>
-
-            <div className={styles.heroPillRow}>
-              <span className={styles.heroPill}>Compara duración y modalidad</span>
-              <span className={styles.heroPill}>Revisa fichas públicas</span>
-              <span className={styles.heroPill}>Solicita orientación</span>
-            </div>
           </div>
 
-          <aside className={styles.heroAside} style={heroAsideStyle}>
-            <p className="eyebrow">{content["hero-summary-eyebrow"].title}</p>
+          <aside className={styles.heroAside}>
+            <p className={styles.pageLabel}>{content["hero-summary-eyebrow"].title}</p>
             <h2>{content["hero-summary"].title}</h2>
+            <p>{content["hero-summary"].body}</p>
             <div className={styles.metricGrid}>
-              {selectionSignals.map((signal) => (
-                <article className={styles.metricCard} key={signal.label}>
-                  <span>{signal.label}</span>
-                  <strong>{signal.value}</strong>
+              {metrics.map((metric) => (
+                <article className={styles.metricCard} key={metric.label}>
+                  <span>{metric.label}</span>
+                  <strong>{metric.value}</strong>
                 </article>
               ))}
             </div>
-            <p>{content["hero-summary"].body}</p>
-            <ul className={styles.heroGuidanceList}>
-              <li>Empieza por duración, modalidad y enfoque general.</li>
-              <li>Abre la ficha completa para revisar descripción y plan base.</li>
-              <li>Solicita orientación cuando ya tengas una preferencia inicial.</li>
-            </ul>
           </aside>
         </div>
       </section>
 
-      <section className={styles.catalogEvidenceSection}>
-        <div className={`shell ${styles.catalogEvidenceGrid}`}>
-          {catalogEvidence.map((item) => (
-            <article className={styles.catalogEvidenceCard} key={item.label}>
-              <span>{item.label}</span>
-              <strong>{item.value}</strong>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section" id="catalogo">
+      <section className={styles.catalogSection} id="catalogo">
         <div className="shell">
-          <div className={styles.catalogIntroLayout}>
-            <div className="sectionHeader">
-              <p className="eyebrow">{content["catalog-eyebrow"].title}</p>
-              <h2>{content["catalog-section"].title}</h2>
-              <p className="sectionCopy">{content["catalog-section"].body}</p>
-            </div>
-
-            <aside className={styles.catalogNoteCard}>
-              <p className="eyebrow">Lectura recomendada</p>
-              <h3>Empieza por la comparación general y luego abre el detalle.</h3>
-              <p>
-                Cada tarjeta resume el enfoque de la especialidad y conecta con
-                una página más completa para revisar plan base, orientación y
-                continuidad del contacto.
-              </p>
-            </aside>
+          <div className={styles.sectionHeading}>
+            <p className={styles.pageLabel}>{content["catalog-eyebrow"].title}</p>
+            <h2>{content["catalog-section"].title}</h2>
+            <p>{content["catalog-section"].body}</p>
           </div>
 
           {programs.length > 0 ? (
@@ -207,16 +123,19 @@ export default async function ProgramsCatalogPage() {
         </div>
       </section>
 
-      <section className="section sectionMuted">
+      <section className={styles.catalogSection}>
         <div className="shell">
-          <article className={styles.catalogCtaPanel}>
+          <article className={styles.catalogCallout}>
             <div>
-              <p className="eyebrow">Orientación académica</p>
-              <h2>{content["hero-summary"].title}</h2>
-              <p>{content["hero-summary"].body}</p>
+              <p className={styles.pageLabel}>Siguiente paso</p>
+              <h2>Cuando ya tengas una preferencia inicial, continúa por admisión.</h2>
+              <p>
+                El sitio separa comparación y matrícula para que la consulta llegue
+                mejor orientada al equipo administrativo.
+              </p>
             </div>
-            <Link className={styles.primaryAction} href="/#contacto">
-              {content["hero-secondary-cta"].title}
+            <Link className={styles.primaryAction} href="/admision">
+              Ir a admisión
             </Link>
           </article>
         </div>
