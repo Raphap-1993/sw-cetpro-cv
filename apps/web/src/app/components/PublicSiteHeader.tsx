@@ -33,15 +33,20 @@ export function PublicSiteHeader({
       <div className="shell publicHeaderInner">
         <Link className="publicBrand" href="/" onClick={closeMenu}>
           <span aria-hidden="true" className="publicBrandMark">
-            CETPRO
+            <span className="publicBrandMarkSeal">CV</span>
+            <span className="publicBrandMarkWord">CETPRO</span>
           </span>
           <span className="publicBrandCopy">
+            <span className="publicBrandMeta">
+              <span>Pucallpa</span>
+              <span>Formación presencial</span>
+            </span>
             <strong>{siteName}</strong>
             <small>{tagline}</small>
           </span>
         </Link>
 
-        <nav aria-label="Navegacion principal" className="publicNav">
+        <nav aria-label="Navegación principal" className="publicNav">
           {navItems.map((item) => (
             <Link key={`${item.href}:${item.label}`} href={item.href}>
               {item.label}
@@ -63,11 +68,11 @@ export function PublicSiteHeader({
             onClick={toggleMenu}
             type="button"
           >
-            Menu
+            Menú
           </button>
 
           <nav
-            aria-label="Navegacion movil"
+            aria-label="Navegación móvil"
             className={`publicMenuPanel ${isMenuOpen ? "isOpen" : ""}`}
             id="public-menu-panel"
           >

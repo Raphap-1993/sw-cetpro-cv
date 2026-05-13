@@ -107,6 +107,53 @@ export default async function ProgramDetailPage({
     ctaLabel: catalogContent["card-cta"].title
   };
   const heroImage = program.imageUrl ?? content["hero-caption"].mediaUrl;
+  const studyPlanLabel =
+    studyPlanItems.length > 1
+      ? `${studyPlanItems.length} bloques base`
+      : studyPlanItems.length === 1
+        ? "Ruta referencial"
+        : "En actualización";
+  const heroSignals = [
+    {
+      label: "Duración",
+      value: program.duration ?? "Por confirmar"
+    },
+    {
+      label: "Modalidad",
+      value: program.modality ?? "Por confirmar"
+    },
+    {
+      label: "Plan de estudio",
+      value: studyPlanLabel
+    }
+  ];
+  const focusPreview =
+    studyPlanItems.length > 0
+      ? studyPlanItems.slice(0, 3)
+      : [
+          "Ruta formativa orientada a desempeño técnico real.",
+          "Aprendizaje aplicado con acompañamiento institucional.",
+          "Continuidad hacia consulta y proceso de matrícula."
+        ];
+  const detailHighlights = [
+    {
+      title: "Qué desarrollarás",
+      body: focusPreview[0] ?? getProgramCopy(program)
+    },
+    {
+      title: "Cómo se organiza",
+      body:
+        studyPlanItems.length > 1
+          ? `La ficha presenta ${studyPlanItems.length} bloques base para entender la progresión inicial del aprendizaje.`
+          : (focusPreview[1] ??
+              "La ficha presenta una ruta referencial para ubicar el enfoque del programa.")
+    },
+    {
+      title: "Siguiente paso",
+      body:
+        "Solicita orientación para revisar vacantes, turnos, documentos y continuidad del proceso con el programa ya seleccionado."
+    }
+  ];
   const heroMediaStyle = heroImage
     ? {
         backgroundImage: `linear-gradient(160deg, rgba(11, 99, 206, 0.52), rgba(16, 32, 51, 0.72)), url("${heroImage}")`
@@ -119,8 +166,8 @@ export default async function ProgramDetailPage({
       ctaHref="#contacto"
       navItems={[
         { href: "/", label: "Inicio" },
-        { href: "/programas", label: "Catalogo" },
-        { href: "#contacto", label: "Admision" },
+        { href: "/programas", label: "Catálogo" },
+        { href: "#contacto", label: "Admisión" },
         { href: "#contacto", label: "Contacto" }
       ]}
     >
@@ -173,11 +220,33 @@ export default async function ProgramDetailPage({
 
           <div className={styles.programHeroMedia} style={heroMediaStyle}>
             <div className={styles.programHeroCaption}>
-              <p className="eyebrow">{content["hero-caption-eyebrow"].title}</p>
-              <strong>{content["hero-caption"].title}</strong>
-              <p>{content["hero-caption"].body}</p>
+              <div>
+                <p className="eyebrow">{content["hero-caption-eyebrow"].title}</p>
+                <strong>{content["hero-caption"].title}</strong>
+                <p>{content["hero-caption"].body}</p>
+              </div>
+
+              <div className={styles.programHeroFactGrid}>
+                {heroSignals.map((signal) => (
+                  <article className={styles.programHeroFact} key={signal.label}>
+                    <span>{signal.label}</span>
+                    <strong>{signal.value}</strong>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.detailEvidenceSection}>
+        <div className={`shell ${styles.detailEvidenceGrid}`}>
+          {detailHighlights.map((item) => (
+            <article className={styles.detailEvidenceCard} key={item.title}>
+              <p className="eyebrow">{item.title}</p>
+              <p>{item.body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -202,16 +271,20 @@ export default async function ProgramDetailPage({
             </div>
           </article>
 
-          <aside className={styles.programAsideCard}>
-            <div className={styles.detailSectionHeading}>
-              <p className="eyebrow">{content["admission-eyebrow"].title}</p>
-              <h2>{content["admission-section"].title}</h2>
-            </div>
-            <ul className={styles.noteList}>
-              {admissionItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <aside className={styles.programAsideCard}>
+              <div className={styles.detailSectionHeading}>
+                <p className="eyebrow">{content["admission-eyebrow"].title}</p>
+                <h2>{content["admission-section"].title}</h2>
+              </div>
+              <p className={styles.programAsideLead}>
+                Contacta con el equipo institucional para confirmar vacantes,
+                turnos, documentos y continuidad del proceso.
+              </p>
+              <ul className={styles.noteList}>
+                {admissionItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
           </aside>
         </div>
       </section>
@@ -234,11 +307,14 @@ export default async function ProgramDetailPage({
 
             {studyPlanItems.length > 0 ? (
               studyPlanItems.length > 1 ? (
-                <ul className={styles.studyPlanList}>
-                  {studyPlanItems.map((item) => (
-                    <li key={item}>{item}</li>
+                <ol className={styles.studyPlanGrid}>
+                  {studyPlanItems.map((item, index) => (
+                    <li className={styles.studyPlanCard} key={item}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <p>{item}</p>
+                    </li>
                   ))}
-                </ul>
+                </ol>
               ) : (
                 <div className={styles.textStack}>
                   <p>{studyPlanItems[0]}</p>
@@ -284,6 +360,13 @@ export default async function ProgramDetailPage({
                 `Solicita orientación sobre ${program.title}`}
             </h2>
             <p>{content["contact-section"].body}</p>
+            <div className={styles.contactSupportCard}>
+              <strong>Respuesta institucional enfocada</strong>
+              <p>
+                Tu solicitud llega con la especialidad seleccionada para acelerar
+                la primera respuesta administrativa.
+              </p>
+            </div>
           </div>
           <LeadForm initialProgramId={program.id} programs={programs} />
         </div>

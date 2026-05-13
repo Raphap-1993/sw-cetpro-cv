@@ -70,7 +70,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
   seo: {
     title: "Programas | CETPRO Cesar Vallejo",
     body:
-      "Explora la oferta académica pública del CETPRO César Vallejo de Pucallpa y revisa el detalle de cada programa.",
+      "Explora la oferta académica del CETPRO César Vallejo de Pucallpa y compara cada programa desde una lectura institucional clara.",
     mediaUrl: null
   },
   "hero-back-link": {
@@ -79,14 +79,15 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     mediaUrl: null
   },
   "hero-eyebrow": {
-    title: "Catálogo público",
+    title: "Oferta académica",
     body: "",
     mediaUrl: null
   },
   "hero-main": {
-    title: "Especialidades tecnicas para formarte con base practica y proyeccion laboral.",
+    title:
+      "Especialidades técnicas para construir base práctica, criterio profesional y continuidad formativa.",
     body:
-      "Compara duracion, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil y tus objetivos.",
+      "Compara duración, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil, tu ritmo de estudio y tu proyección técnica.",
     mediaUrl: null
   },
   "hero-primary-cta": {
@@ -100,14 +101,14 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     mediaUrl: null
   },
   "hero-summary-eyebrow": {
-    title: "Resumen",
+    title: "Cómo leer el catálogo",
     body: "",
     mediaUrl: null
   },
   "hero-summary": {
-    title: "Consulta la oferta vigente del CETPRO",
+    title: "Empieza con una comparación breve y luego profundiza en cada ficha",
     body:
-      "Cada ficha resume el enfoque de formacion, la duracion, la modalidad y la orientacion de matricula para ayudarte a decidir con claridad.",
+      "Cada ficha resume enfoque, duración, modalidad y ruta de orientación para ayudarte a decidir con claridad antes de iniciar tu consulta de matrícula.",
     mediaUrl: null
   },
   "hero-metric-programs": {
@@ -131,19 +132,19 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     mediaUrl: null
   },
   "catalog-section": {
-    title: "Explora la oferta académica",
+    title: "Explora la oferta académica vigente",
     body:
-      "Revisa especialidades orientadas a servicios, tecnologia, confeccion, logistica y produccion con enfoque practico y aplicacion real.",
+      "Revisa especialidades orientadas a servicios, tecnología, confección, logística y producción con una lectura comparativa antes de pasar al detalle.",
     mediaUrl: null
   },
   "empty-state": {
     title: "Catálogo en actualización",
     body:
-      "La oferta academica se encuentra en actualizacion. Solicita orientacion al equipo institucional para conocer vacantes y especialidades disponibles.",
+      "La oferta académica se encuentra en actualización. Solicita orientación al equipo institucional para conocer vacantes y especialidades disponibles.",
     mediaUrl: null
   },
   "card-eyebrow": {
-    title: "Especialidad tecnica",
+    title: "Especialidad técnica",
     body: "",
     mediaUrl: null
   },
@@ -172,7 +173,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "hero-eyebrow": {
-    title: "Detalle del programa",
+    title: "Ficha académica",
     body: "",
     mediaUrl: null
   },
@@ -187,14 +188,14 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "hero-caption-eyebrow": {
-    title: "Orientación",
+    title: "Orientación institucional",
     body: "",
     mediaUrl: null
   },
   "hero-caption": {
-    title: "Perfil formativo, plan base y orientacion de matricula.",
+    title: "Perfil formativo, plan base y orientación de matrícula.",
     body:
-      "Esta pagina resume la formacion, el enfoque practico y la ruta de orientacion para continuar con tu proceso de matricula.",
+      "Esta página resume la formación, el enfoque práctico y la ruta de orientación para continuar con tu proceso de matrícula.",
     mediaUrl: null
   },
   "metric-duration-label": {
@@ -218,7 +219,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "description-section": {
-    title: "Lo que aprenderas en esta especialidad",
+    title: "Lo que aprenderás en esta especialidad",
     body: "",
     mediaUrl: null
   },
@@ -228,9 +229,9 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "admission-section": {
-    title: "Proceso de orientacion y matricula",
+    title: "Proceso de orientación y matrícula",
     body:
-      "Solicita orientación para confirmar vacantes y horarios.\nIndica tus datos de contacto y el programa de interés.\nEl equipo administrativo responderá según disponibilidad.",
+      "Solicita orientación para confirmar vacantes y horarios.\nIndica tus datos de contacto y el programa de interés.\nEl equipo administrativo responderá según disponibilidad.\nTen a la mano DNI, constancias de estudio y consulta específica para agilizar la atención.",
     mediaUrl: null
   },
   "study-plan-eyebrow": {
@@ -246,18 +247,18 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   "study-plan-empty": {
     title: "",
     body:
-      "El plan de estudio referencial se completara cuando el equipo institucional termine esta ficha academica.",
+      "El plan de estudio referencial se completará cuando el equipo institucional termine esta ficha académica.",
     mediaUrl: null
   },
   "related-eyebrow": {
-    title: "También puede interesarte",
+    title: "Otras especialidades",
     body: "",
     mediaUrl: null
   },
   "related-section": {
-    title: "Explora otras especialidades",
+    title: "Explora otras rutas formativas",
     body:
-      "Compara otras rutas formativas del CETPRO antes de tomar una decision de matricula.",
+      "Compara otras rutas formativas del CETPRO antes de tomar una decisión de matrícula.",
     mediaUrl: null
   },
   "contact-eyebrow": {
@@ -279,7 +280,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   "not-found": {
     title: "Programa no encontrado",
     body:
-      "La especialidad solicitada no se encuentra disponible en la oferta academica actual.",
+      "La especialidad solicitada no se encuentra disponible en la oferta académica actual.",
     mediaUrl: null
   },
   "not-found-cta": {

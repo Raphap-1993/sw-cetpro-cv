@@ -15,7 +15,7 @@ type ProgramCardProps = {
 };
 
 const defaultProgramCardCopy: ProgramCardCopy = {
-  eyebrow: "Especialidad tecnica",
+  eyebrow: "Especialidad técnica",
   durationLabel: "Duración",
   modalityLabel: "Modalidad",
   ctaLabel: "Ver detalle"
@@ -25,6 +25,10 @@ export function ProgramCard({
   copy = defaultProgramCardCopy,
   program
 }: ProgramCardProps) {
+  const programSummary = getProgramCopy(program);
+  const studyPlanState = program.studyPlan
+    ? "Plan base disponible"
+    : "Ficha académica en actualización";
   const mediaStyle = program.imageUrl
     ? {
         backgroundImage: `linear-gradient(180deg, rgba(16, 32, 51, 0.08), rgba(16, 32, 51, 0.42)), url("${program.imageUrl}")`
@@ -37,17 +41,24 @@ export function ProgramCard({
         aria-hidden="true"
         className={styles.programCardMedia}
         style={mediaStyle}
-      />
+      >
+        <div className={styles.programCardMediaOverlay}>
+          <p className={styles.programCardEyebrow}>{copy.eyebrow}</p>
+          <span className={styles.programCardMediaBadge}>
+            {program.modality ?? "Modalidad por confirmar"}
+          </span>
+        </div>
+      </div>
 
       <div className={styles.programCardBody}>
         <div className={styles.programCardHeader}>
-          <p className={styles.programCardEyebrow}>{copy.eyebrow}</p>
           <h3 className={styles.programCardTitle}>
             <Link href={getProgramPath(program.slug)}>{program.title}</Link>
           </h3>
+          <p className={styles.programCardSupport}>{studyPlanState}</p>
         </div>
 
-        <p className={styles.programCardSummary}>{getProgramCopy(program)}</p>
+        <p className={styles.programCardSummary}>{programSummary}</p>
 
         <dl className={styles.programMetaList}>
           <div className={styles.programMetaItem}>
@@ -61,6 +72,10 @@ export function ProgramCard({
         </dl>
 
         <div className={styles.programCardFooter}>
+          <p className={styles.programCardFootnote}>
+            Consulta el detalle para revisar enfoque formativo y orientación de
+            admisión.
+          </p>
           <Link className={styles.programCardLink} href={getProgramPath(program.slug)}>
             {copy.ctaLabel}
           </Link>

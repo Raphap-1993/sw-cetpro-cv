@@ -219,9 +219,10 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "hero-main",
     type: ContentBlockType.HERO,
-    title: "Formacion tecnica para integrarte al trabajo y emprender con base practica.",
+    title:
+      "Formación técnico-productiva para integrarte al trabajo con práctica, criterio y continuidad formativa.",
     body:
-      "CETPRO Cesar Vallejo de Pucallpa ofrece formacion tecnico-productiva presencial en especialidades orientadas a servicios, tecnologia, confeccion, logistica y produccion.",
+      "CETPRO César Vallejo de Pucallpa forma estudiantes en rutas aplicadas de servicios, tecnología, confección, logística y producción, con orientación institucional desde la consulta hasta la matrícula.",
     mediaUrl: brandAssetPaths.hero,
     position: 0,
     status: PublishStatus.PUBLISHED
@@ -232,7 +233,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "¿Quiénes somos?",
     body:
-      "El CETPRO César Vallejo de Pucallpa es un centro de educación técnico-productiva ubicado en el Jr. Comandante Barrera 458. Al cierre de cada ciclo el estudiante recibe un certificado de aprobación y al término de la carrera obtiene un título técnico en su especialidad.",
+      "El CETPRO César Vallejo de Pucallpa es un centro de educación técnico-productiva orientado a la formación aplicada. Nuestra propuesta combina práctica guiada, evaluación por ciclos y una ruta académica clara para que cada estudiante avance con base técnica y acompañamiento institucional.",
     position: 10,
     status: PublishStatus.PUBLISHED
   },
@@ -240,9 +241,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "programs-header",
     type: ContentBlockType.SECTION,
-    title: "Oferta académica",
+    title: "Oferta académica para aprender haciendo",
     body:
-      "Una oferta pensada para aprender haciendo, desarrollar criterio tecnico y proyectarte al trabajo o al emprendimiento.",
+      "Especialidades y carreras técnicas diseñadas para desarrollar desempeño real, criterio técnico y una base productiva útil para empleo, continuidad formativa o emprendimiento.",
     position: 15,
     status: PublishStatus.PUBLISHED
   },
@@ -250,9 +251,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "stats-header",
     type: ContentBlockType.SECTION,
-    title: "Formacion presencial con enfoque aplicado",
+    title: "Admisión y orientación académica",
     body:
-      "Carreras tecnicas y auxiliar tecnico con acompanamiento para eleccion de especialidad, matricula y continuidad formativa.",
+      "Consulta la oferta vigente, revisa duración y recibe orientación para elegir la especialidad que mejor responde a tu perfil y al momento de matrícula.",
     position: 20,
     status: PublishStatus.PUBLISHED
   },
@@ -287,9 +288,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "admission-main",
     type: ContentBlockType.SECTION,
-    title: "Solicita información para matrícula",
+    title: "Solicita orientación de matrícula",
     body:
-      "Para la matrícula se solicita copia de DNI ampliada, certificado de estudios original y fotos tamaño carnet. Déjanos tus datos y el equipo administrativo te orientará sobre turnos, vacantes y programa de interés.",
+      "Déjanos tus datos para revisar vacantes, turnos, requisitos y el programa de tu interés. El equipo administrativo te responde con la ruta de matrícula disponible para tu consulta.",
     position: 30,
     status: PublishStatus.PUBLISHED
   },
@@ -297,9 +298,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "cta-main",
     type: ContentBlockType.CTA,
-    title: "Especialidades pensadas para aprender, producir y proyectarte.",
+    title: "Una formación pensada para desempeño técnico real",
     body:
-      "Explora la oferta academica, compara duracion y modalidad, y solicita orientacion para elegir la ruta formativa que mejor se ajusta a tu perfil.",
+      "El valor del CETPRO no está solo en la malla: está en la práctica guiada, la continuidad por ciclos y la claridad para avanzar hacia trabajo o emprendimiento con una base técnica sólida.",
     position: 40,
     status: PublishStatus.PUBLISHED
   },
@@ -309,7 +310,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Programas | CETPRO Cesar Vallejo",
     body:
-      "Explora la oferta académica pública del CETPRO César Vallejo de Pucallpa y revisa el detalle de cada programa.",
+      "Explora la oferta académica del CETPRO César Vallejo de Pucallpa y compara cada programa desde una lectura institucional clara.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -326,7 +327,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "hero-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "Catálogo público",
+    title: "Oferta académica",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -335,9 +336,10 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "hero-main",
     type: ContentBlockType.HERO,
-    title: "Especialidades tecnicas para formarte con base practica y proyeccion laboral.",
+    title:
+      "Especialidades técnicas para construir base práctica, criterio profesional y continuidad formativa.",
     body:
-      "Compara duracion, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil y tus objetivos.",
+      "Compara duración, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil, tu ritmo de estudio y tu proyección técnica.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -373,7 +375,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "hero-summary-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "Resumen",
+    title: "Cómo leer el catálogo",
     body: "",
     position: 6,
     status: PublishStatus.PUBLISHED
@@ -382,9 +384,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "hero-summary",
     type: ContentBlockType.SECTION,
-    title: "Consulta la oferta vigente del CETPRO",
+    title: "Empieza con una comparación breve y luego profundiza en cada ficha",
     body:
-      "Cada ficha resume el enfoque de formacion, la duracion, la modalidad y la orientacion de matricula para ayudarte a decidir con claridad.",
+      "Cada ficha resume enfoque, duración, modalidad y ruta de orientación para ayudarte a decidir con claridad antes de iniciar tu consulta de matrícula.",
     position: 7,
     status: PublishStatus.PUBLISHED
   },
@@ -428,9 +430,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "catalog-section",
     type: ContentBlockType.SECTION,
-    title: "Explora la oferta académica",
+    title: "Explora la oferta académica vigente",
     body:
-      "Revisa especialidades orientadas a servicios, tecnologia, confeccion, logistica y produccion con enfoque practico y aplicacion real.",
+      "Revisa especialidades orientadas a servicios, tecnología, confección, logística y producción con una lectura comparativa antes de pasar al detalle.",
     position: 12,
     status: PublishStatus.PUBLISHED
   },
@@ -438,7 +440,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "card-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "Especialidad tecnica",
+    title: "Especialidad técnica",
     body: "",
     position: 13,
     status: PublishStatus.PUBLISHED
@@ -476,7 +478,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Catálogo en actualización",
     body:
-      "La oferta academica se encuentra en actualizacion. Solicita orientacion al equipo institucional para conocer vacantes y especialidades disponibles.",
+      "La oferta académica se encuentra en actualización. Solicita orientación al equipo institucional para conocer vacantes y especialidades disponibles.",
     position: 17,
     status: PublishStatus.PUBLISHED
   },
@@ -494,7 +496,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "hero-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "Detalle del programa",
+    title: "Ficha académica",
     body: "",
     position: 1,
     status: PublishStatus.PUBLISHED
@@ -521,7 +523,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "hero-caption-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "Orientación",
+    title: "Orientación institucional",
     body: "",
     position: 4,
     status: PublishStatus.PUBLISHED
@@ -530,9 +532,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "hero-caption",
     type: ContentBlockType.SECTION,
-    title: "Perfil formativo, plan base y orientacion de matricula.",
+    title: "Perfil formativo, plan base y orientación de matrícula.",
     body:
-      "La ficha publica resume la formacion, el enfoque practico y la ruta de orientacion para continuar con el proceso de matricula.",
+      "La ficha pública resume la formación, el enfoque práctico y la ruta de orientación para continuar con el proceso de matrícula.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -576,9 +578,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "description-section",
     type: ContentBlockType.SECTION,
-    title: "Lo que aprenderas en esta especialidad",
+    title: "Lo que aprenderás en esta especialidad",
     body:
-      "Esta ficha resume el perfil formativo, el enfoque practico y los contenidos base declarados para la especialidad.",
+      "Esta ficha resume el perfil formativo, el enfoque práctico y los contenidos base declarados para la especialidad.",
     position: 10,
     status: PublishStatus.PUBLISHED
   },
@@ -595,9 +597,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "admission-section",
     type: ContentBlockType.SECTION,
-    title: "Proceso de orientacion y matricula",
+    title: "Proceso de orientación y matrícula",
     body:
-      "Solicita orientación para confirmar vacantes y horarios.\nIndica tus datos de contacto y el programa de interés.\nEl equipo administrativo responderá según disponibilidad.",
+      "Solicita orientación para confirmar vacantes y horarios.\nIndica tus datos de contacto y el programa de interés.\nEl equipo administrativo responderá según disponibilidad.\nTen a la mano DNI, constancias de estudio y consulta específica para agilizar la atención.",
     position: 12,
     status: PublishStatus.PUBLISHED
   },
@@ -626,7 +628,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.TEXT,
     title: "Pendiente",
     body:
-      "El plan de estudio referencial se completara cuando el equipo institucional termine esta ficha academica.",
+      "El plan de estudio referencial se completará cuando el equipo institucional termine esta ficha académica.",
     position: 15,
     status: PublishStatus.PUBLISHED
   },
@@ -634,7 +636,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "related-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "También puede interesarte",
+    title: "Otras especialidades",
     body: "",
     position: 16,
     status: PublishStatus.PUBLISHED
@@ -643,9 +645,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "related-section",
     type: ContentBlockType.SECTION,
-    title: "Explora otras especialidades",
+    title: "Explora otras rutas formativas",
     body:
-      "Compara otras rutas formativas del CETPRO antes de tomar una decision de matricula.",
+      "Compara otras rutas formativas del CETPRO antes de tomar una decisión de matrícula.",
     position: 17,
     status: PublishStatus.PUBLISHED
   },
@@ -683,7 +685,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Programa no encontrado",
     body:
-      "La especialidad solicitada no se encuentra disponible en la oferta academica actual.",
+      "La especialidad solicitada no se encuentra disponible en la oferta académica actual.",
     position: 21,
     status: PublishStatus.PUBLISHED
   },
@@ -710,7 +712,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "default-description",
     type: ContentBlockType.TEXT,
     title: "",
-    body: "Web institucional del CETPRO Cesar Vallejo de Pucallpa",
+    body: "Formación técnico-productiva presencial en Pucallpa",
     position: 1,
     status: PublishStatus.PUBLISHED
   }
