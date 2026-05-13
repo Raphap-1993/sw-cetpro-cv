@@ -140,8 +140,9 @@ export default async function ComplaintBookPage() {
               </p>
             ) : (
               <p className={styles.warningNote}>
-                Falta definir `NEXT_PUBLIC_OFFICIAL_COMPLAINT_BOOK_URL` o el
-                canal oficial equivalente para dejar esta página totalmente operativa.
+                Falta configurar el enlace oficial definitivo del libro de
+                reclamaciones, o el canal equivalente que corresponda al régimen
+                institucional aplicable.
               </p>
             )}
           </aside>
