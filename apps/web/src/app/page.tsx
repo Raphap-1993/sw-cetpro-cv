@@ -16,6 +16,9 @@ export const dynamic = "force-dynamic";
 
 export function generateMetadata(): Metadata {
   return {
+    title: "CETPRO Cesar Vallejo | Formación técnica presencial en Pucallpa",
+    description:
+      "Conoce la oferta académica, el proceso de admisión y la información institucional del CETPRO Cesar Vallejo de Pucallpa.",
     alternates: {
       canonical: "/"
     }
@@ -48,27 +51,27 @@ const statKeys: HomeContentKey[] = [
 const fallbackHomeContent: Record<HomeContentKey, HomeContentEntry> = {
   "hero-main": {
     title:
-      "Formación técnico-productiva presencial, organizada como portal institucional y no solo como una campaña de matrícula.",
+      "Formación técnico-productiva presencial para el desarrollo de competencias laborales.",
     body:
-      "El CETPRO César Vallejo de Pucallpa presenta aquí su oferta académica, la ruta de admisión y la capa pública de gestión institucional en páginas separadas, con un tono más sobrio y verificable.",
+      "El CETPRO Cesar Vallejo de Pucallpa ofrece programas orientados a la práctica, la continuidad formativa y la atención responsable del estudiante. Consulte la oferta académica, el proceso de admisión y la información institucional.",
     mediaUrl: "/brand/hero-campus.svg"
   },
   "intro-main": {
-    title: "Institución orientada a práctica y continuidad formativa",
+    title: "Información para postulantes y familias",
     body:
-      "El sitio se reorganiza para que estudiantes y familias puedan entender qué ofrece el CETPRO, cómo se ingresa y qué evidencia institucional respalda el servicio educativo antes de iniciar contacto.",
+      "Revise programas, requisitos de admisión, documentos institucionales y canales de atención en un mismo entorno oficial.",
     mediaUrl: null
   },
   "programs-header": {
-    title: "Programas para revisar con más contexto",
+    title: "Accesos principales",
     body:
-      "Cada especialidad conduce a una ficha académica específica y a una página de admisión donde la consulta puede llegar con mejor contexto.",
+      "Conozca la institución, revise la oferta académica y continúe con el proceso de admisión desde páginas dedicadas.",
     mediaUrl: null
   },
   "stats-header": {
-    title: "Qué puedes resolver desde esta web",
+    title: "Información institucional disponible",
     body:
-      "Explora la institución, compara programas, revisa gestión institucional y ubica el libro de reclamaciones sin depender de una sola landing extensa.",
+      "Programas, admisión, documentos institucionales y libro de reclamaciones en un mismo sitio oficial.",
     mediaUrl: null
   },
   "stats-item-01": {
@@ -82,20 +85,20 @@ const fallbackHomeContent: Record<HomeContentKey, HomeContentEntry> = {
     mediaUrl: null
   },
   "stats-item-03": {
-    title: "Gestión",
-    body: "Licenciamiento e instrumentos de gestión",
+    title: "Documentos",
+    body: "Gestión institucional de consulta pública",
     mediaUrl: null
   },
   "admission-main": {
-    title: "Admisión con menos fricción",
+    title: "Proceso de admisión",
     body:
-      "La consulta de matrícula se mueve a una página propia para centralizar requisitos, pasos y la solicitud digital del estudiante.",
+      "Revisa requisitos, turnos y los datos necesarios para solicitar orientación al equipo administrativo.",
     mediaUrl: null
   },
   "cta-main": {
-    title: "Gestión institucional visible, sin confundir web con expediente",
+    title: "Documentos institucionales e información de consulta pública",
     body:
-      "La capa pública de gestión ordena información y mejora trazabilidad, pero no reemplaza los documentos aprobados ni el respaldo documental exigible ante la autoridad.",
+      "Consulte licenciamiento, instrumentos de gestión y páginas documentales preparadas para orientación, revisión y verificación externa.",
     mediaUrl: null
   }
 };
@@ -133,25 +136,25 @@ export default async function Home() {
     {
       title: "Institución",
       body:
-        "Identidad, enfoque formativo y señales de formalidad para entender la propuesta completa del CETPRO.",
+        "Conoce la propuesta educativa, la modalidad presencial y la atención institucional del CETPRO.",
       href: "/institucion"
     },
     {
-      title: "Programas",
+      title: "Oferta académica",
       body:
-        "Catálogo comparativo con fichas académicas por especialidad, duración y modalidad.",
+        "Revisa programas, duración, modalidad y orientación general de cada especialidad.",
       href: "/programas"
     },
     {
       title: "Admisión",
       body:
-        "Proceso, requisitos y formulario institucional para iniciar la consulta con mejor contexto.",
+        "Consulta requisitos, pasos y el formulario para iniciar tu solicitud de orientación.",
       href: "/admision"
     },
     {
       title: "Gestión institucional",
       body:
-        "Licenciamiento, PEI, RI, PAT y seguimiento institucional organizados como evidencia pública.",
+        "Consulta documentos institucionales, instrumentos de gestión e información pública de referencia.",
       href: "/gestion-institucional"
     }
   ];
@@ -162,11 +165,11 @@ export default async function Home() {
     },
     {
       label: "Cobertura pública",
-      value: "Oferta académica, admisión y gestión institucional"
+      value: "Programas, admisión y documentos institucionales"
     },
     {
       label: "Libro de reclamaciones",
-      value: "Visible desde la navegación principal"
+      value: "Canal visible para atención al usuario"
     }
   ];
 
@@ -175,16 +178,16 @@ export default async function Home() {
       <section className={styles.homeHero}>
         <div className={`shell ${styles.homeHeroGrid}`}>
           <div>
-            <p className={styles.pageLabel}>Portal institucional</p>
+            <p className={styles.pageLabel}>CETPRO Cesar Vallejo de Pucallpa</p>
             <h1 className={styles.homeTitle}>{homeContent["hero-main"].title}</h1>
             <p className={styles.homeLead}>{homeContent["hero-main"].body}</p>
 
             <div className={styles.actionRow}>
               <Link className={styles.primaryLink} href="/programas">
-                Explorar programas
+                Ver programas
               </Link>
               <Link className={styles.secondaryLink} href="/admision">
-                Ir a admisión
+                Proceso de admisión
               </Link>
             </div>
           </div>
@@ -207,7 +210,7 @@ export default async function Home() {
       <section className={styles.sectionBlock}>
         <div className="shell">
           <div className={styles.sectionHeading}>
-            <p className={styles.pageLabel}>Mapa de páginas</p>
+            <p className={styles.pageLabel}>Información y servicios</p>
             <h2>{homeContent["programs-header"].title}</h2>
             <p>{homeContent["programs-header"].body}</p>
           </div>
@@ -215,11 +218,11 @@ export default async function Home() {
           <div className={styles.quickGrid}>
             {homeActions.map((item) => (
               <article className={styles.quickCard} key={item.href}>
-                <span className={styles.quickCardMeta}>Ruta pública</span>
+                <span className={styles.quickCardMeta}>Página institucional</span>
                 <h3 className={styles.quickCardTitle}>{item.title}</h3>
                 <p>{item.body}</p>
                 <Link className={styles.quickCardLink} href={item.href}>
-                  Abrir página
+                  Más información
                 </Link>
               </article>
             ))}
@@ -231,10 +234,10 @@ export default async function Home() {
         <div className="shell">
           <div className={styles.sectionHeading}>
             <p className={styles.pageLabel}>Oferta destacada</p>
-            <h2>Especialidades visibles con acceso directo a su ficha.</h2>
+            <h2>Especialidades con ficha informativa y acceso directo a admisión.</h2>
             <p>
-              El catálogo ahora se lee como un conjunto de páginas conectadas:
-              catálogo comparativo, ficha de programa y admisión.
+              Conozca cada programa, revise su orientación general y continúe con
+              el proceso de admisión desde la misma ficha informativa.
             </p>
           </div>
 
@@ -276,14 +279,14 @@ export default async function Home() {
           <div className={styles.documentGrid}>
             {managementPreview.map((document) => (
               <article className={styles.documentCard} key={document.slug}>
-                <span className={styles.documentMeta}>Documento / evaluación</span>
+                <span className={styles.documentMeta}>Documento institucional</span>
                 <h3 className={styles.documentCardTitle}>{document.title}</h3>
                 <p>{document.summary}</p>
                 <Link
                   className={styles.documentCardLink}
                   href={`/gestion-institucional/${document.slug}`}
                 >
-                  Ver página resumen
+                  Más información
                 </Link>
               </article>
             ))}
@@ -291,7 +294,7 @@ export default async function Home() {
 
           <div className={styles.actionRow}>
             <Link className={styles.secondaryLink} href="/gestion-institucional">
-              Abrir gestión institucional
+              Ver documentos institucionales
             </Link>
             <Link className={styles.secondaryLink} href="/libro-de-reclamaciones">
               Libro de reclamaciones
@@ -309,13 +312,13 @@ export default async function Home() {
                 <h2>{homeContent["admission-main"].body}</h2>
                 <p className={styles.pageLeadStrong}>
                   La sede institucional se encuentra en {institutionAddress}. La
-                  web pública organiza el primer contacto y la lectura inicial de
-                  la oferta desde {institutionDistrict}.
+                  atención inicial permite orientar sobre programas, requisitos,
+                  turnos y vacantes disponibles desde {institutionDistrict}.
                 </p>
               </div>
               <div className={styles.spacedBlock}>
                 <Link className={styles.primaryLink} href="/admision">
-                  Revisar proceso de admisión
+                  Proceso de admisión
                 </Link>
                 <Link className={styles.inlineLink} href="/institucion">
                   Conocer la institución

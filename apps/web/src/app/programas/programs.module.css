@@ -1,13 +1,13 @@
 .catalogHero,
 .detailHero {
-  padding: 88px 0 36px;
+  padding: 76px 0 32px;
 }
 
 .catalogHeroGrid,
 .detailHeroGrid,
 .detailGrid {
   display: grid;
-  gap: 24px;
+  gap: 20px;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.8fr);
   align-items: start;
 }
@@ -39,18 +39,18 @@
 .detailHero h1 {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(2.2rem, 4.6vw, 4.1rem);
-  font-weight: 700;
+  font-size: clamp(2.1rem, 4.1vw, 3.8rem);
+  font-weight: 800;
   letter-spacing: -0.05em;
-  line-height: 1;
+  line-height: 1.02;
 }
 
 .heroLead {
   max-width: 62ch;
-  margin: 20px 0 0;
+  margin: 18px 0 0;
   color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.72;
 }
 
 .actionRow {
@@ -63,12 +63,12 @@
 .primaryAction,
 .secondaryAction,
 .programCardLink {
-  min-height: 46px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  font-size: 0.94rem;
+  border-radius: 14px;
+  font-size: 0.92rem;
   font-weight: 800;
   transition:
     transform 160ms ease,
@@ -102,8 +102,8 @@
 .catalogCallout,
 .emptyState {
   border: 1px solid rgba(16, 32, 51, 0.08);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow-soft);
 }
 
@@ -111,7 +111,7 @@
 .detailCard,
 .catalogCallout,
 .emptyState {
-  padding: 24px;
+  padding: 22px;
 }
 
 .heroAside h2,
@@ -120,8 +120,8 @@
 .emptyState h3 {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  font-weight: 700;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-weight: 800;
   letter-spacing: -0.04em;
 }
 
@@ -142,8 +142,8 @@
 .metricCard {
   padding: 16px 18px;
   border: 1px solid rgba(16, 32, 51, 0.08);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.78);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .metricCard span {
@@ -166,7 +166,7 @@
 
 .catalogSection,
 .detailSection {
-  padding: 24px 0 0;
+  padding: 22px 0 0;
 }
 
 .sectionHeading {
@@ -232,7 +232,7 @@
 }
 
 .programCardBody {
-  padding: 22px;
+  padding: 20px;
 }
 
 .programCardHeader {

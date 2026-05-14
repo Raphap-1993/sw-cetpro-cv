@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import { getSiteContent } from "./site-content";
 
-const manrope = Manrope({
+const publicSans = Public_Sans({
   subsets: ["latin"],
   variable: "--font-sans"
 });
@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={manrope.variable}>{children}</body>
+      <body className={publicSans.variable}>{children}</body>
     </html>
   );
 }

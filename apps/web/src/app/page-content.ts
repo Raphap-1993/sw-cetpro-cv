@@ -24,9 +24,9 @@ export type GenericPageContent = Record<PageContentKey, PageContentEntry>;
 const pageFallbacks: Record<string, GenericPageContent> = {
   institucion: {
     seo: {
-      title: "Institución | CETPRO Cesar Vallejo",
+      title: "Institución | CETPRO Cesar Vallejo de Pucallpa",
       body:
-        "Conoce el enfoque institucional, la propuesta educativa y la base operativa del CETPRO César Vallejo de Pucallpa.",
+        "Conoce la propuesta educativa, la modalidad presencial y los principales datos institucionales del CETPRO Cesar Vallejo de Pucallpa.",
       mediaUrl: null
     },
     "hero-eyebrow": {
@@ -36,49 +36,49 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-main": {
       title:
-        "Una institución técnico-productiva orientada a práctica, continuidad formativa y orden académico.",
+        "Una institución orientada a la formación práctica y al desarrollo de competencias para el trabajo.",
       body: "",
       mediaUrl: null
     },
     "hero-body": {
       title: "",
       body:
-        "Esta página resume identidad, propuesta educativa, señales de formalidad y el marco desde el cual se presenta la oferta pública del CETPRO.",
+        "El CETPRO Cesar Vallejo brinda formación presencial con enfoque aplicado, acompañamiento formativo y una propuesta educativa vinculada a las necesidades del entorno.",
       mediaUrl: null
     },
     "hero-note": {
-      title: "Sede institucional",
+      title: "Atención institucional",
       body: "Pucallpa, Ucayali",
       mediaUrl: null
     },
     "section-main": {
-      title: "Qué explica esta institución",
+      title: "Propuesta educativa",
       body:
-        "La propuesta pública se organiza alrededor de formación presencial, rutas por ciclos y orientación institucional antes de matrícula.",
+        "Formación presencial, orientación académica y acompañamiento inicial para quienes buscan desarrollar competencias para el trabajo.",
       mediaUrl: null
     },
     "section-secondary": {
-      title: "Cómo leer el portal",
+      title: "Perfil institucional",
       body:
-        "Programas, admisión, gestión institucional y libro de reclamaciones funcionan como páginas separadas para que cada decisión tenga un contexto claro.",
+        "Ubique la sede, la modalidad de estudio y los canales de orientación para resolver consultas sobre la propuesta educativa.",
       mediaUrl: null
     },
     "cta-primary": {
-      title: "Explorar programas",
+      title: "Ver programas",
       body: "",
       mediaUrl: null
     },
     "cta-secondary": {
-      title: "Revisar admisión",
+      title: "Proceso de admisión",
       body: "",
       mediaUrl: null
     }
   },
   admision: {
     seo: {
-      title: "Admisión | CETPRO Cesar Vallejo",
+      title: "Admisión | CETPRO Cesar Vallejo de Pucallpa",
       body:
-        "Revisa requisitos, proceso y orientación de matrícula para iniciar tu consulta con el CETPRO César Vallejo.",
+        "Revisa requisitos, pasos de admisión y canales de orientación para postular a los programas del CETPRO Cesar Vallejo de Pucallpa.",
       mediaUrl: null
     },
     "hero-eyebrow": {
@@ -87,23 +87,23 @@ const pageFallbacks: Record<string, GenericPageContent> = {
       mediaUrl: null
     },
     "hero-main": {
-      title: "Admisión ordenada para elegir programa, validar requisitos y continuar la matrícula.",
+      title: "Admisión para programas técnico-productivos presenciales.",
       body: "",
       mediaUrl: null
     },
     "hero-body": {
       title: "",
       body:
-        "Centralizamos proceso, requisitos y formulario en una sola página para que la consulta inicial sea más clara y menos dependiente de WhatsApp o visitas sin contexto.",
+        "Revisa requisitos, pasos de orientación y el proceso para iniciar tu matrícula. El equipo administrativo atiende consultas sobre programas, turnos y vacantes.",
       mediaUrl: null
     },
     "hero-note": {
-      title: "Canal digital",
-      body: "Formulario institucional",
+      title: "Antes de iniciar",
+      body: "Datos de contacto y programa de interés",
       mediaUrl: null
     },
     "section-main": {
-      title: "Qué necesitas antes de iniciar",
+      title: "Requisitos para la orientación",
       body:
         "Programa de interés, datos de contacto, documento de identidad y una consulta específica sobre vacantes, turnos o requisitos.",
       mediaUrl: null
@@ -129,7 +129,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     seo: {
       title: "Gestión institucional | CETPRO Cesar Vallejo",
       body:
-        "Resumen público de licenciamiento, instrumentos de gestión y evidencia institucional para consulta y evaluación.",
+        "Consulta documentos institucionales, instrumentos de gestión e información pública del CETPRO Cesar Vallejo de Pucallpa.",
       mediaUrl: null
     },
     "hero-eyebrow": {
@@ -139,31 +139,31 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-main": {
       title:
-        "Una capa pública para licenciamiento, instrumentos de gestión y trazabilidad institucional.",
+        "Gestión institucional y documentos de consulta pública.",
       body: "",
       mediaUrl: null
     },
     "hero-body": {
       title: "",
       body:
-        "La web no reemplaza el expediente institucional, pero sí organiza evidencia pública para estudiantes, familias y procesos de evaluación.",
+        "Consulte documentos e información institucional de acceso público para estudiantes, familias y procesos de verificación externa.",
       mediaUrl: null
     },
     "hero-note": {
-      title: "Foco",
-      body: "Formalidad y verificabilidad",
+      title: "Consulta documental",
+      body: "Información institucional de acceso público",
       mediaUrl: null
     },
     "section-main": {
-      title: "Qué encontrarás aquí",
+      title: "Documentos institucionales",
       body:
-        "Páginas resumen sobre licenciamiento, PEI, RI, PAT y seguimiento institucional, con espacio para enlazar documentos aprobados o medios de verificación validados.",
+        "Consulte páginas informativas sobre licenciamiento, PEI, RI, PAT y seguimiento institucional, preparadas para orientación y consulta pública.",
       mediaUrl: null
     },
     "section-secondary": {
-      title: "Criterio editorial",
+      title: "Consulta pública",
       body:
-        "Publicamos lo suficiente para orientar, acreditar orden institucional y mejorar transparencia, sin exponer datos personales ni sustituir el acervo oficial.",
+        "Aquí se reúne la información institucional autorizada para difusión y consulta pública.",
       mediaUrl: null
     },
     "cta-primary": {
@@ -172,7 +172,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
       mediaUrl: null
     },
     "cta-secondary": {
-      title: "Ir a admisión",
+      title: "Proceso de admisión",
       body: "",
       mediaUrl: null
     }
@@ -181,7 +181,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     seo: {
       title: "Libro de reclamaciones | CETPRO Cesar Vallejo",
       body:
-        "Canal público para ubicar el libro de reclamaciones y entender el marco de atención según la naturaleza institucional del CETPRO.",
+        "Accede al libro de reclamaciones del CETPRO Cesar Vallejo y conoce la información necesaria para registrar tu solicitud de atención.",
       mediaUrl: null
     },
     "hero-eyebrow": {
@@ -191,31 +191,31 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-main": {
       title:
-        "Un canal visible para reclamos, con criterio claro sobre el régimen aplicable y la ruta oficial de atención.",
+        "Libro de reclamaciones y atención al usuario.",
       body: "",
       mediaUrl: null
     },
     "hero-body": {
       title: "",
       body:
-        "El libro de reclamaciones debe ser fácil de ubicar. Esta página separa orientación, datos mínimos y el enlace oficial cuando el régimen institucional lo requiera.",
+        "Este canal permite registrar reclamos y dar seguimiento a la atención correspondiente, conforme al régimen aplicable a la institución.",
       mediaUrl: null
     },
     "hero-note": {
-      title: "Visibilidad",
-      body: "Enlace directo desde la navegación pública",
+      title: "Registro de reclamos",
+      body: "Datos de identificación y medio de contacto",
       mediaUrl: null
     },
     "section-main": {
-      title: "Qué cubre esta página",
+      title: "Información para el registro",
       body:
-        "Explica el canal de reclamo, los datos que suele solicitar el registro y la diferencia entre el régimen de entidad pública y el régimen de proveedor.",
+        "Revise el canal de atención, los datos necesarios para el registro y las referencias generales aplicables al tipo de reclamación.",
       mediaUrl: null
     },
     "section-secondary": {
-      title: "Siguiente paso",
+      title: "Atención institucional",
       body:
-        "Si el enlace oficial aún no está configurado, esta página debe completarse con el URL o plataforma que corresponda al régimen definitivo de la institución.",
+        "Si requiere orientación sobre el canal aplicable o el estado de su atención, comuníquese con la institución mediante los canales administrativos disponibles.",
       mediaUrl: null
     },
     "cta-primary": {

@@ -69,8 +69,8 @@ export default async function ManagementDetailPage({
           </div>
 
           <aside className={styles.sideNote}>
-            <p className={styles.pageLabel}>Uso institucional</p>
-            <h2>Cómo debe vivir esta página.</h2>
+            <p className={styles.pageLabel}>Resumen público</p>
+            <h2>Información institucional disponible.</h2>
             <p>{document.useCase}</p>
           </aside>
         </div>
@@ -79,7 +79,7 @@ export default async function ManagementDetailPage({
       <section className={styles.sectionBlock}>
         <div className={`shell ${styles.detailGrid}`}>
           <article className={styles.mainCard}>
-            <p className={styles.pageLabel}>Qué debe contener</p>
+            <p className={styles.pageLabel}>Contenido de consulta</p>
             <ul className={styles.detailList}>
               {document.highlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>
@@ -88,7 +88,7 @@ export default async function ManagementDetailPage({
           </article>
 
           <aside className={styles.asideCard}>
-            <p className={styles.pageLabel}>Señales normativas</p>
+            <p className={styles.pageLabel}>Referencias institucionales</p>
             <ul className={styles.legalSignalList}>
               {document.legalSignals.map((signal) => (
                 <li key={signal}>{signal}</li>
@@ -101,20 +101,20 @@ export default async function ManagementDetailPage({
       <section className={styles.sectionBlock}>
         <div className="shell">
           <article className={styles.calloutCard}>
-            <p className={styles.pageLabel}>Próximo nivel</p>
+            <p className={styles.pageLabel}>Publicación institucional</p>
             <div className={styles.spacedBlock}>
-              <h2>Conectar esta página a PDF aprobado o medio de verificación validado.</h2>
+              <h2>Los documentos se difunden conforme a validación institucional.</h2>
               <p>
-                Esta implementación deja la estructura pública y el resumen editorial.
-                El siguiente paso operativo es enlazar el documento definitivo desde
-                media controlada o desde el repositorio institucional que corresponda.
+                Cuando corresponda, esta página incorporará el PDF, la resolución
+                o el medio de verificación autorizado por la institución para su
+                consulta pública.
               </p>
               <div className={styles.actionRow}>
                 <Link className={styles.secondaryLink} href="/gestion-institucional">
-                  Volver a gestión institucional
+                  Volver a documentos institucionales
                 </Link>
                 <Link className={styles.primaryLink} href="/admision">
-                  Ir a admisión
+                  Proceso de admisión
                 </Link>
               </div>
             </div>

@@ -25,17 +25,17 @@ export default async function InstitutionPage() {
     {
       title: "Formación aplicada",
       body:
-        "La propuesta privilegia práctica guiada, trabajo por ciclos y lectura clara del desempeño esperado en cada especialidad."
+        "La propuesta educativa prioriza el aprendizaje práctico, el desarrollo de competencias y la preparación para el trabajo."
     },
     {
-      title: "Trayectoria entendible",
+      title: "Acompañamiento formativo",
       body:
-        "El sitio se organiza para que la ruta pública vaya de institución a programa y de programa a admisión, sin depender de una sola portada saturada."
+        "La atención institucional orienta al estudiante desde la elección del programa hasta la consulta inicial de admisión."
     },
     {
-      title: "Formalidad visible",
+      title: "Vinculación con el entorno",
       body:
-        "La nueva arquitectura expone mejor la oferta, la gestión institucional y el libro de reclamaciones como capas distintas."
+        "La oferta busca responder a necesidades reales del entorno productivo y fortalecer la continuidad formativa."
     }
   ];
   const facts = [
@@ -44,24 +44,24 @@ export default async function InstitutionPage() {
       value: institutionAddress
     },
     {
-      label: "Ámbito",
-      value: institutionDistrict
+      label: "Modalidad",
+      value: "Formación presencial"
     },
     {
-      label: "Atención digital",
-      value: "Admisión y solicitudes desde la web institucional"
+      label: "Atención",
+      value: `Orientación institucional en ${institutionDistrict}`
     }
   ];
   const sections = [
     {
-      title: "Qué explica esta página",
+      title: "Propuesta educativa",
       body:
-        "La identidad institucional ya no queda escondida dentro de una landing. Aquí se resume qué hace el CETPRO, cómo ordena su propuesta y por qué el portal se separa por páginas."
+        "El CETPRO Cesar Vallejo ofrece formación técnico-productiva presencial con orientación práctica y una atención inicial pensada para ayudar al estudiante a elegir con mayor claridad."
     },
     {
-      title: "Qué puede esperar el visitante",
+      title: "Atención al estudiante",
       body:
-        "Un catálogo con mayor contexto, una admisión más operativa y una sección de gestión institucional pensada como evidencia pública, no como ornamento."
+        "La institución pone a disposición información sobre programas, requisitos de admisión y documentos institucionales para que cada consulta llegue con contexto suficiente."
     }
   ];
 
@@ -94,9 +94,9 @@ export default async function InstitutionPage() {
             <h2>{content["section-secondary"].title}</h2>
             <p>{content["section-secondary"].body}</p>
             <ul className={styles.heroList}>
-              <li>La marca y la navegación ahora priorizan claridad sobre ruido visual.</li>
-              <li>Las decisiones de admisión se entienden mejor cuando cada tema vive en su página.</li>
-              <li>La gestión institucional se expone como capa propia para mejorar verificabilidad.</li>
+              <li>Formación presencial orientada al desarrollo de competencias para el trabajo.</li>
+              <li>Programas con información general y acceso al proceso de admisión.</li>
+              <li>Canales institucionales para orientación, consulta pública y atención al usuario.</li>
             </ul>
           </aside>
         </div>
@@ -140,13 +140,13 @@ export default async function InstitutionPage() {
           </article>
 
           <aside className={styles.asideCard}>
-            <p className={styles.pageLabel}>Lectura recomendada</p>
+            <p className={styles.pageLabel}>Consultas relacionadas</p>
             <h2>{content["section-secondary"].title}</h2>
             <ul className={styles.noteList}>
-              <li>Institución para contexto general y señales de formalidad.</li>
-              <li>Programas para comparar oferta y revisar fichas académicas.</li>
-              <li>Admisión para requisitos, pasos y formulario institucional.</li>
-              <li>Gestión institucional para documentos y evidencia pública.</li>
+              <li>Programas para revisar la oferta académica y las fichas por especialidad.</li>
+              <li>Admisión para conocer requisitos, pasos y orientación institucional.</li>
+              <li>Gestión institucional para consultar documentos e información pública.</li>
+              <li>Libro de reclamaciones para atención al usuario y seguimiento de reclamos.</li>
             </ul>
           </aside>
         </div>

@@ -220,9 +220,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Formación técnico-productiva presencial, organizada como portal institucional y no solo como una campaña de matrícula.",
+      "Formación técnico-productiva presencial para el desarrollo de competencias laborales.",
     body:
-      "El CETPRO César Vallejo de Pucallpa presenta aquí su oferta académica, la ruta de admisión y la capa pública de gestión institucional en páginas separadas, con un tono más sobrio y verificable.",
+      "El CETPRO Cesar Vallejo de Pucallpa ofrece programas orientados a la práctica, la continuidad formativa y la atención responsable del estudiante. Consulte la oferta académica, el proceso de admisión y la información institucional.",
     mediaUrl: brandAssetPaths.hero,
     position: 0,
     status: PublishStatus.PUBLISHED
@@ -231,9 +231,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "intro-main",
     type: ContentBlockType.SECTION,
-    title: "Institución orientada a práctica y continuidad formativa",
+    title: "Información para postulantes y familias",
     body:
-      "El sitio se reorganiza para que estudiantes y familias puedan entender qué ofrece el CETPRO, cómo se ingresa y qué evidencia institucional respalda el servicio educativo antes de iniciar contacto.",
+      "Revise programas, requisitos de admisión, documentos institucionales y canales de atención en un mismo entorno oficial.",
     position: 10,
     status: PublishStatus.PUBLISHED
   },
@@ -241,9 +241,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "programs-header",
     type: ContentBlockType.SECTION,
-    title: "Programas para revisar con más contexto",
+    title: "Accesos principales",
     body:
-      "Cada especialidad conduce a una ficha académica específica y a una página de admisión donde la consulta puede llegar con mejor contexto.",
+      "Conozca la institución, revise la oferta académica y continúe con el proceso de admisión desde páginas dedicadas.",
     position: 15,
     status: PublishStatus.PUBLISHED
   },
@@ -251,9 +251,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "stats-header",
     type: ContentBlockType.SECTION,
-    title: "Qué puedes resolver desde esta web",
+    title: "Información institucional disponible",
     body:
-      "Explora la institución, compara programas, revisa gestión institucional y ubica el libro de reclamaciones sin depender de una sola landing extensa.",
+      "Programas, admisión, documentos institucionales y libro de reclamaciones en un mismo sitio oficial.",
     position: 20,
     status: PublishStatus.PUBLISHED
   },
@@ -279,8 +279,8 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "stats-item-03",
     type: ContentBlockType.TEXT,
-    title: "Gestión",
-    body: "Licenciamiento e instrumentos de gestión",
+    title: "Documentos",
+    body: "Gestión institucional de consulta pública",
     position: 23,
     status: PublishStatus.PUBLISHED
   },
@@ -288,9 +288,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "admission-main",
     type: ContentBlockType.SECTION,
-    title: "Admisión con menos fricción",
+    title: "Proceso de admisión",
     body:
-      "La consulta de matrícula se mueve a una página propia para centralizar requisitos, pasos y la solicitud digital del estudiante.",
+      "Revisa requisitos, turnos y los datos necesarios para solicitar orientación al equipo administrativo.",
     position: 30,
     status: PublishStatus.PUBLISHED
   },
@@ -298,9 +298,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "cta-main",
     type: ContentBlockType.CTA,
-    title: "Gestión institucional visible, sin confundir web con expediente",
+    title: "Documentos institucionales e información de consulta pública",
     body:
-      "La capa pública de gestión ordena información y mejora trazabilidad, pero no reemplaza los documentos aprobados ni el respaldo documental exigible ante la autoridad.",
+      "Consulte licenciamiento, instrumentos de gestión y páginas documentales preparadas para orientación, revisión y verificación externa.",
     position: 40,
     status: PublishStatus.PUBLISHED
   },
@@ -308,9 +308,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "institucion",
     key: "seo",
     type: ContentBlockType.SECTION,
-    title: "Institución | CETPRO Cesar Vallejo",
+    title: "Institución | CETPRO Cesar Vallejo de Pucallpa",
     body:
-      "Conoce el enfoque institucional, la propuesta educativa y la base operativa del CETPRO César Vallejo de Pucallpa.",
+      "Conoce la propuesta educativa, la modalidad presencial y los principales datos institucionales del CETPRO Cesar Vallejo de Pucallpa.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -328,7 +328,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Una institución técnico-productiva orientada a práctica, continuidad formativa y orden académico.",
+      "Una institución orientada a la formación práctica y al desarrollo de competencias para el trabajo.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -339,7 +339,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "",
     body:
-      "Esta página resume identidad, propuesta educativa, señales de formalidad y el marco desde el cual se presenta la oferta pública del CETPRO.",
+      "El CETPRO Cesar Vallejo brinda formación presencial con enfoque aplicado, acompañamiento formativo y una propuesta educativa vinculada a las necesidades del entorno.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -347,7 +347,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "institucion",
     key: "hero-note",
     type: ContentBlockType.TEXT,
-    title: "Sede institucional",
+    title: "Atención institucional",
     body: "Pucallpa, Ucayali",
     position: 4,
     status: PublishStatus.PUBLISHED
@@ -356,9 +356,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "institucion",
     key: "section-main",
     type: ContentBlockType.SECTION,
-    title: "Qué explica esta página",
+    title: "Propuesta educativa",
     body:
-      "La propuesta pública se organiza alrededor de formación presencial, rutas por ciclos y orientación institucional antes de matrícula.",
+      "Formación presencial, orientación académica y acompañamiento inicial para quienes buscan desarrollar competencias para el trabajo.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -366,9 +366,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "institucion",
     key: "section-secondary",
     type: ContentBlockType.SECTION,
-    title: "Cómo leer el portal",
+    title: "Perfil institucional",
     body:
-      "Programas, admisión, gestión institucional y libro de reclamaciones funcionan como páginas separadas para que cada decisión tenga un contexto claro.",
+      "Ubique la sede, la modalidad de estudio y los canales de orientación para resolver consultas sobre la propuesta educativa.",
     position: 6,
     status: PublishStatus.PUBLISHED
   },
@@ -376,7 +376,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "institucion",
     key: "cta-primary",
     type: ContentBlockType.TEXT,
-    title: "Explorar programas",
+    title: "Ver programas",
     body: "",
     position: 7,
     status: PublishStatus.PUBLISHED
@@ -385,7 +385,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "institucion",
     key: "cta-secondary",
     type: ContentBlockType.TEXT,
-    title: "Revisar admisión",
+    title: "Proceso de admisión",
     body: "",
     position: 8,
     status: PublishStatus.PUBLISHED
@@ -394,9 +394,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "admision",
     key: "seo",
     type: ContentBlockType.SECTION,
-    title: "Admisión | CETPRO Cesar Vallejo",
+    title: "Admisión | CETPRO Cesar Vallejo de Pucallpa",
     body:
-      "Revisa requisitos, proceso y orientación de matrícula para iniciar tu consulta con el CETPRO César Vallejo.",
+      "Revisa requisitos, pasos de admisión y canales de orientación para postular a los programas del CETPRO Cesar Vallejo de Pucallpa.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -413,7 +413,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "admision",
     key: "hero-main",
     type: ContentBlockType.HERO,
-    title: "Admisión ordenada para elegir programa, validar requisitos y continuar la matrícula.",
+    title: "Admisión para programas técnico-productivos presenciales.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -424,7 +424,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "",
     body:
-      "Centralizamos proceso, requisitos y formulario en una sola página para que la consulta inicial sea más clara y menos dependiente de WhatsApp o visitas sin contexto.",
+      "Revisa requisitos, pasos de orientación y el proceso para iniciar tu matrícula. El equipo administrativo atiende consultas sobre programas, turnos y vacantes.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -432,8 +432,8 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "admision",
     key: "hero-note",
     type: ContentBlockType.TEXT,
-    title: "Canal digital",
-    body: "Formulario institucional",
+    title: "Antes de iniciar",
+    body: "Datos de contacto y programa de interés",
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -441,7 +441,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "admision",
     key: "section-main",
     type: ContentBlockType.SECTION,
-    title: "Qué necesitas antes de iniciar",
+    title: "Requisitos para la orientación",
     body:
       "Programa de interés, datos de contacto, documento de identidad y una consulta específica sobre vacantes, turnos o requisitos.",
     position: 5,
@@ -481,7 +481,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Gestión institucional | CETPRO Cesar Vallejo",
     body:
-      "Resumen público de licenciamiento, instrumentos de gestión y evidencia institucional para consulta y evaluación.",
+      "Consulta documentos institucionales, instrumentos de gestión e información pública del CETPRO Cesar Vallejo de Pucallpa.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -499,7 +499,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Una capa pública para licenciamiento, instrumentos de gestión y trazabilidad institucional.",
+      "Gestión institucional y documentos de consulta pública.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -510,7 +510,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "",
     body:
-      "La web no reemplaza el expediente institucional, pero sí organiza evidencia pública para estudiantes, familias y procesos de evaluación.",
+      "Consulte documentos e información institucional de acceso público para estudiantes, familias y procesos de verificación externa.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -518,8 +518,8 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "gestion-institucional",
     key: "hero-note",
     type: ContentBlockType.TEXT,
-    title: "Foco",
-    body: "Formalidad y verificabilidad",
+    title: "Consulta documental",
+    body: "Información institucional de acceso público",
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -527,9 +527,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "gestion-institucional",
     key: "section-main",
     type: ContentBlockType.SECTION,
-    title: "Qué encontrarás aquí",
+    title: "Documentos institucionales",
     body:
-      "Páginas resumen sobre licenciamiento, PEI, RI, PAT y seguimiento institucional, con espacio para enlazar documentos aprobados o medios de verificación validados.",
+      "Consulte páginas informativas sobre licenciamiento, PEI, RI, PAT y seguimiento institucional, preparadas para orientación y consulta pública.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -537,9 +537,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "gestion-institucional",
     key: "section-secondary",
     type: ContentBlockType.SECTION,
-    title: "Criterio editorial",
+    title: "Consulta pública",
     body:
-      "Publicamos lo suficiente para orientar, acreditar orden institucional y mejorar transparencia, sin exponer datos personales ni sustituir el acervo oficial.",
+      "Aquí se reúne la información institucional autorizada para difusión y consulta pública.",
     position: 6,
     status: PublishStatus.PUBLISHED
   },
@@ -556,7 +556,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "gestion-institucional",
     key: "cta-secondary",
     type: ContentBlockType.TEXT,
-    title: "Ir a admisión",
+    title: "Proceso de admisión",
     body: "",
     position: 8,
     status: PublishStatus.PUBLISHED
@@ -567,7 +567,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Libro de reclamaciones | CETPRO Cesar Vallejo",
     body:
-      "Canal público para ubicar el libro de reclamaciones y entender el marco de atención según la naturaleza institucional del CETPRO.",
+      "Accede al libro de reclamaciones del CETPRO Cesar Vallejo y conoce la información necesaria para registrar tu solicitud de atención.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -585,7 +585,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Un canal visible para reclamos, con criterio claro sobre el régimen aplicable y la ruta oficial de atención.",
+      "Libro de reclamaciones y atención al usuario.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -596,7 +596,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "",
     body:
-      "El libro de reclamaciones debe ser fácil de ubicar. Esta página separa orientación, datos mínimos y el enlace oficial cuando el régimen institucional lo requiera.",
+      "Este canal permite registrar reclamos y dar seguimiento a la atención correspondiente, conforme al régimen aplicable a la institución.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -604,8 +604,8 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "libro-de-reclamaciones",
     key: "hero-note",
     type: ContentBlockType.TEXT,
-    title: "Visibilidad",
-    body: "Enlace directo desde la navegación pública",
+    title: "Registro de reclamos",
+    body: "Datos de identificación y medio de contacto",
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -613,9 +613,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "libro-de-reclamaciones",
     key: "section-main",
     type: ContentBlockType.SECTION,
-    title: "Qué cubre esta página",
+    title: "Información para el registro",
     body:
-      "Explica el canal de reclamo, los datos que suele solicitar el registro y la diferencia entre el régimen de entidad pública y el régimen de proveedor.",
+      "Revise el canal de atención, los datos necesarios para el registro y las referencias generales aplicables al tipo de reclamación.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -623,9 +623,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "libro-de-reclamaciones",
     key: "section-secondary",
     type: ContentBlockType.SECTION,
-    title: "Siguiente paso",
+    title: "Atención institucional",
     body:
-      "Si el enlace oficial aún no está configurado, esta página debe completarse con el URL o plataforma que corresponda al régimen definitivo de la institución.",
+      "Si requiere orientación sobre el canal aplicable o el estado de su atención, comuníquese con la institución mediante los canales administrativos disponibles.",
     position: 6,
     status: PublishStatus.PUBLISHED
   },
@@ -653,7 +653,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Programas | CETPRO Cesar Vallejo",
     body:
-      "Explora la oferta académica del CETPRO César Vallejo de Pucallpa y compara cada programa desde una lectura institucional clara.",
+      "Explora la oferta académica del CETPRO Cesar Vallejo de Pucallpa y conoce la información general de cada programa.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -680,9 +680,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Especialidades técnicas para construir base práctica, criterio profesional y continuidad formativa.",
+      "Especialidades técnicas con orientación práctica y formación presencial.",
     body:
-      "Compara duración, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil, tu ritmo de estudio y tu proyección técnica.",
+      "Conoce la duración, modalidad y orientación general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -692,7 +692,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Lead del catálogo",
     body:
-      "Compara duracion, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil y tus objetivos.",
+      "Conoce la duración, modalidad y orientación general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -718,7 +718,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "hero-summary-eyebrow",
     type: ContentBlockType.TEXT,
-    title: "Cómo leer el catálogo",
+    title: "Información del catálogo",
     body: "",
     position: 6,
     status: PublishStatus.PUBLISHED
@@ -727,9 +727,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "hero-summary",
     type: ContentBlockType.SECTION,
-    title: "Empieza con una comparación breve y luego profundiza en cada ficha",
+    title: "Programas con información general para orientar tu elección",
     body:
-      "Cada ficha resume enfoque, duración, modalidad y ruta de orientación para ayudarte a decidir con claridad antes de iniciar tu consulta de matrícula.",
+      "Cada ficha presenta duración, modalidad, descripción general y acceso directo al proceso de admisión.",
     position: 7,
     status: PublishStatus.PUBLISHED
   },
@@ -810,7 +810,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "programs",
     key: "card-cta",
     type: ContentBlockType.TEXT,
-    title: "Ver detalle",
+    title: "Ver programa",
     body: "",
     position: 16,
     status: PublishStatus.PUBLISHED
@@ -831,7 +831,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "CETPRO Cesar Vallejo",
     body:
-      "Consulta la ficha pública del programa, revisa su orientación general y deja una solicitud con la especialidad preseleccionada.",
+      "Consulta la ficha del programa, revisa su orientación general y continúa con el proceso de admisión.",
     position: 0,
     status: PublishStatus.PUBLISHED
   },
@@ -875,9 +875,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "hero-caption",
     type: ContentBlockType.SECTION,
-    title: "Perfil formativo, plan base y orientación de matrícula.",
+    title: "Información general del programa.",
     body:
-      "La ficha pública resume la formación, el enfoque práctico y la ruta de orientación para continuar con el proceso de matrícula.",
+      "Consulta la descripción, duración, modalidad y orientación de admisión de esta especialidad.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -959,9 +959,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "study-plan-section",
     type: ContentBlockType.SECTION,
-    title: "Trayectoria formativa referencial",
+    title: "Plan de estudio",
     body:
-      "El plan de estudio publicado sirve como referencia inicial para comprender la ruta formativa de la especialidad.",
+      "El plan de estudio publicado ofrece una referencia general sobre la formación de la especialidad.",
     position: 14,
     status: PublishStatus.PUBLISHED
   },
@@ -971,7 +971,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.TEXT,
     title: "Pendiente",
     body:
-      "El plan de estudio referencial se completará cuando el equipo institucional termine esta ficha académica.",
+      "El detalle del plan de estudio se publicará cuando la institución autorice su difusión.",
     position: 15,
     status: PublishStatus.PUBLISHED
   },
@@ -988,9 +988,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "program-detail",
     key: "related-section",
     type: ContentBlockType.SECTION,
-    title: "Explora otras rutas formativas",
+    title: "Otros programas de la oferta académica",
     body:
-      "Compara otras rutas formativas del CETPRO antes de tomar una decisión de matrícula.",
+      "Revisa otras especialidades del CETPRO antes de iniciar tu solicitud.",
     position: 17,
     status: PublishStatus.PUBLISHED
   },
@@ -1009,7 +1009,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Solicita orientación sobre este programa",
     body:
-      "Déjanos tu nombre, celular y correo. El formulario ya llega con el programa seleccionado para reducir fricción en el primer contacto.",
+      "Déjanos tu nombre, celular y correo para recibir orientación sobre esta especialidad.",
     position: 19,
     status: PublishStatus.PUBLISHED
   },
@@ -1055,7 +1055,8 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "default-description",
     type: ContentBlockType.TEXT,
     title: "",
-    body: "Portal institucional del CETPRO Cesar Vallejo de Pucallpa",
+    body:
+      "Conoce la oferta académica, el proceso de admisión y la información institucional del CETPRO Cesar Vallejo de Pucallpa.",
     position: 1,
     status: PublishStatus.PUBLISHED
   }

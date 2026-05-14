@@ -22,9 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ManagementPage() {
   const content = await getPageContent("gestion-institucional");
   const keyNotes = [
-    "La web pública ayuda a ordenar evidencia, pero no sustituye el expediente institucional.",
-    "Publicar resúmenes y enlaces validados reduce fricción para estudiantes, familias y evaluación externa.",
-    "La exposición pública debe evitar datos personales o anexos internos no preparados para difusión."
+    "Documentos de consulta para estudiantes, familias y comunidad educativa.",
+    "Información preparada para revisión y verificación institucional.",
+    "La publicación resguarda datos personales y anexos no previstos para difusión."
   ];
 
   return (
@@ -59,14 +59,14 @@ export default async function ManagementPage() {
         <div className="shell">
           <div className={styles.sectionHeading}>
             <p className={styles.pageLabel}>{content["section-main"].title}</p>
-            <h2>Páginas resumen para licenciamiento, gestión y mejora institucional.</h2>
+            <h2>Documentos institucionales e información de consulta pública.</h2>
             <p>{content["section-main"].body}</p>
           </div>
 
           <div className={styles.documentGrid}>
             {managementDocuments.map((document) => (
               <article className={styles.documentCard} key={document.slug}>
-                <span className={styles.documentMeta}>Gestión / evaluación</span>
+                <span className={styles.documentMeta}>Documento institucional</span>
                 <h3 className={styles.documentCardTitle}>{document.title}</h3>
                 <p>{document.summary}</p>
                 <ul className={styles.documentHighlights}>
@@ -78,7 +78,7 @@ export default async function ManagementPage() {
                   className={styles.documentCardLink}
                   href={`/gestion-institucional/${document.slug}`}
                 >
-                  Abrir página
+                  Más información
                 </Link>
               </article>
             ))}
@@ -89,14 +89,13 @@ export default async function ManagementPage() {
       <section className={styles.sectionBlock}>
         <div className="shell">
           <article className={styles.calloutCard}>
-            <p className={styles.pageLabel}>Siguiente capa operativa</p>
+            <p className={styles.pageLabel}>Publicación institucional</p>
             <div className={styles.spacedBlock}>
-              <h2>Lo recomendable es conectar cada página con su PDF o medio de verificación validado.</h2>
+              <h2>La información pública se actualiza conforme a validación institucional.</h2>
               <p>
-                En este slice dejamos la arquitectura pública, el copy institucional
-                y las páginas base. El siguiente nivel será enlazar documentos o
-                anexos definitivos desde media controlada cuando la institución los
-                valide para difusión.
+                Cada página resume el alcance del documento y, cuando corresponda,
+                incorporará enlaces o medios de verificación autorizados para su
+                consulta.
               </p>
             </div>
           </article>

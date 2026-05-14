@@ -18,7 +18,7 @@ const defaultProgramCardCopy: ProgramCardCopy = {
   eyebrow: "Especialidad técnica",
   durationLabel: "Duración",
   modalityLabel: "Modalidad",
-  ctaLabel: "Ver detalle"
+  ctaLabel: "Ver programa"
 };
 
 export function ProgramCard({
@@ -27,8 +27,8 @@ export function ProgramCard({
 }: ProgramCardProps) {
   const programSummary = getProgramCopy(program);
   const studyPlanState = program.studyPlan
-    ? "Plan base visible"
-    : "Resumen académico inicial";
+    ? "Plan de estudio disponible"
+    : "Información general disponible";
   const mediaStyle = program.imageUrl
     ? {
         backgroundImage: `linear-gradient(180deg, rgba(16, 32, 51, 0.06), rgba(16, 32, 51, 0.24)), url("${program.imageUrl}")`
@@ -73,7 +73,7 @@ export function ProgramCard({
 
         <div className={styles.programCardFooter}>
           <p className={styles.programCardFootnote}>
-            Abre la ficha para revisar orientación y siguiente paso de admisión.
+            Consulta perfil, duración y proceso de admisión de esta especialidad.
           </p>
           <Link className={styles.programCardLink} href={getProgramPath(program.slug)}>
             {copy.ctaLabel}

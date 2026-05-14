@@ -51,8 +51,9 @@ export default async function ProgramsCatalogPage() {
       value: String(programs.length)
     },
     {
-      label: "Duración referencial",
-      value: durations.length <= 1 ? (durations[0] ?? "Por confirmar") : "Mixta"
+      label: "Duración",
+      value:
+        durations.length <= 1 ? (durations[0] ?? "Por confirmar") : "Según programa"
     },
     {
       label: "Modalidad",
@@ -127,15 +128,15 @@ export default async function ProgramsCatalogPage() {
         <div className="shell">
           <article className={styles.catalogCallout}>
             <div>
-              <p className={styles.pageLabel}>Siguiente paso</p>
-              <h2>Cuando ya tengas una preferencia inicial, continúa por admisión.</h2>
+              <p className={styles.pageLabel}>Admisión</p>
+              <h2>Cuando identifiques un programa de interés, continúa con el proceso de admisión.</h2>
               <p>
-                El sitio separa comparación y matrícula para que la consulta llegue
-                mejor orientada al equipo administrativo.
+                El equipo administrativo atiende consultas sobre vacantes, turnos
+                y requisitos para cada especialidad.
               </p>
             </div>
             <Link className={styles.primaryAction} href="/admision">
-              Ir a admisión
+              Proceso de admisión
             </Link>
           </article>
         </div>

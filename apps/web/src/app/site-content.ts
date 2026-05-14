@@ -16,7 +16,8 @@ const fallbackSiteContent: Record<SiteContentKey, SiteContentEntry> = {
   },
   "default-description": {
     title: "",
-    body: "Portal institucional del CETPRO Cesar Vallejo de Pucallpa"
+    body:
+      "Conoce la oferta académica, el proceso de admisión y la información institucional del CETPRO Cesar Vallejo de Pucallpa."
   }
 };
 

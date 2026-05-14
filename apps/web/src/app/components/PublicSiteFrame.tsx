@@ -19,7 +19,7 @@ export async function PublicSiteFrame({
   children,
   contactHref = "/admision",
   ctaHref,
-  ctaLabel = "Solicitar orientación",
+  ctaLabel = "Solicitar información",
   navItems = publicPrimaryNav
 }: PublicSiteFrameProps) {
   const siteContent = await getSiteContent();
@@ -50,14 +50,14 @@ export async function PublicSiteFrame({
         <div className="shell publicFooterCallout">
           <div className="publicFooterCalloutCopy">
             <p className="eyebrow">Admisión y orientación</p>
-            <h2>Explora la oferta, revisa la institución y continúa la admisión con más contexto.</h2>
+            <h2>Conoce la oferta académica y continúa tu proceso de admisión con información clara.</h2>
             <p>
-              La web pública ya no funciona como landing única: organiza
-              programas, gestión y atención administrativa por páginas reales.
+              La institución pone a disposición programas, requisitos de
+              admisión y canales de atención para orientar cada consulta.
             </p>
           </div>
           <Link className="publicFooterCta" href={contactHref}>
-            Ir a admisión
+            Proceso de admisión
           </Link>
         </div>
 
@@ -71,15 +71,15 @@ export async function PublicSiteFrame({
               <span className="publicBrandCopy">
                 <span className="publicBrandMeta">
                   <span>Pucallpa</span>
-                  <span>Oferta pública</span>
+                  <span>Información institucional</span>
                 </span>
                 <strong>{siteName}</strong>
                 <small>{description}</small>
               </span>
             </div>
             <p>
-              Formación técnico-productiva presencial orientada a práctica,
-              continuidad formativa y una lectura institucional más clara.
+              Formación técnico-productiva presencial orientada al desarrollo de
+              competencias, la práctica y la atención responsable del estudiante.
             </p>
           </div>
 
@@ -97,16 +97,17 @@ export async function PublicSiteFrame({
             <strong>Atención institucional</strong>
             <p>
               Sede institucional: {institutionAddress}. La orientación de
-              matrícula se atiende desde la web institucional para ayudarte a
-              evaluar programa, modalidad, turnos y vacantes.
+              admisión se atiende mediante los canales institucionales para
+              resolver consultas sobre programas, modalidad, turnos y vacantes.
             </p>
           </div>
 
           <div className="publicFooterNote">
-            <strong>Portal institucional</strong>
+            <strong>Información pública</strong>
             <p>
               Programas, admisión, gestión institucional y libro de
-              reclamaciones en una arquitectura pública más verificable.
+              reclamaciones disponibles para consulta de estudiantes, familias y
+              comunidad educativa.
             </p>
           </div>
         </div>

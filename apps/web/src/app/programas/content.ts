@@ -70,7 +70,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
   seo: {
     title: "Programas | CETPRO Cesar Vallejo",
     body:
-      "Explora la oferta académica del CETPRO César Vallejo de Pucallpa y compara cada programa desde una lectura institucional clara.",
+      "Explora la oferta académica del CETPRO Cesar Vallejo de Pucallpa y conoce la información general de cada programa.",
     mediaUrl: null
   },
   "hero-back-link": {
@@ -85,9 +85,9 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
   },
   "hero-main": {
     title:
-      "Especialidades técnicas para construir base práctica, criterio profesional y continuidad formativa.",
+      "Especialidades técnicas con orientación práctica y formación presencial.",
     body:
-      "Compara duración, modalidad y enfoque de cada especialidad para elegir una ruta formativa alineada con tu perfil, tu ritmo de estudio y tu proyección técnica.",
+      "Conoce la duración, modalidad y orientación general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
     mediaUrl: null
   },
   "hero-primary-cta": {
@@ -101,14 +101,14 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     mediaUrl: null
   },
   "hero-summary-eyebrow": {
-    title: "Cómo leer el catálogo",
+    title: "Información del catálogo",
     body: "",
     mediaUrl: null
   },
   "hero-summary": {
-    title: "Empieza con una comparación breve y luego profundiza en cada ficha",
+    title: "Programas con información general para orientar tu elección",
     body:
-      "Cada ficha resume enfoque, duración, modalidad y ruta de orientación para ayudarte a decidir con claridad antes de iniciar tu consulta de matrícula.",
+      "Cada ficha presenta duración, modalidad, descripción general y acceso directo al proceso de admisión.",
     mediaUrl: null
   },
   "hero-metric-programs": {
@@ -159,7 +159,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     mediaUrl: null
   },
   "card-cta": {
-    title: "Ver detalle",
+    title: "Ver programa",
     body: "",
     mediaUrl: null
   }
@@ -169,7 +169,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   seo: {
     title: "CETPRO Cesar Vallejo",
     body:
-      "Consulta la ficha pública del programa, revisa su orientación general y deja una solicitud con la especialidad preseleccionada.",
+      "Consulta la ficha del programa, revisa su orientación general y continúa con el proceso de admisión.",
     mediaUrl: null
   },
   "hero-eyebrow": {
@@ -193,9 +193,9 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "hero-caption": {
-    title: "Perfil formativo, plan base y orientación de matrícula.",
+    title: "Información general del programa.",
     body:
-      "Esta página resume la formación, el enfoque práctico y la ruta de orientación para continuar con tu proceso de matrícula.",
+      "Consulta la descripción, duración, modalidad y orientación de admisión de esta especialidad.",
     mediaUrl: null
   },
   "metric-duration-label": {
@@ -240,14 +240,14 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "study-plan-section": {
-    title: "Trayectoria formativa referencial",
+    title: "Plan de estudio",
     body: "",
     mediaUrl: null
   },
   "study-plan-empty": {
     title: "",
     body:
-      "El plan de estudio referencial se completará cuando el equipo institucional termine esta ficha académica.",
+      "El detalle del plan de estudio se publicará cuando la institución autorice su difusión.",
     mediaUrl: null
   },
   "related-eyebrow": {
@@ -256,9 +256,9 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "related-section": {
-    title: "Explora otras rutas formativas",
+    title: "Otros programas de la oferta académica",
     body:
-      "Compara otras rutas formativas del CETPRO antes de tomar una decisión de matrícula.",
+      "Revisa otras especialidades del CETPRO antes de iniciar tu solicitud.",
     mediaUrl: null
   },
   "contact-eyebrow": {
@@ -269,7 +269,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   "contact-section": {
     title: "",
     body:
-      "Déjanos tu nombre, celular y correo. El formulario ya llega con el programa seleccionado para reducir fricción en el primer contacto.",
+      "Déjanos tu nombre, celular y correo para recibir orientación sobre esta especialidad.",
     mediaUrl: null
   },
   "not-found-eyebrow": {
