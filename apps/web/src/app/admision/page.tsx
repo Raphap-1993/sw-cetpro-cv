@@ -4,6 +4,7 @@ import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { LeadForm } from "@/app/components/LeadForm";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
+import { getPublicVisual } from "@/app/public-site";
 import { listPublishedPrograms } from "@/app/programas/programs";
 
 export const dynamic = "force-dynamic";
@@ -39,19 +40,21 @@ export default async function AdmissionPage({
   const requestedSlug = getSearchValue(params.program);
   const selectedProgram =
     programs.find((program) => program.slug === requestedSlug) ?? null;
+  const heroMediaUrl = getPublicVisual("admission");
+  const heroMediaKind = "illustration";
   const steps = [
     {
-      title: "1. Revisa la oferta académica",
+      title: "Revisa la oferta académica",
       body:
         "Consulta los programas disponibles e identifica la especialidad que mejor se ajusta a tu interés formativo."
     },
     {
-      title: "2. Prepara tu solicitud",
+      title: "Prepara tu solicitud",
       body:
         "Ten a la mano tu documento de identidad, datos de contacto y la consulta específica sobre vacantes, turnos o requisitos."
     },
     {
-      title: "3. Recibe orientación institucional",
+      title: "Recibe orientación institucional",
       body:
         "El equipo administrativo revisa tu solicitud y responde según el programa consultado y la disponibilidad de atención."
     }
@@ -81,60 +84,89 @@ export default async function AdmissionPage({
   ];
 
   return (
-    <PublicSiteFrame ctaHref="/admision">
-      <section className={styles.pageHero}>
+    <PublicSiteFrame ctaHref="/admision" ctaLabel="Solicitar orientación">
+      <section className={styles.pageHero} data-hero-section>
         <div className={`shell ${styles.pageHeroGrid}`}>
-          <div>
-            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+          <div className={styles.pageCopy} data-hero-copy>
+            <nav aria-label="Ruta de navegación" className={styles.breadcrumb} data-hero-item>
               <Link href="/">Inicio</Link>
               <span>/</span>
               <span>Admisión</span>
             </nav>
-            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
-            <h1 className={styles.pageTitle}>{content["hero-main"].title}</h1>
-            <p className={styles.pageLead}>{content["hero-body"].body}</p>
+            <p className={styles.eyebrow} data-hero-item>
+              {content["hero-eyebrow"].title}
+            </p>
+            <h1 className={styles.pageTitle} data-hero-item>
+              {content["hero-main"].title}
+            </h1>
+            <p className={styles.pageLead} data-hero-item>
+              {content["hero-body"].body}
+            </p>
 
-            <div className={styles.actionRow}>
-              <Link className={styles.secondaryLink} href="/programas">
+            <div className={styles.actionRow} data-hero-item>
+              <Link className={styles.secondaryAction} href="/programas">
                 {content["cta-secondary"].title}
               </Link>
             </div>
           </div>
 
-          <aside className={styles.sideNote}>
-            <p className={styles.pageLabel}>{content["hero-note"].title}</p>
-            <h2>{selectedProgram ? "Programa de interés registrado" : "Orientación previa"}</h2>
-            <p>
-              {selectedProgram
-                ? `La solicitud puede enviarse con ${selectedProgram.title} como programa de interés.`
-                : "Puedes solicitar orientación con o sin programa definido; la atención inicial te ayudará a resolver tu consulta."}
-            </p>
-            <ul className={styles.heroList}>
-              <li>Atención sobre programas, turnos, requisitos y vacantes.</li>
-              <li>Formulario institucional disponible para consultas iniciales.</li>
-              <li>Respuesta según disponibilidad administrativa y programa consultado.</li>
-            </ul>
+          <aside
+            className={`${styles.pagePanel} ${styles.pagePanelDark} ${
+              styles.pagePanelMedia
+            }`}
+            data-hero-stage
+          >
+            <div className={styles.pagePanelVisual} data-media-kind={heroMediaKind}>
+              <img alt="" src={heroMediaUrl} />
+            </div>
+            <div className={styles.pagePanelBody}>
+              <div data-hero-stage-item>
+                <p className={styles.eyebrow}>{content["hero-note"].title}</p>
+                <h2>{selectedProgram ? "Programa de interés registrado" : "Orientación previa"}</h2>
+                <p>
+                  {selectedProgram
+                    ? `La solicitud puede enviarse con ${selectedProgram.title} como programa de interés.`
+                    : "Puedes solicitar orientación con o sin programa definido; la atención inicial te ayudará a resolver tu consulta."}
+                </p>
+              </div>
+              <div className={styles.summaryGrid} data-card-grid data-hero-stage-item>
+                <article className={styles.summaryCard}>
+                  <span>Atención</span>
+                  <strong>Programas, turnos y vacantes</strong>
+                </article>
+                <article className={styles.summaryCard}>
+                  <span>Formulario</span>
+                  <strong>Consulta inicial institucional</strong>
+                </article>
+                <article className={styles.summaryCard}>
+                  <span>Seguimiento</span>
+                  <strong>Respuesta según disponibilidad</strong>
+                </article>
+              </div>
+            </div>
           </aside>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
-        <div className={`shell ${styles.panelGrid}`}>
-          {steps.map((step) => (
-            <article className={styles.panelCard} key={step.title}>
-              <p className={styles.pageLabel}>Proceso</p>
-              <h2>{step.title}</h2>
-              <p>{step.body}</p>
-            </article>
-          ))}
+      <section className={styles.section}>
+        <div className="shell">
+          <div className={styles.featureGrid} data-feature-grid>
+            {steps.map((step) => (
+              <article className={styles.featureCard} key={step.title}>
+                <p className={styles.eyebrow}>Proceso</p>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
+      <section className={styles.section}>
         <div className={`shell ${styles.detailGrid}`}>
-          <article className={styles.mainCard}>
-            <p className={styles.pageLabel}>{content["section-main"].title}</p>
-            <h2>Requisitos y señales para iniciar la orientación.</h2>
+          <article className={styles.detailCard} data-reveal>
+            <p className={styles.eyebrow}>{content["section-main"].title}</p>
+            <h2>Qué debes tener a la mano antes de iniciar la orientación.</h2>
             <ul className={styles.detailList}>
               {requirements.map((requirement) => (
                 <li key={requirement}>{requirement}</li>
@@ -142,40 +174,48 @@ export default async function AdmissionPage({
             </ul>
           </article>
 
-          <aside className={styles.asideCard}>
-            <p className={styles.pageLabel}>{content["section-secondary"].title}</p>
+          <aside className={styles.asideCard} data-reveal>
+            <p className={styles.eyebrow}>{content["section-secondary"].title}</p>
             <h2>Qué ocurre después del envío.</h2>
             <p>{content["section-secondary"].body}</p>
             {selectedProgram ? (
-              <p className={styles.warningNote}>
-                Solicitud asociada a <strong>{selectedProgram.title}</strong>.
-              </p>
+              <div className={styles.warningNote}>
+                <strong>Programa seleccionado</strong>
+                Solicitud asociada a {selectedProgram.title}.
+              </div>
             ) : null}
           </aside>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
-        <div className={`shell ${styles.detailGrid}`}>
-          <article className={styles.mainCard}>
-            <p className={styles.pageLabel}>{content["cta-primary"].title}</p>
-            <LeadForm
-              defaultProgramId={selectedProgram?.id}
-              programs={programs}
-            />
-          </article>
+      <section className={styles.admissionSection}>
+        <div className="shell">
+          <div className={styles.sectionHeader} data-section-header>
+            <p className={styles.eyebrow}>{content["cta-primary"].title}</p>
+            <h2>Completa tu solicitud de orientación.</h2>
+            <p>
+              Registra tu consulta para recibir atención sobre programas,
+              requisitos, vacantes y turnos disponibles.
+            </p>
+          </div>
 
-          <aside className={styles.asideCard}>
-            <p className={styles.pageLabel}>Preguntas frecuentes</p>
-            <div className={styles.textStack}>
-              {faqs.map((faq) => (
-                <div key={faq.title}>
-                  <h2>{faq.title}</h2>
-                  <p>{faq.body}</p>
-                </div>
-              ))}
+          <div className={styles.admissionGrid}>
+            <div className={styles.admissionPanel} data-reveal>
+              <LeadForm defaultProgramId={selectedProgram?.id} programs={programs} />
             </div>
-          </aside>
+
+            <aside className={styles.admissionPanel} data-reveal>
+              <p className={styles.panelLabel}>Preguntas frecuentes</p>
+              <div className={styles.textStack}>
+                {faqs.map((faq) => (
+                  <div key={faq.title}>
+                    <h3>{faq.title}</h3>
+                    <p>{faq.body}</p>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
     </PublicSiteFrame>

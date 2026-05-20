@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.30.3",
   "scripts": {
-    "dev": "pnpm -r --parallel dev",
+    "dev": "ENV_FILE=\"${APP_ENV_FILE:-${ENV_FILE:-$PWD/.env}}\"; set -a && . \"$ENV_FILE\" && set +a && pnpm -r --parallel dev",
     "dev:web": "pnpm --filter @swcv/web dev",
     "dev:api": "pnpm --filter @swcv/api dev",
     "build": "pnpm -r build",

@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
+import pageStyles from "@/app/public-site.module.css";
 import { buildAdmissionHref } from "@/app/public-site";
 import { ProgramCard, type ProgramCardCopy } from "../ProgramCard";
 import { getProgramDetailContent, getProgramsCatalogContent } from "../content";
 import styles from "../programs.module.css";
 import {
   getProgramCopy,
+  getProgramCode,
+  getProgramIllustrationUrl,
   getProgramParagraphs,
   getPublishedProgramBySlug,
   getStudyPlanItems,
@@ -76,63 +79,101 @@ export default async function ProgramDetailPage({
     ctaLabel: catalogContent["card-cta"].title
   };
   const admissionHref = buildAdmissionHref(program.slug);
+  const heroMediaUrl = getProgramIllustrationUrl(
+    program.slug,
+    program.title,
+    program.imageUrl
+  );
+  const heroMediaKind = program.imageUrl?.trim() ? "photo" : "graphic";
+  const programCode = getProgramCode(program.title);
 
   return (
-    <PublicSiteFrame ctaHref={admissionHref}>
-      <section className={styles.detailHero}>
-        <div className={`shell ${styles.detailHeroGrid}`}>
-          <div>
-            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+    <PublicSiteFrame ctaHref={admissionHref} ctaLabel="Solicitar orientación">
+      <section className={`${pageStyles.pageHero} ${styles.programHero}`} data-hero-section>
+        <div className={`shell ${pageStyles.pageHeroGrid} ${styles.programHeroGrid}`}>
+          <div className={`${pageStyles.pageCopy} ${styles.programHeroCopy}`} data-hero-copy>
+            <nav aria-label="Ruta de navegación" className={pageStyles.breadcrumb} data-hero-item>
               <Link href="/">Inicio</Link>
               <span>/</span>
               <Link href="/programas">Programas</Link>
               <span>/</span>
               <span>{program.title}</span>
             </nav>
-            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
-            <h1>{program.title}</h1>
-            <p className={styles.heroLead}>{getProgramCopy(program)}</p>
+            <p className={pageStyles.eyebrow} data-hero-item>
+              {content["hero-eyebrow"].title}
+            </p>
+            <h1 className={`${pageStyles.pageTitle} ${styles.programHeroTitle}`} data-hero-item>
+              {program.title}
+            </h1>
+            <p className={`${pageStyles.pageLead} ${styles.programHeroLead}`} data-hero-item>
+              {getProgramCopy(program)}
+            </p>
 
-            <div className={styles.actionRow}>
-              <Link className={styles.primaryAction} href={admissionHref}>
+            <div className={pageStyles.actionRow} data-hero-item>
+              <Link className={pageStyles.primaryAction} href={admissionHref}>
                 {content["hero-primary-cta"].title}
               </Link>
-              <Link className={styles.secondaryAction} href="/programas">
+              <Link className={pageStyles.secondaryAction} href="/programas">
                 {content["hero-secondary-cta"].title}
               </Link>
             </div>
           </div>
 
-          <aside className={styles.heroAside}>
-            <p className={styles.pageLabel}>{content["hero-caption-eyebrow"].title}</p>
-            <h2>{content["hero-caption"].title}</h2>
-            <p>{content["hero-caption"].body}</p>
-            <div className={styles.metricGrid}>
-              <article className={styles.metricCard}>
-                <span>{content["metric-duration-label"].title}</span>
-                <strong>{program.duration ?? "Por confirmar"}</strong>
-              </article>
-              <article className={styles.metricCard}>
-                <span>{content["metric-modality-label"].title}</span>
-                <strong>{program.modality ?? "Por confirmar"}</strong>
-              </article>
-              <article className={styles.metricCard}>
-                <span>{content["metric-study-plan-label"].title}</span>
-                <strong>
-                  {studyPlanItems.length > 0
-                    ? `${studyPlanItems.length} bloques`
-                    : "Referencial"}
-                </strong>
-              </article>
+          <aside
+            className={`${pageStyles.pagePanel} ${pageStyles.pagePanelDark} ${
+              heroMediaUrl ? pageStyles.pagePanelMedia : ""
+            } ${styles.programHeroPanel}`}
+            data-hero-stage
+          >
+            {heroMediaUrl ? (
+              <div
+                className={`${pageStyles.pagePanelVisual} ${styles.programHeroVisual}`}
+                data-media-kind={heroMediaKind}
+              >
+                <div className={styles.programHeroVisualMeta}>
+                  <span>{program.modality ?? "Especialidad técnica"}</span>
+                  <strong>{programCode}</strong>
+                </div>
+                <img alt="" src={heroMediaUrl} />
+              </div>
+            ) : null}
+            <div className={`${pageStyles.pagePanelBody} ${styles.programHeroBody}`}>
+              <div data-hero-stage-item>
+                <p className={pageStyles.eyebrow}>{content["hero-caption-eyebrow"].title}</p>
+                <h2>{content["hero-caption"].title}</h2>
+                <p>{content["hero-caption"].body}</p>
+              </div>
+              <div
+                className={`${pageStyles.summaryGrid} ${styles.programHeroMetrics}`}
+                data-card-grid
+                data-hero-stage-item
+              >
+                <article className={`${pageStyles.summaryCard} ${styles.programHeroMetricCard}`}>
+                  <span>{content["metric-duration-label"].title}</span>
+                  <strong>{program.duration ?? "Por confirmar"}</strong>
+                </article>
+                <article className={`${pageStyles.summaryCard} ${styles.programHeroMetricCard}`}>
+                  <span>{content["metric-modality-label"].title}</span>
+                  <strong>{program.modality ?? "Por confirmar"}</strong>
+                </article>
+                <article className={`${pageStyles.summaryCard} ${styles.programHeroMetricCard}`}>
+                  <span>{content["metric-study-plan-label"].title}</span>
+                  <strong>
+                    {studyPlanItems.length > 0
+                      ? `${studyPlanItems.length} bloques`
+                      : "Referencial"}
+                  </strong>
+                </article>
+              </div>
             </div>
           </aside>
         </div>
       </section>
 
       <section className={styles.detailSection}>
-        <div className={`shell ${styles.detailGrid}`}>
-          <article className={styles.detailCard}>
-            <p className={styles.pageLabel}>{content["description-eyebrow"].title}</p>
+        <div className={`shell ${pageStyles.detailGrid}`}>
+          <article className={styles.detailCard} data-reveal>
+            <p className={pageStyles.eyebrow}>{content["description-eyebrow"].title}</p>
             <h2>{content["description-section"].title}</h2>
             <div className={styles.textStack}>
               {(descriptionParagraphs.length > 0
@@ -144,16 +185,16 @@ export default async function ProgramDetailPage({
             </div>
           </article>
 
-          <aside className={styles.detailCard}>
-            <p className={styles.pageLabel}>{content["admission-eyebrow"].title}</p>
+          <aside className={styles.detailCard} data-reveal>
+            <p className={pageStyles.eyebrow}>{content["admission-eyebrow"].title}</p>
             <h2>{content["admission-section"].title}</h2>
             <ul className={styles.noteList}>
               {admissionItems.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <div className={styles.actionRow}>
-              <Link className={styles.primaryAction} href={admissionHref}>
+            <div className={pageStyles.actionRow}>
+              <Link className={pageStyles.primaryAction} href={admissionHref}>
                 Continuar con admisión
               </Link>
             </div>
@@ -163,12 +204,12 @@ export default async function ProgramDetailPage({
 
       <section className={styles.detailSection}>
         <div className="shell">
-          <article className={styles.detailCard}>
-            <p className={styles.pageLabel}>{content["study-plan-eyebrow"].title}</p>
+          <article className={styles.detailCard} data-reveal>
+            <p className={pageStyles.eyebrow}>{content["study-plan-eyebrow"].title}</p>
             <h2>{content["study-plan-section"].title}</h2>
 
             {studyPlanItems.length > 0 ? (
-              <ol className={styles.studyPlanList}>
+              <ol className={styles.studyPlanList} data-card-grid>
                 {studyPlanItems.map((item, index) => (
                   <li className={styles.studyPlanItem} key={item}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
@@ -186,13 +227,13 @@ export default async function ProgramDetailPage({
       {relatedPrograms.length > 0 ? (
         <section className={styles.detailSection}>
           <div className="shell">
-            <div className={styles.sectionHeading}>
-              <p className={styles.pageLabel}>{content["related-eyebrow"].title}</p>
+            <div className={styles.sectionHeading} data-section-header>
+              <p className={pageStyles.eyebrow}>{content["related-eyebrow"].title}</p>
               <h2>{content["related-section"].title}</h2>
               <p>{content["related-section"].body}</p>
             </div>
 
-            <div className={styles.programGrid}>
+            <div className={styles.programGrid} data-card-grid>
               {relatedPrograms.map((relatedProgram) => (
                 <ProgramCard
                   key={relatedProgram.id}

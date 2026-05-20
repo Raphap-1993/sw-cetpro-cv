@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Public_Sans } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 import { getSiteContent } from "./site-content";
 
-const publicSans = Public_Sans({
+const publicSans = Sora({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans"
 });
 
@@ -39,7 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={publicSans.variable}>{children}</body>
+      <body className={publicSans.variable}>
+        {children}
+      </body>
     </html>
   );
 }

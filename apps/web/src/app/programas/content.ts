@@ -85,9 +85,9 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
   },
   "hero-main": {
     title:
-      "Especialidades técnicas con orientación práctica y formación presencial.",
+      "Especialidades técnicas con formación presencial y orientación práctica.",
     body:
-      "Conoce la duración, modalidad y orientación general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
+      "Conoce la duración, modalidad y enfoque general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
     mediaUrl: null
   },
   "hero-primary-cta": {
@@ -109,7 +109,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     title: "Programas con información general para orientar tu elección",
     body:
       "Cada ficha presenta duración, modalidad, descripción general y acceso directo al proceso de admisión.",
-    mediaUrl: null
+    mediaUrl: "/brand/hero-campus-official.jpg"
   },
   "hero-metric-programs": {
     title: "Programas",

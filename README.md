@@ -59,6 +59,7 @@ persistente fuera del directorio de build.
 - Validacion documental del gate: [docs/deploy-readiness.md](/Users/rapha/Projects/sw-cetpro-cv/docs/deploy-readiness.md)
 - Disciplina de release: [docs/release-discipline.md](/Users/rapha/Projects/sw-cetpro-cv/docs/release-discipline.md)
 - Decision de media storage: [docs/adr-001-production-media-storage.md](/Users/rapha/Projects/sw-cetpro-cv/docs/adr-001-production-media-storage.md)
+- Puente operativo con Google Stitch MCP: [docs/stitch-mcp-bridge.md](/Users/rapha/Projects/sw-cetpro-cv/docs/stitch-mcp-bridge.md)
 - Wrappers de runtime: [ops/bin](/Users/rapha/Projects/sw-cetpro-cv/ops/bin)
 - PM2: [ops/pm2/ecosystem.config.cjs](/Users/rapha/Projects/sw-cetpro-cv/ops/pm2/ecosystem.config.cjs)
 - `systemd`: [ops/systemd/swcv-api.service](/Users/rapha/Projects/sw-cetpro-cv/ops/systemd/swcv-api.service) y [ops/systemd/swcv-web.service](/Users/rapha/Projects/sw-cetpro-cv/ops/systemd/swcv-web.service)

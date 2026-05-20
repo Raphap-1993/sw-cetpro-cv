@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
-import { managementDocuments } from "@/app/public-site";
+import { getPublicVisual, managementDocuments } from "@/app/public-site";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ManagementPage() {
   const content = await getPageContent("gestion-institucional");
+  const heroMediaUrl = getPublicVisual("management");
+  const heroMediaKind = "illustration";
   const keyNotes = [
     "Documentos de consulta para estudiantes, familias y comunidad educativa.",
     "Información preparada para revisión y verificación institucional.",
@@ -28,68 +30,88 @@ export default async function ManagementPage() {
   ];
 
   return (
-    <PublicSiteFrame ctaHref="/admision">
-      <section className={styles.pageHero}>
+    <PublicSiteFrame ctaHref="/admision" ctaLabel="Solicitar orientación">
+      <section className={styles.pageHero} data-hero-section>
         <div className={`shell ${styles.pageHeroGrid}`}>
-          <div>
-            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+          <div className={styles.pageCopy} data-hero-copy>
+            <nav aria-label="Ruta de navegación" className={styles.breadcrumb} data-hero-item>
               <Link href="/">Inicio</Link>
               <span>/</span>
               <span>Gestión institucional</span>
             </nav>
-            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
-            <h1 className={styles.pageTitle}>{content["hero-main"].title}</h1>
-            <p className={styles.pageLead}>{content["hero-body"].body}</p>
+            <p className={styles.eyebrow} data-hero-item>
+              {content["hero-eyebrow"].title}
+            </p>
+            <h1 className={styles.pageTitle} data-hero-item>
+              {content["hero-main"].title}
+            </h1>
+            <p className={styles.pageLead} data-hero-item>
+              {content["hero-body"].body}
+            </p>
           </div>
 
-          <aside className={styles.sideNote}>
-            <p className={styles.pageLabel}>{content["hero-note"].title}</p>
-            <h2>{content["section-secondary"].title}</h2>
-            <p>{content["section-secondary"].body}</p>
-            <ul className={styles.heroList}>
-              {keyNotes.map((note) => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
+          <aside
+            className={`${styles.pagePanel} ${styles.pagePanelDark} ${
+              styles.pagePanelMedia
+            }`}
+            data-hero-stage
+          >
+            <div className={styles.pagePanelVisual} data-media-kind={heroMediaKind}>
+              <img alt="" src={heroMediaUrl} />
+            </div>
+            <div className={styles.pagePanelBody}>
+              <div data-hero-stage-item>
+                <p className={styles.eyebrow}>{content["hero-note"].title}</p>
+                <h2>{content["section-secondary"].title}</h2>
+                <p>{content["section-secondary"].body}</p>
+              </div>
+              <ul className={styles.noteList} data-reveal>
+                {keyNotes.map((note) => (
+                  <li key={note}>{note}</li>
+                ))}
+              </ul>
+            </div>
           </aside>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
+      <section className={styles.section}>
         <div className="shell">
-          <div className={styles.sectionHeading}>
-            <p className={styles.pageLabel}>{content["section-main"].title}</p>
+          <div className={styles.sectionHeader} data-section-header>
+            <p className={styles.eyebrow}>{content["section-main"].title}</p>
             <h2>Documentos institucionales e información de consulta pública.</h2>
             <p>{content["section-main"].body}</p>
           </div>
 
-          <div className={styles.documentGrid}>
+          <div className={styles.documentGrid} data-document-grid>
             {managementDocuments.map((document) => (
               <article className={styles.documentCard} key={document.slug}>
                 <span className={styles.documentMeta}>Documento institucional</span>
-                <h3 className={styles.documentCardTitle}>{document.title}</h3>
+                <h3 className={styles.documentTitle}>{document.title}</h3>
                 <p>{document.summary}</p>
-                <ul className={styles.documentHighlights}>
+                <ul className={styles.detailList}>
                   {document.highlights.slice(0, 2).map((highlight) => (
                     <li key={highlight}>{highlight}</li>
                   ))}
                 </ul>
-                <Link
-                  className={styles.documentCardLink}
-                  href={`/gestion-institucional/${document.slug}`}
-                >
-                  Más información
-                </Link>
+                <div className={styles.actionRow}>
+                  <Link
+                    className={styles.inlineAction}
+                    href={`/gestion-institucional/${document.slug}`}
+                  >
+                    Más información
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
+      <section className={styles.section}>
         <div className="shell">
-          <article className={styles.calloutCard}>
-            <p className={styles.pageLabel}>Publicación institucional</p>
+          <article className={styles.calloutCard} data-reveal>
+            <p className={styles.eyebrow}>Publicación institucional</p>
             <div className={styles.spacedBlock}>
               <h2>La información pública se actualiza conforme a validación institucional.</h2>
               <p>

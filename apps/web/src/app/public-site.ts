@@ -14,6 +14,8 @@ export type ManagementDocument = {
 
 export const institutionAddress = "Jr. Comandante Barrera 458, Pucallpa";
 export const institutionDistrict = "Pucallpa, Ucayali";
+export const publicNotesHref = "http://190.119.37.28:8085/apicetpro/#/login";
+export const publicNotesLabel = "Mis Notas";
 
 export const publicPrimaryNav: PublicNavItem[] = [
   { href: "/institucion", label: "Institución" },
@@ -110,6 +112,27 @@ export const managementDocuments: ManagementDocument[] = [
     ]
   }
 ];
+
+export type PublicVisualKey =
+  | "home"
+  | "institution"
+  | "admission"
+  | "programs"
+  | "management"
+  | "complaints";
+
+const publicVisuals: Record<PublicVisualKey, string> = {
+  home: "/brand/hero-campus.svg",
+  institution: "/brand/hero-campus.svg",
+  admission: "/brand/hero-students.svg",
+  programs: "/brand/program-programacion-sistemas.svg",
+  management: "/brand/program-apoyo-administrativo.svg",
+  complaints: "/brand/program-apoyo-administrativo.svg"
+};
+
+export function getPublicVisual(key: PublicVisualKey) {
+  return publicVisuals[key];
+}
 
 export function getManagementDocument(slug: string) {
   return managementDocuments.find((document) => document.slug === slug) ?? null;

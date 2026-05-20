@@ -3,7 +3,11 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
-import { institutionAddress, institutionDistrict } from "@/app/public-site";
+import {
+  getPublicVisual,
+  institutionAddress,
+  institutionDistrict
+} from "@/app/public-site";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function InstitutionPage() {
   const content = await getPageContent("institucion");
+  const heroMediaUrl = getPublicVisual("institution");
+  const heroMediaKind = "illustration";
   const pillars = [
     {
       title: "Formación aplicada",
@@ -35,7 +41,7 @@ export default async function InstitutionPage() {
     {
       title: "Vinculación con el entorno",
       body:
-        "La oferta busca responder a necesidades reales del entorno productivo y fortalecer la continuidad formativa."
+        "La oferta busca responder a necesidades del entorno productivo y fortalecer la continuidad formativa."
     }
   ];
   const facts = [
@@ -66,69 +72,81 @@ export default async function InstitutionPage() {
   ];
 
   return (
-    <PublicSiteFrame ctaHref="/admision">
-      <section className={styles.pageHero}>
+    <PublicSiteFrame ctaHref="/admision" ctaLabel="Abrir admisión">
+      <section className={styles.pageHero} data-hero-section>
         <div className={`shell ${styles.pageHeroGrid}`}>
-          <div>
-            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+          <div className={styles.pageCopy} data-hero-copy>
+            <nav aria-label="Ruta de navegación" className={styles.breadcrumb} data-hero-item>
               <Link href="/">Inicio</Link>
               <span>/</span>
               <span>Institución</span>
             </nav>
-            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
-            <h1 className={styles.pageTitle}>{content["hero-main"].title}</h1>
-            <p className={styles.pageLead}>{content["hero-body"].body}</p>
+            <p className={styles.eyebrow} data-hero-item>
+              {content["hero-eyebrow"].title}
+            </p>
+            <h1 className={styles.pageTitle} data-hero-item>
+              {content["hero-main"].title}
+            </h1>
+            <p className={styles.pageLead} data-hero-item>
+              {content["hero-body"].body}
+            </p>
 
-            <div className={styles.actionRow}>
-              <Link className={styles.primaryLink} href="/programas">
+            <div className={styles.actionRow} data-hero-item>
+              <Link className={styles.primaryAction} href="/programas">
                 {content["cta-primary"].title}
               </Link>
-              <Link className={styles.secondaryLink} href="/admision">
+              <Link className={styles.secondaryAction} href="/admision">
                 {content["cta-secondary"].title}
               </Link>
             </div>
           </div>
 
-          <aside className={styles.sideNote}>
-            <p className={styles.pageLabel}>{content["hero-note"].title}</p>
-            <h2>{content["section-secondary"].title}</h2>
-            <p>{content["section-secondary"].body}</p>
-            <ul className={styles.heroList}>
-              <li>Formación presencial orientada al desarrollo de competencias para el trabajo.</li>
-              <li>Programas con información general y acceso al proceso de admisión.</li>
-              <li>Canales institucionales para orientación, consulta pública y atención al usuario.</li>
-            </ul>
+          <aside
+            className={`${styles.pagePanel} ${styles.pagePanelDark} ${
+              styles.pagePanelMedia
+            }`}
+            data-hero-stage
+          >
+            <div className={styles.pagePanelVisual} data-media-kind={heroMediaKind}>
+              <img alt="" src={heroMediaUrl} />
+            </div>
+            <div className={styles.pagePanelBody}>
+              <div data-hero-stage-item>
+                <p className={styles.eyebrow}>{content["hero-note"].title}</p>
+                <h2>{content["section-secondary"].title}</h2>
+                <p>{content["section-secondary"].body}</p>
+              </div>
+              <div className={styles.summaryGrid} data-card-grid data-hero-stage-item>
+                {facts.map((fact) => (
+                  <article className={styles.summaryCard} key={fact.label}>
+                    <span>{fact.label}</span>
+                    <strong>{fact.value}</strong>
+                  </article>
+                ))}
+              </div>
+            </div>
           </aside>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
-        <div className={`shell ${styles.statGrid}`}>
-          {facts.map((fact) => (
-            <article className={styles.statCard} key={fact.label}>
-              <span>{fact.label}</span>
-              <strong>{fact.value}</strong>
-            </article>
-          ))}
+      <section className={styles.section}>
+        <div className="shell">
+          <div className={styles.featureGrid} data-feature-grid>
+            {pillars.map((pillar) => (
+              <article className={styles.featureCard} key={pillar.title}>
+                <p className={styles.eyebrow}>Pilar institucional</p>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
-        <div className={`shell ${styles.panelGrid}`}>
-          {pillars.map((pillar) => (
-            <article className={styles.panelCard} key={pillar.title}>
-              <p className={styles.pageLabel}>Pilar institucional</p>
-              <h2>{pillar.title}</h2>
-              <p>{pillar.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.sectionBlock}>
+      <section className={styles.section}>
         <div className={`shell ${styles.detailGrid}`}>
-          <article className={styles.mainCard}>
-            <p className={styles.pageLabel}>{content["section-main"].title}</p>
+          <article className={styles.detailCard} data-reveal>
+            <p className={styles.eyebrow}>{content["section-main"].title}</p>
             <div className={styles.textStack}>
               {sections.map((section) => (
                 <div key={section.title}>
@@ -139,8 +157,8 @@ export default async function InstitutionPage() {
             </div>
           </article>
 
-          <aside className={styles.asideCard}>
-            <p className={styles.pageLabel}>Consultas relacionadas</p>
+          <aside className={styles.asideCard} data-reveal>
+            <p className={styles.eyebrow}>Consultas relacionadas</p>
             <h2>{content["section-secondary"].title}</h2>
             <ul className={styles.noteList}>
               <li>Programas para revisar la oferta académica y las fichas por especialidad.</li>

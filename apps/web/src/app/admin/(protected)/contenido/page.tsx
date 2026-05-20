@@ -11,7 +11,8 @@ const programsEditorialGuide = [
   {
     page: "home",
     title: "Inicio /",
-    keys: "hero-main, intro-main, programs-header, admission-main, cta-main"
+    keys:
+      "hero-main, intro-main, hero-slide-01, hero-slide-02, hero-slide-03, programs-header, admission-main, cta-main"
   },
   {
     page: "institucion",

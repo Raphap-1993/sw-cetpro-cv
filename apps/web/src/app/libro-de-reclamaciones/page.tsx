@@ -3,7 +3,10 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
-import { getOfficialComplaintBookUrl } from "@/app/public-site";
+import {
+  getOfficialComplaintBookUrl,
+  getPublicVisual
+} from "@/app/public-site";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ComplaintBookPage() {
   const content = await getPageContent("libro-de-reclamaciones");
   const officialComplaintBookUrl = getOfficialComplaintBookUrl();
+  const heroMediaUrl = getPublicVisual("complaints");
+  const heroMediaKind = "illustration";
   const requiredData = [
     "Nombre y documento de identidad del usuario.",
     "Descripción clara del hecho, canal o sede donde ocurrió.",
@@ -30,23 +35,29 @@ export default async function ComplaintBookPage() {
   ];
 
   return (
-    <PublicSiteFrame ctaHref="/admision">
-      <section className={styles.pageHero}>
+    <PublicSiteFrame ctaHref="/admision" ctaLabel="Solicitar orientación">
+      <section className={styles.pageHero} data-hero-section>
         <div className={`shell ${styles.pageHeroGrid}`}>
-          <div>
-            <nav aria-label="Ruta de navegación" className={styles.breadcrumb}>
+          <div className={styles.pageCopy} data-hero-copy>
+            <nav aria-label="Ruta de navegación" className={styles.breadcrumb} data-hero-item>
               <Link href="/">Inicio</Link>
               <span>/</span>
               <span>Libro de reclamaciones</span>
             </nav>
-            <p className={styles.pageLabel}>{content["hero-eyebrow"].title}</p>
-            <h1 className={styles.pageTitle}>{content["hero-main"].title}</h1>
-            <p className={styles.pageLead}>{content["hero-body"].body}</p>
+            <p className={styles.eyebrow} data-hero-item>
+              {content["hero-eyebrow"].title}
+            </p>
+            <h1 className={styles.pageTitle} data-hero-item>
+              {content["hero-main"].title}
+            </h1>
+            <p className={styles.pageLead} data-hero-item>
+              {content["hero-body"].body}
+            </p>
 
-            <div className={styles.actionRow}>
+            <div className={styles.actionRow} data-hero-item>
               {officialComplaintBookUrl ? (
                 <a
-                  className={styles.primaryLink}
+                  className={styles.primaryAction}
                   href={officialComplaintBookUrl}
                   rel="noreferrer"
                   target="_blank"
@@ -54,36 +65,52 @@ export default async function ComplaintBookPage() {
                   {content["cta-primary"].title}
                 </a>
               ) : (
-                <Link className={styles.primaryLink} href="/admision">
+                <Link className={styles.primaryAction} href="/admision">
                   {content["cta-secondary"].title}
                 </Link>
               )}
             </div>
           </div>
 
-          <aside className={styles.sideNote}>
-            <p className={styles.pageLabel}>{content["hero-note"].title}</p>
-            <h2>{officialComplaintBookUrl ? "Canal de atención disponible" : "Canal digital en validación"}</h2>
-            <p>
-              {officialComplaintBookUrl
-                ? "El acceso oficial se encuentra disponible para el registro y seguimiento de reclamos."
-                : "Si el acceso digital aún no se encuentra disponible, solicita orientación administrativa para registrar tu atención."}
-            </p>
+          <aside
+            className={`${styles.pagePanel} ${styles.pagePanelDark} ${
+              styles.pagePanelMedia
+            }`}
+            data-hero-stage
+          >
+            <div className={styles.pagePanelVisual} data-media-kind={heroMediaKind}>
+              <img alt="" src={heroMediaUrl} />
+            </div>
+            <div className={styles.pagePanelBody}>
+              <div data-hero-stage-item>
+                <p className={styles.eyebrow}>{content["hero-note"].title}</p>
+                <h2>
+                  {officialComplaintBookUrl
+                    ? "Canal de atención disponible"
+                    : "Canal digital en validación"}
+                </h2>
+                <p>
+                  {officialComplaintBookUrl
+                    ? "El acceso oficial se encuentra disponible para el registro y seguimiento de reclamos."
+                    : "Si el acceso digital aún no se encuentra disponible, solicita orientación administrativa para registrar tu atención."}
+                </p>
+              </div>
+            </div>
           </aside>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
+      <section className={styles.section}>
         <div className="shell">
-          <div className={styles.warningNote}>
+          <div className={styles.warningNote} data-reveal>
             Antes de registrar un reclamo, verifica el canal aplicable según la
             naturaleza institucional del servicio y el tipo de atención requerida.
           </div>
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
-        <div className={`shell ${styles.regimeGrid}`}>
+      <section className={styles.section}>
+        <div className={`shell ${styles.regimeGrid}`} data-feature-grid>
           <article className={styles.regimeCard}>
             <span className={styles.documentMeta}>Entidad pública</span>
             <strong>Libro de reclamaciones de la administración pública</strong>
@@ -91,7 +118,7 @@ export default async function ComplaintBookPage() {
               Debe contar con un acceso visible y puede operar en formato físico
               o virtual, según la regulación aplicable a la entidad.
             </p>
-            <ul className={styles.documentHighlights}>
+            <ul className={styles.detailList}>
               <li>Plazo de atención: hasta 30 días hábiles.</li>
               <li>Debe existir responsable designado y seguimiento del reclamo.</li>
               <li>El acceso digital debe estar claramente identificado para la atención al usuario.</li>
@@ -106,7 +133,7 @@ export default async function ComplaintBookPage() {
               libro virtual debe estar activo y visible, con un aviso fácilmente
               identificable para el usuario.
             </p>
-            <ul className={styles.documentHighlights}>
+            <ul className={styles.detailList}>
               <li>Plazo de atención: 15 días hábiles improrrogables.</li>
               <li>La hoja de reclamación debe poder registrarse con datos básicos del usuario.</li>
               <li>La visibilidad del aviso y del acceso virtual es parte crítica del cumplimiento.</li>
@@ -115,10 +142,10 @@ export default async function ComplaintBookPage() {
         </div>
       </section>
 
-      <section className={styles.sectionBlock}>
+      <section className={styles.section}>
         <div className={`shell ${styles.detailGrid}`}>
-          <article className={styles.mainCard}>
-            <p className={styles.pageLabel}>{content["section-main"].title}</p>
+          <article className={styles.detailCard} data-reveal>
+            <p className={styles.eyebrow}>{content["section-main"].title}</p>
             <h2>Datos que conviene preparar antes del registro.</h2>
             <ul className={styles.detailList}>
               {requiredData.map((item) => (
@@ -127,19 +154,20 @@ export default async function ComplaintBookPage() {
             </ul>
           </article>
 
-          <aside className={styles.asideCard}>
-            <p className={styles.pageLabel}>{content["section-secondary"].title}</p>
+          <aside className={styles.asideCard} data-reveal>
+            <p className={styles.eyebrow}>{content["section-secondary"].title}</p>
             <h2>Canal de atención</h2>
             <p>{content["section-secondary"].body}</p>
             {officialComplaintBookUrl ? (
-              <p className={styles.warningNote}>
-                Canal oficial disponible para registro digital.
-              </p>
+              <div className={styles.warningNote}>
+                <strong>Canal oficial disponible</strong>
+                Acceso habilitado para registro digital.
+              </div>
             ) : (
-              <p className={styles.warningNote}>
-                Canal digital en validación institucional. Solicita orientación
-                administrativa si necesitas registrar tu atención.
-              </p>
+              <div className={styles.warningNote}>
+                <strong>Canal digital en validación</strong>
+                Solicita orientación administrativa si necesitas registrar tu atención.
+              </div>
             )}
           </aside>
         </div>

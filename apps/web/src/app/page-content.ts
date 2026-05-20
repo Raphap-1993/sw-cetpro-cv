@@ -36,7 +36,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-main": {
       title:
-        "Una institución orientada a la formación práctica y al desarrollo de competencias para el trabajo.",
+        "Formación presencial con enfoque práctico y atención institucional cercana.",
       body: "",
       mediaUrl: null
     },
@@ -49,18 +49,18 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     "hero-note": {
       title: "Atención institucional",
       body: "Pucallpa, Ucayali",
-      mediaUrl: null
+      mediaUrl: "/brand/hero-campus-official.jpg"
     },
     "section-main": {
       title: "Propuesta educativa",
       body:
-        "Formación presencial, orientación académica y acompañamiento inicial para quienes buscan desarrollar competencias para el trabajo.",
+        "Conoce la propuesta educativa, la modalidad presencial y la información esencial para evaluar la institución con claridad.",
       mediaUrl: null
     },
     "section-secondary": {
       title: "Perfil institucional",
       body:
-        "Ubique la sede, la modalidad de estudio y los canales de orientación para resolver consultas sobre la propuesta educativa.",
+        "Ubica la sede, la modalidad de estudio y los canales de orientación para resolver consultas sobre la propuesta educativa.",
       mediaUrl: null
     },
     "cta-primary": {
@@ -87,7 +87,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
       mediaUrl: null
     },
     "hero-main": {
-      title: "Admisión para programas técnico-productivos presenciales.",
+      title: "Admisión y orientación para elegir tu programa con información clara.",
       body: "",
       mediaUrl: null
     },
@@ -100,7 +100,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     "hero-note": {
       title: "Antes de iniciar",
       body: "Datos de contacto y programa de interés",
-      mediaUrl: null
+      mediaUrl: "/brand/logo-cesar-vallejo-blanco.png"
     },
     "section-main": {
       title: "Requisitos para la orientación",
@@ -139,25 +139,25 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-main": {
       title:
-        "Gestión institucional y documentos de consulta pública.",
+        "Documentos institucionales y referencias de consulta pública.",
       body: "",
       mediaUrl: null
     },
     "hero-body": {
       title: "",
       body:
-        "Consulte documentos e información institucional de acceso público para estudiantes, familias y procesos de verificación externa.",
+        "Consulta documentos e información institucional de acceso público para estudiantes, familias y procesos de verificación externa.",
       mediaUrl: null
     },
     "hero-note": {
       title: "Consulta documental",
       body: "Información institucional de acceso público",
-      mediaUrl: null
+      mediaUrl: "/brand/logo-cesar-vallejo-blanco.png"
     },
     "section-main": {
       title: "Documentos institucionales",
       body:
-        "Consulte páginas informativas sobre licenciamiento, PEI, RI, PAT y seguimiento institucional, preparadas para orientación y consulta pública.",
+        "Consulta licenciamiento, PEI, RI, PAT y seguimiento institucional desde páginas preparadas para lectura pública y verificación.",
       mediaUrl: null
     },
     "section-secondary": {
@@ -191,7 +191,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-main": {
       title:
-        "Libro de reclamaciones y atención al usuario.",
+        "Canal de atención para reclamos y seguimiento institucional.",
       body: "",
       mediaUrl: null
     },
@@ -204,7 +204,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     "hero-note": {
       title: "Registro de reclamos",
       body: "Datos de identificación y medio de contacto",
-      mediaUrl: null
+      mediaUrl: "/brand/logo-cesar-vallejo-blanco.png"
     },
     "section-main": {
       title: "Información para el registro",

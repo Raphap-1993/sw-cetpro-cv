@@ -67,6 +67,23 @@ function isManagedLocalMediaUrl(value: string | null | undefined) {
   return value.startsWith("/media/") || value.includes("/media/");
 }
 
+const lockedContentMediaKeys = new Set([
+  "home::hero-main",
+  "institucion::hero-note",
+  "admision::hero-note",
+  "gestion-institucional::hero-note",
+  "libro-de-reclamaciones::hero-note",
+  "programs::hero-summary"
+]);
+
+function shouldPreserveExistingContentMedia(block: ContentBlockSeed, existingMediaUrl?: string | null) {
+  if (!isManagedLocalMediaUrl(existingMediaUrl)) {
+    return false;
+  }
+
+  return !lockedContentMediaKeys.has(`${block.page}::${block.key}`);
+}
+
 function shouldForceSeedAdminPasswordReset() {
   const normalized = process.env.SEED_ADMIN_FORCE_PASSWORD_RESET?.trim().toLowerCase();
 
@@ -88,18 +105,18 @@ function dedupeMediaAssetSeeds(seeds: MediaAssetSeed[]) {
 }
 
 const brandAssetPaths = {
-  hero: "/brand/hero-campus.svg",
+  hero: "/brand/hero-campus-official.jpg",
   programs: {
-    "apoyo-administrativo": "/brand/program-apoyo-administrativo.svg",
+    "apoyo-administrativo": "/brand/program-apoyo-administrativo.png",
     "control-de-procesos-de-almacenamiento":
-      "/brand/program-control-almacenamiento.svg",
-    "estilismo-2": "/brand/program-estilismo.svg",
+      "/brand/program-control-almacenamiento.png",
+    "estilismo-2": "/brand/program-estilismo.png",
     "mantenimiento-de-sistemas-electronicos":
-      "/brand/program-mantenimiento-electronico.svg",
-    "panificacion-industrial-2": "/brand/program-panificacion-industrial.svg",
-    "patronaje-2": "/brand/program-patronaje.svg",
+      "/brand/program-mantenimiento-electronico.png",
+    "panificacion-industrial-2": "/brand/program-panificacion-industrial.png",
+    "patronaje-2": "/brand/program-patronaje.png",
     "programacion-de-sistemas-de-informacion":
-      "/brand/program-programacion-sistemas.svg"
+      "/brand/program-programacion-sistemas.png"
   }
 } as const;
 
@@ -220,9 +237,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Formación técnico-productiva presencial para el desarrollo de competencias laborales.",
+      "Formación técnica presencial para incorporarte al trabajo.",
     body:
-      "El CETPRO Cesar Vallejo de Pucallpa ofrece programas orientados a la práctica, la continuidad formativa y la atención responsable del estudiante. Consulte la oferta académica, el proceso de admisión y la información institucional.",
+      "Conoce programas, proceso de admisión e información institucional del CETPRO Cesar Vallejo de Pucallpa con una propuesta clara, práctica y presencial.",
     mediaUrl: brandAssetPaths.hero,
     position: 0,
     status: PublishStatus.PUBLISHED
@@ -231,9 +248,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "intro-main",
     type: ContentBlockType.SECTION,
-    title: "Información para postulantes y familias",
+    title: "Información clara para elegir, postular y verificar a la institución.",
     body:
-      "Revise programas, requisitos de admisión, documentos institucionales y canales de atención en un mismo entorno oficial.",
+      "Programas, admisión, gestión institucional y canales formales reunidos en un portal público con mejor jerarquía y lectura.",
     position: 10,
     status: PublishStatus.PUBLISHED
   },
@@ -241,9 +258,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "programs-header",
     type: ContentBlockType.SECTION,
-    title: "Accesos principales",
+    title: "Revisa la oferta académica vigente y elige tu especialidad.",
     body:
-      "Conozca la institución, revise la oferta académica y continúe con el proceso de admisión desde páginas dedicadas.",
+      "Consulta cada programa, su duración, modalidad y orientación general para decidir con mayor claridad.",
     position: 15,
     status: PublishStatus.PUBLISHED
   },
@@ -251,9 +268,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "stats-header",
     type: ContentBlockType.SECTION,
-    title: "Información institucional disponible",
+    title: "Desliza los programas y abre la ficha que más te interesa.",
     body:
-      "Programas, admisión, documentos institucionales y libro de reclamaciones en un mismo sitio oficial.",
+      "Cada tarjeta resume modalidad, duración y enfoque del programa para ayudarte a elegir con mayor claridad.",
     position: 20,
     status: PublishStatus.PUBLISHED
   },
@@ -262,7 +279,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "stats-item-01",
     type: ContentBlockType.TEXT,
     title: "Programas",
-    body: "Catálogo y fichas por especialidad",
+    body: "Revisa programas, duración y orientación general de cada especialidad.",
     position: 21,
     status: PublishStatus.PUBLISHED
   },
@@ -271,7 +288,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "stats-item-02",
     type: ContentBlockType.TEXT,
     title: "Admisión",
-    body: "Proceso y formulario institucional",
+    body: "Encuentra pasos, requisitos y orientación previa para postular.",
     position: 22,
     status: PublishStatus.PUBLISHED
   },
@@ -280,7 +297,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "stats-item-03",
     type: ContentBlockType.TEXT,
     title: "Documentos",
-    body: "Gestión institucional de consulta pública",
+    body: "Accede a licenciamiento, reglamentos y otros documentos oficiales.",
     position: 23,
     status: PublishStatus.PUBLISHED
   },
@@ -288,9 +305,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "admission-main",
     type: ContentBlockType.SECTION,
-    title: "Proceso de admisión",
+    title: "Empieza tu proceso de admisión con información clara.",
     body:
-      "Revisa requisitos, turnos y los datos necesarios para solicitar orientación al equipo administrativo.",
+      "Conoce los requisitos, prepara tus datos y solicita orientación sobre vacantes, turnos y el programa que te interesa.",
     position: 30,
     status: PublishStatus.PUBLISHED
   },
@@ -298,9 +315,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "home",
     key: "cta-main",
     type: ContentBlockType.CTA,
-    title: "Documentos institucionales e información de consulta pública",
+    title: "Consulta información y documentos oficiales de la institución.",
     body:
-      "Consulte licenciamiento, instrumentos de gestión y páginas documentales preparadas para orientación, revisión y verificación externa.",
+      "Revisa licenciamiento, reglamento interno y otros documentos que te ayudarán a conocer mejor el CETPRO y verificar su información institucional.",
     position: 40,
     status: PublishStatus.PUBLISHED
   },
@@ -328,7 +345,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Una institución orientada a la formación práctica y al desarrollo de competencias para el trabajo.",
+      "Formación presencial con enfoque práctico y atención institucional cercana.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -349,6 +366,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.TEXT,
     title: "Atención institucional",
     body: "Pucallpa, Ucayali",
+    mediaUrl: brandAssetPaths.hero,
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -358,7 +376,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Propuesta educativa",
     body:
-      "Formación presencial, orientación académica y acompañamiento inicial para quienes buscan desarrollar competencias para el trabajo.",
+      "Conoce la propuesta educativa, la modalidad presencial y la información esencial para evaluar la institución con claridad.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -368,7 +386,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Perfil institucional",
     body:
-      "Ubique la sede, la modalidad de estudio y los canales de orientación para resolver consultas sobre la propuesta educativa.",
+      "Ubica la sede, la modalidad de estudio y los canales de orientación para resolver consultas sobre la propuesta educativa.",
     position: 6,
     status: PublishStatus.PUBLISHED
   },
@@ -413,7 +431,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     page: "admision",
     key: "hero-main",
     type: ContentBlockType.HERO,
-    title: "Admisión para programas técnico-productivos presenciales.",
+    title: "Admisión y orientación para elegir tu programa con información clara.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -434,6 +452,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.TEXT,
     title: "Antes de iniciar",
     body: "Datos de contacto y programa de interés",
+    mediaUrl: "/brand/logo-cesar-vallejo-blanco.png",
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -499,7 +518,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Gestión institucional y documentos de consulta pública.",
+      "Documentos institucionales y referencias de consulta pública.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -510,7 +529,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "",
     body:
-      "Consulte documentos e información institucional de acceso público para estudiantes, familias y procesos de verificación externa.",
+      "Consulta documentos e información institucional de acceso público para estudiantes, familias y procesos de verificación externa.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -520,6 +539,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.TEXT,
     title: "Consulta documental",
     body: "Información institucional de acceso público",
+    mediaUrl: "/brand/logo-cesar-vallejo-blanco.png",
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -529,7 +549,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.SECTION,
     title: "Documentos institucionales",
     body:
-      "Consulte páginas informativas sobre licenciamiento, PEI, RI, PAT y seguimiento institucional, preparadas para orientación y consulta pública.",
+      "Consulta licenciamiento, PEI, RI, PAT y seguimiento institucional desde páginas preparadas para lectura pública y verificación.",
     position: 5,
     status: PublishStatus.PUBLISHED
   },
@@ -585,7 +605,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Libro de reclamaciones y atención al usuario.",
+      "Canal de atención para reclamos y seguimiento institucional.",
     body: "",
     position: 2,
     status: PublishStatus.PUBLISHED
@@ -606,6 +626,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     type: ContentBlockType.TEXT,
     title: "Registro de reclamos",
     body: "Datos de identificación y medio de contacto",
+    mediaUrl: "/brand/logo-cesar-vallejo-blanco.png",
     position: 4,
     status: PublishStatus.PUBLISHED
   },
@@ -680,9 +701,9 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     key: "hero-main",
     type: ContentBlockType.HERO,
     title:
-      "Especialidades técnicas con orientación práctica y formación presencial.",
+      "Especialidades técnicas con formación presencial y orientación práctica.",
     body:
-      "Conoce la duración, modalidad y orientación general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
+      "Conoce la duración, modalidad y enfoque general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
     position: 3,
     status: PublishStatus.PUBLISHED
   },
@@ -730,6 +751,7 @@ const contentBlockSeeds: ContentBlockSeed[] = [
     title: "Programas con información general para orientar tu elección",
     body:
       "Cada ficha presenta duración, modalidad, descripción general y acceso directo al proceso de admisión.",
+    mediaUrl: brandAssetPaths.hero,
     position: 7,
     status: PublishStatus.PUBLISHED
   },
@@ -1163,7 +1185,7 @@ async function main() {
       },
       update: {
         ...block,
-        mediaUrl: isManagedLocalMediaUrl(existingBlock?.mediaUrl)
+        mediaUrl: shouldPreserveExistingContentMedia(block, existingBlock?.mediaUrl)
           ? existingBlock?.mediaUrl
           : block.mediaUrl
       },

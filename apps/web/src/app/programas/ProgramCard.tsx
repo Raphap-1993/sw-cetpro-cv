@@ -1,6 +1,12 @@
 import Link from "next/link";
 import styles from "./programs.module.css";
-import { getProgramCopy, getProgramPath, type PublicProgram } from "./programs";
+import {
+  getProgramCode,
+  getProgramCopy,
+  getProgramIllustrationUrl,
+  getProgramPath,
+  type PublicProgram
+} from "./programs";
 
 export type ProgramCardCopy = {
   ctaLabel: string;
@@ -26,55 +32,56 @@ export function ProgramCard({
   program
 }: ProgramCardProps) {
   const programSummary = getProgramCopy(program);
-  const studyPlanState = program.studyPlan
-    ? "Plan de estudio disponible"
-    : "Información general disponible";
-  const mediaStyle = program.imageUrl
-    ? {
-        backgroundImage: `linear-gradient(180deg, rgba(16, 32, 51, 0.06), rgba(16, 32, 51, 0.24)), url("${program.imageUrl}")`
-      }
-    : undefined;
+  const studyPlanState = program.studyPlan ? "Plan de estudio referencial" : "Información general";
+  const programCode = getProgramCode(program.title);
+  const illustrationUrl = getProgramIllustrationUrl(
+    program.slug,
+    program.title,
+    program.imageUrl
+  );
+  const chips = [
+    program.duration ?? "Duración por confirmar",
+    program.modality ?? "Modalidad por confirmar",
+    studyPlanState
+  ];
 
   return (
     <article className={styles.programCard}>
-      <div
-        aria-hidden="true"
-        className={styles.programCardMedia}
-        style={mediaStyle}
-      >
-        <div className={styles.programCardMediaOverlay}>
-          <p className={styles.programCardEyebrow}>{copy.eyebrow}</p>
-          <span className={styles.programCardMediaBadge}>
-            {program.modality ?? "Modalidad por confirmar"}
-          </span>
-        </div>
+      <div aria-hidden="true" className={styles.programCardMedia}>
+        <img alt="" src={illustrationUrl} />
+      </div>
+
+      <div className={styles.programCardTop}>
+        <span>{copy.eyebrow}</span>
+        <strong className={styles.programCode}>{programCode}</strong>
       </div>
 
       <div className={styles.programCardBody}>
-        <div className={styles.programCardHeader}>
-          <h3 className={styles.programCardTitle}>
-            <Link href={getProgramPath(program.slug)}>{program.title}</Link>
-          </h3>
-          <p className={styles.programCardSupport}>{studyPlanState}</p>
-        </div>
-
+        <p className={styles.programCardMeta}>
+          {program.modality ?? "Modalidad presencial por confirmar"}
+        </p>
+        <h3 className={styles.programCardTitle}>
+          <Link href={getProgramPath(program.slug)}>{program.title}</Link>
+        </h3>
         <p className={styles.programCardSummary}>{programSummary}</p>
 
-        <dl className={styles.programMetaList}>
-          <div className={styles.programMetaItem}>
-            <dt>{copy.durationLabel}</dt>
-            <dd>{program.duration ?? "Por confirmar"}</dd>
-          </div>
-          <div className={styles.programMetaItem}>
-            <dt>{copy.modalityLabel}</dt>
-            <dd>{program.modality ?? "Por confirmar"}</dd>
-          </div>
-        </dl>
+        <div className={styles.programChips}>
+          {chips.map((chip) => (
+            <span key={chip}>{chip}</span>
+          ))}
+        </div>
 
         <div className={styles.programCardFooter}>
-          <p className={styles.programCardFootnote}>
-            Consulta perfil, duración y proceso de admisión de esta especialidad.
-          </p>
+          <dl className={styles.programMetaList}>
+            <div className={styles.programMetaItem}>
+              <dt>{copy.durationLabel}</dt>
+              <dd>{program.duration ?? "Por confirmar"}</dd>
+            </div>
+            <div className={styles.programMetaItem}>
+              <dt>{copy.modalityLabel}</dt>
+              <dd>{program.modality ?? "Por confirmar"}</dd>
+            </div>
+          </dl>
           <Link className={styles.programCardLink} href={getProgramPath(program.slug)}>
             {copy.ctaLabel}
           </Link>
