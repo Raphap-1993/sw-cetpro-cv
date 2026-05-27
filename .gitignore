@@ -26,3 +26,6 @@ output/stitch-export/
 # OS/editor
 .DS_Store
 .vscode/
+
+# Local worktrees
+.worktrees/
