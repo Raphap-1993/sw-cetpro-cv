@@ -113,17 +113,72 @@ model ContentBlock {
   @@index([page, status])
 }
 
+model BlogPost {
+  id             String        @id @default(cuid())
+  slug           String        @unique
+  title          String
+  category       String
+  excerpt        String?
+  body           String
+  coverImageUrl  String?
+  status         PublishStatus @default(DRAFT)
+  publishedAt    DateTime?
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+model PageSeo {
+  id            String   @id @default(cuid())
+  pageKey       String   @unique
+  title         String
+  description   String
+  canonicalUrl  String?
+  ogImageUrl    String?
+  ogTitle       String?
+  ogDescription String?
+  robotsIndex   Boolean  @default(true)
+  robotsFollow  Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model PublicDocument {
+  id               String        @id @default(cuid())
+  slug             String        @unique
+  title            String
+  category         String
+  summary          String?
+  mediaAssetId     String
+  mediaAsset       MediaAsset    @relation(fields: [mediaAssetId], references: [id], onDelete: Restrict)
+  linkedPageKey    String
+  linkedSectionKey String?
+  position         Int           @default(0)
+  status           PublishStatus @default(PUBLISHED)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([mediaAssetId])
+  @@index([linkedPageKey, linkedSectionKey])
+
+  @@index([status, position])
+}
+
 model MediaAsset {
-  id        String         @id @default(cuid())
-  title     String
-  altText   String?
-  url       String         @unique
-  type      MediaAssetType @default(IMAGE)
+  id              String         @id @default(cuid())
+  title           String
+  altText         String?
+  url             String         @unique
+  type            MediaAssetType @default(IMAGE)
   source    MediaAssetSource @default(EXTERNAL_URL)
   storageKey String?       @unique
-  status    PublishStatus  @default(PUBLISHED)
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
+  status          PublishStatus  @default(PUBLISHED)
+  publicDocuments PublicDocument[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 
   @@index([status, type])
 }

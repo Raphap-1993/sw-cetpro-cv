@@ -24,6 +24,8 @@ export type ProgramStatus = "DRAFT" | "PUBLISHED" | "ARCHIVED";
 
 export type ContentStatus = "DRAFT" | "PUBLISHED" | "ARCHIVED";
 
+export type PublishStatus = "DRAFT" | "PUBLISHED" | "ARCHIVED";
+
 export type ContentType = "HERO" | "SECTION" | "CTA" | "TEXT" | "IMAGE" | "FAQ";
 
 export type MediaAssetType = "IMAGE" | "DOCUMENT" | "VIDEO" | "OTHER";
@@ -61,6 +63,90 @@ export type ProgramPayload = {
   imageUrl?: string;
   position?: number;
   status: ProgramStatus;
+};
+
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  excerpt: string | null;
+  body: string;
+  coverImageUrl: string | null;
+  status: PublishStatus;
+  publishedAt: string | null;
+  seoTitle: string | null;
+  seoDescription: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type BlogPostPayload = {
+  title: string;
+  slug: string;
+  category: string;
+  excerpt?: string;
+  body: string;
+  coverImageUrl?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  status: PublishStatus;
+  publishedAt?: string;
+};
+
+export type PageSeo = {
+  id: string;
+  pageKey: string;
+  title: string;
+  description: string;
+  canonicalUrl: string | null;
+  ogImageUrl: string | null;
+  ogTitle: string | null;
+  ogDescription: string | null;
+  robotsIndex: boolean;
+  robotsFollow: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type PageSeoPayload = {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImageUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  robotsIndex: boolean;
+  robotsFollow: boolean;
+};
+
+export type PublicDocument = {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  summary: string | null;
+  url: string;
+  mediaAssetId: string;
+  linkedPageKey: string;
+  linkedSectionKey: string | null;
+  mediaAsset: MediaAsset;
+  position: number;
+  status: PublishStatus;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type PublicDocumentPayload = {
+  title: string;
+  slug: string;
+  category: string;
+  summary?: string;
+  mediaAssetId: string;
+  linkedPageKey: string;
+  linkedSectionKey?: string;
+  position?: number;
+  status: PublishStatus;
 };
 
 export type Lead = {
