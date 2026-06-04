@@ -89,6 +89,9 @@ health_file="$(mktemp)"
 home_file="$(mktemp)"
 catalog_file="$(mktemp)"
 detail_file="$(mktemp)"
+contact_file="$(mktemp)"
+robots_file="$(mktemp)"
+sitemap_file="$(mktemp)"
 program_file="$(mktemp)"
 admin_login_page_file="$(mktemp)"
 login_fail_file="$(mktemp)"
@@ -97,7 +100,8 @@ leads_file="$(mktemp)"
 
 cleanup() {
   rm -f "$health_file" "$home_file" "$catalog_file" "$detail_file" "$program_file" \
-    "$admin_login_page_file" "$login_fail_file" "$login_ok_file" "$leads_file"
+    "$contact_file" "$robots_file" "$sitemap_file" "$admin_login_page_file" \
+    "$login_fail_file" "$login_ok_file" "$leads_file"
 }
 trap cleanup EXIT
 
@@ -113,16 +117,37 @@ EOF
 curl -fsS "$WEB_BASE/" > "$home_file"
 curl -fsS "$WEB_BASE/programas" > "$catalog_file"
 curl -fsS "$WEB_BASE/programas/$PROGRAM_SLUG" > "$detail_file"
+curl -fsS "$WEB_BASE/contacto" > "$contact_file"
+curl -fsS "$WEB_BASE/robots.txt" > "$robots_file"
+curl -fsS "$WEB_BASE/sitemap.xml" > "$sitemap_file"
 curl -fsS "$WEB_BASE/admin/login" > "$admin_login_page_file"
 
-node - "$home_file" "$catalog_file" "$detail_file" "$admin_login_page_file" <<'EOF'
+node - "$home_file" "$catalog_file" "$detail_file" "$contact_file" "$robots_file" "$sitemap_file" "$admin_login_page_file" <<'EOF'
 const fs = require("node:fs");
-const files = process.argv.slice(2);
-for (const file of files) {
+const htmlFiles = process.argv.slice(2, 6);
+for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
   if (/wp-content|wordpress/i.test(html)) {
     throw new Error(`Legacy WordPress reference found in ${file}`);
   }
+}
+
+const homeHtml = fs.readFileSync(process.argv[2], "utf8");
+const detailHtml = fs.readFileSync(process.argv[4], "utf8");
+const contactHtml = fs.readFileSync(process.argv[5], "utf8");
+const robots = fs.readFileSync(process.argv[6], "utf8");
+const sitemap = fs.readFileSync(process.argv[7], "utf8");
+
+if (!/¿Necesitas orientación\?|Escr[ií]benos por WhatsApp|Déjanos tus datos y te orientamos/i.test(homeHtml + detailHtml + contactHtml)) {
+  throw new Error("Public contact CTA copy is missing from the public HTML");
+}
+
+if (!/Sitemap:/i.test(robots)) {
+  throw new Error("robots.txt does not reference sitemap.xml");
+}
+
+if (!/\/contacto/.test(sitemap)) {
+  throw new Error("sitemap.xml is missing /contacto");
 }
 EOF
 

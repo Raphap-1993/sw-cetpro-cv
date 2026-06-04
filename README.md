@@ -48,6 +48,9 @@ URLs locales:
 `API_INTERNAL_URL` define la URL servidor-servidor que usa Next.js para
 reenviar formularios publicos al API NestJS.
 
+`NEXT_PUBLIC_WHATSAPP_URL` habilita el CTA flotante publico para consultas
+rapidas de estudiantes, familias y publico general.
+
 ## Operacion productiva
 
 El gate vigente asume despliegue en VPS Hestia sin Docker, con dos procesos
