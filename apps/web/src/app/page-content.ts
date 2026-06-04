@@ -47,9 +47,9 @@ const pageFallbacks: Record<string, GenericPageContent> = {
       mediaUrl: null
     },
     "hero-note": {
-      title: "Atención institucional",
-      body: "Pucallpa, Ucayali",
-      mediaUrl: "/brand/hero-campus-official.jpg"
+      title: "Señal institucional verificada",
+      body: "Pucallpa, Ucayali · evidencia pública 2026",
+      mediaUrl: "/brand/official-agreement-2026-04-21.jpg"
     },
     "section-main": {
       title: "Propuesta educativa",
@@ -100,7 +100,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     "hero-note": {
       title: "Antes de iniciar",
       body: "Datos de contacto y programa de interés",
-      mediaUrl: "/brand/logo-cesar-vallejo-blanco.png"
+      mediaUrl: "/brand/official-activity-barbering-2026-04-21.jpg"
     },
     "section-main": {
       title: "Requisitos para la orientación",
@@ -121,6 +121,57 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "cta-secondary": {
       title: "Ver programas",
+      body: "",
+      mediaUrl: null
+    }
+  },
+  contacto: {
+    seo: {
+      title: "Contacto | CETPRO Cesar Vallejo de Pucallpa",
+      body:
+        "Escríbenos por WhatsApp o déjanos tus datos para recibir orientación sobre carreras técnicas presenciales en Pucallpa, Ucayali.",
+      mediaUrl: null
+    },
+    "hero-eyebrow": {
+      title: "Contacto",
+      body: "",
+      mediaUrl: null
+    },
+    "hero-main": {
+      title: "Estamos para orientarte sobre programas, vacantes y admisión.",
+      body: "",
+      mediaUrl: null
+    },
+    "hero-body": {
+      title: "",
+      body:
+        "Si tienes dudas sobre una carrera o quieres saber cómo postular, puedes escribirnos por WhatsApp o dejarnos tus datos para comunicarnos contigo.",
+      mediaUrl: null
+    },
+    "hero-note": {
+      title: "Atención inicial",
+      body: "Pucallpa, Ucayali · orientación para estudiantes y familias",
+      mediaUrl: null
+    },
+    "section-main": {
+      title: "Canales de atención",
+      body:
+        "Elige el canal que te resulte más cómodo para resolver dudas sobre carreras, horarios, vacantes o proceso de admisión.",
+      mediaUrl: null
+    },
+    "section-secondary": {
+      title: "Qué puedes consultar",
+      body:
+        "Podemos orientarte sobre programas presenciales, requisitos, turnos y el siguiente paso para iniciar tu proceso.",
+      mediaUrl: null
+    },
+    "cta-primary": {
+      title: "Ver programas",
+      body: "",
+      mediaUrl: null
+    },
+    "cta-secondary": {
+      title: "Ir a admisión",
       body: "",
       mediaUrl: null
     }
@@ -151,8 +202,8 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     },
     "hero-note": {
       title: "Consulta documental",
-      body: "Información institucional de acceso público",
-      mediaUrl: "/brand/logo-cesar-vallejo-blanco.png"
+      body: "Información institucional y señales públicas verificables",
+      mediaUrl: "/brand/official-agreement-2026-04-21.jpg"
     },
     "section-main": {
       title: "Documentos institucionales",
@@ -204,7 +255,7 @@ const pageFallbacks: Record<string, GenericPageContent> = {
     "hero-note": {
       title: "Registro de reclamos",
       body: "Datos de identificación y medio de contacto",
-      mediaUrl: "/brand/logo-cesar-vallejo-blanco.png"
+      mediaUrl: "/brand/official-agreement-2026-04-21.jpg"
     },
     "section-main": {
       title: "Información para el registro",

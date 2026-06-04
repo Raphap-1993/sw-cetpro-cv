@@ -6,7 +6,8 @@ import styles from "@/app/public-site.module.css";
 import {
   getPublicVisual,
   institutionAddress,
-  institutionDistrict
+  institutionDistrict,
+  publicContactHref
 } from "@/app/public-site";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function InstitutionPage() {
   const content = await getPageContent("institucion");
   const heroMediaUrl = getPublicVisual("institution");
-  const heroMediaKind = "illustration";
+  const heroMediaKind = "photo";
   const pillars = [
     {
       title: "Formación aplicada",
@@ -67,7 +68,7 @@ export default async function InstitutionPage() {
     {
       title: "Atención al estudiante",
       body:
-        "La institución pone a disposición información sobre programas, requisitos de admisión y documentos institucionales para que cada consulta llegue con contexto suficiente."
+        "La institución pone a disposición información sobre programas, requisitos de admisión y contacto inicial para que cada consulta llegue con contexto suficiente."
     }
   ];
 
@@ -95,8 +96,8 @@ export default async function InstitutionPage() {
               <Link className={styles.primaryAction} href="/programas">
                 {content["cta-primary"].title}
               </Link>
-              <Link className={styles.secondaryAction} href="/admision">
-                {content["cta-secondary"].title}
+              <Link className={styles.secondaryAction} href={publicContactHref}>
+                Hablar con orientación
               </Link>
             </div>
           </div>
@@ -162,6 +163,7 @@ export default async function InstitutionPage() {
             <h2>{content["section-secondary"].title}</h2>
             <ul className={styles.noteList}>
               <li>Programas para revisar la oferta académica y las fichas por especialidad.</li>
+              <li>Contacto para resolver dudas de estudiantes, familias y público en general.</li>
               <li>Admisión para conocer requisitos, pasos y orientación institucional.</li>
               <li>Gestión institucional para consultar documentos e información pública.</li>
               <li>Libro de reclamaciones para atención al usuario y seguimiento de reclamos.</li>

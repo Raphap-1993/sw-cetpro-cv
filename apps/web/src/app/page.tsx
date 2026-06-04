@@ -19,7 +19,8 @@ import styles from "./public-site.module.css";
 import {
   getFeaturedManagementDocuments,
   institutionAddress,
-  institutionDistrict
+  institutionDistrict,
+  publicContactHref
 } from "./public-site";
 
 export const dynamic = "force-dynamic";
@@ -60,22 +61,24 @@ type HomeContentPayload = {
 const defaultHomeHeroSlides: HomeHeroSlide[] = [
   {
     id: "home-slide-01",
-    title: "Recorrido institucional",
+    title: "Articulación institucional y trabajo con aliados",
     body:
-      "Sede, programas y orientación institucional reunidos en una sola experiencia pública.",
-    mediaUrl: "/brand/home-hero-temp-01.jpg"
+      "Registro público del CETPRO César Vallejo difundido por el Gobierno Regional de Ucayali el 21 de abril de 2026.",
+    mediaUrl: "/brand/official-agreement-2026-04-21.jpg"
   },
   {
     id: "home-slide-02",
-    title: "Aprendizaje presencial",
-    body: "Aulas activas, atención cercana y formación orientada a la práctica.",
-    mediaUrl: "/brand/home-hero-temp-02.jpg"
+    title: "Capacitación técnica con dotación de materiales",
+    body:
+      "Actividad formativa publicada en una fuente pública regional con presencia institucional verificable del CETPRO.",
+    mediaUrl: "/brand/official-activity-electrical-2026-04-21.jpg"
   },
   {
     id: "home-slide-03",
-    title: "Práctica guiada",
-    body: "Talleres y acompañamiento docente para fortalecer competencias laborales.",
-    mediaUrl: "/brand/home-hero-temp-03.jpg"
+    title: "Acompañamiento formativo en cohortes reales",
+    body:
+      "Evidencia pública de formación técnica y seguimiento institucional en abril de 2026.",
+    mediaUrl: "/brand/official-activity-barbering-2026-04-21.jpg"
   }
 ];
 
@@ -87,9 +90,9 @@ const fallbackHomeContent: Record<HomeContentKey, HomeContentEntry> = {
     mediaUrl: defaultHomeHeroSlides[0].mediaUrl
   },
   "intro-main": {
-    title: "Información clara para elegir, postular y verificar a la institución.",
+    title: "Articulación institucional y trabajo con aliados del entorno.",
     body:
-      "Programas, admisión, gestión institucional y canales formales reunidos en un portal público con mejor jerarquía y lectura.",
+      "La presencia pública del CETPRO ya se apoya en evidencia institucional verificable y no en imágenes genéricas o stock.",
     mediaUrl: null
   },
   "programs-header": {
@@ -339,17 +342,17 @@ export default async function Home() {
     {
       title: "Elige tu programa",
       copy:
-        "Revisa las especialidades disponibles y define cuál deseas estudiar."
+        "Revisa las carreras técnicas presenciales disponibles en Pucallpa y define cuál deseas estudiar."
     },
     {
       title: "Prepara tus datos",
       copy:
-        "Ten a la mano tu documento de identidad, tus datos de contacto y tus consultas."
+        "Ten a la mano tu documento de identidad, tus datos de contacto y tus consultas sobre turnos, vacantes o requisitos."
     },
     {
       title: "Solicita orientación",
       copy:
-        "Completa el formulario para recibir información sobre requisitos, vacantes y horarios."
+        "Completa el formulario o escríbenos por contacto para recibir información clara sobre requisitos, vacantes y horarios."
     }
   ];
   return (
@@ -373,6 +376,9 @@ export default async function Home() {
                 </Link>
                 <Link className={styles.secondaryAction} href="/admision">
                   Revisar admisión
+                </Link>
+                <Link className={styles.secondaryAction} href={publicContactHref}>
+                  Hablar con orientación
                 </Link>
               </div>
             </div>
@@ -446,9 +452,14 @@ export default async function Home() {
                 <li>Información sobre requisitos y vacantes.</li>
                 <li>Canales formales para el seguimiento de tu consulta.</li>
               </ul>
-              <Link className={styles.panelAction} href="/admision">
-                Solicitar orientación
-              </Link>
+              <div className={styles.actionRow}>
+                <Link className={styles.panelAction} href="/admision">
+                  Solicitar orientación
+                </Link>
+                <Link className={styles.inlineAction} href={publicContactHref}>
+                  Ir a contacto
+                </Link>
+              </div>
             </aside>
           </div>
         </div>

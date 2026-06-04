@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import pageStyles from "@/app/public-site.module.css";
-import { getPublicVisual } from "@/app/public-site";
+import { getPublicVisual, publicContactHref } from "@/app/public-site";
 import { ProgramCard, type ProgramCardCopy } from "./ProgramCard";
 import { getProgramsCatalogContent } from "./content";
 import styles from "./programs.module.css";
@@ -28,7 +28,7 @@ export default async function ProgramsCatalogPage() {
     getProgramsCatalogContent()
   ]);
   const heroMediaUrl = getPublicVisual("programs");
-  const heroMediaKind = "illustration";
+  const heroMediaKind = "photo";
   const cardCopy: ProgramCardCopy = {
     eyebrow: content["card-eyebrow"].title,
     durationLabel: content["card-duration-label"].title,
@@ -74,8 +74,11 @@ export default async function ProgramsCatalogPage() {
               <a className={pageStyles.primaryAction} href="#catalogo">
                 {content["hero-primary-cta"].title}
               </a>
-              <Link className={pageStyles.secondaryAction} href="/admision">
+              <Link className={pageStyles.secondaryAction} href={publicContactHref}>
                 {content["hero-secondary-cta"].title}
+              </Link>
+              <Link className={pageStyles.secondaryAction} href="/admision">
+                Ir a admisión
               </Link>
             </div>
           </div>
@@ -153,12 +156,17 @@ export default async function ProgramsCatalogPage() {
               <h2>Cuando identifiques un programa de interés, continúa con el proceso de admisión.</h2>
               <p>
                 El equipo administrativo atiende consultas sobre vacantes, turnos
-                y requisitos para cada especialidad.
+                y requisitos para cada especialidad presencial en Pucallpa, Ucayali.
               </p>
             </div>
-            <Link className={pageStyles.primaryAction} href="/admision">
-              Proceso de admisión
-            </Link>
+            <div className={pageStyles.actionRow}>
+              <Link className={pageStyles.primaryAction} href="/admision">
+                Proceso de admisión
+              </Link>
+              <Link className={pageStyles.secondaryAction} href={publicContactHref}>
+                Ir a contacto
+              </Link>
+            </div>
           </article>
         </div>
       </section>

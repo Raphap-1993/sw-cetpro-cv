@@ -70,7 +70,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
   seo: {
     title: "Programas | CETPRO Cesar Vallejo",
     body:
-      "Explora la oferta académica del CETPRO Cesar Vallejo de Pucallpa y conoce la información general de cada programa.",
+      "Explora carreras técnicas presenciales en Pucallpa, Ucayali, como estilismo, apoyo administrativo, panificación y programación de sistemas de información en el CETPRO Cesar Vallejo.",
     mediaUrl: null
   },
   "hero-back-link": {
@@ -87,7 +87,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     title:
       "Especialidades técnicas con formación presencial y orientación práctica.",
     body:
-      "Conoce la duración, modalidad y enfoque general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo.",
+      "Conoce la duración, modalidad y enfoque general de cada programa para elegir la alternativa que mejor se ajuste a tu interés formativo en Pucallpa, Ucayali.",
     mediaUrl: null
   },
   "hero-primary-cta": {
@@ -96,7 +96,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     mediaUrl: null
   },
   "hero-secondary-cta": {
-    title: "Solicitar información",
+    title: "Hablar con orientación",
     body: "",
     mediaUrl: null
   },
@@ -109,7 +109,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
     title: "Programas con información general para orientar tu elección",
     body:
       "Cada ficha presenta duración, modalidad, descripción general y acceso directo al proceso de admisión.",
-    mediaUrl: "/brand/hero-campus-official.jpg"
+    mediaUrl: "/brand/official-activity-electrical-2026-04-21.jpg"
   },
   "hero-metric-programs": {
     title: "Programas",
@@ -134,7 +134,7 @@ const fallbackProgramsCatalogContent: ProgramsCatalogContent = {
   "catalog-section": {
     title: "Explora la oferta académica vigente",
     body:
-      "Revisa especialidades orientadas a servicios, tecnología, confección, logística y producción con una lectura comparativa antes de pasar al detalle.",
+      "Revisa especialidades técnicas presenciales del CETPRO Cesar Vallejo, compara opciones y recibe orientación si buscas estudiar en Pucallpa o desde otra parte del país.",
     mediaUrl: null
   },
   "empty-state": {
@@ -169,7 +169,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   seo: {
     title: "CETPRO Cesar Vallejo",
     body:
-      "Consulta la ficha del programa, revisa su orientación general y continúa con el proceso de admisión.",
+      "Consulta la ficha del programa, revisa su orientación general y recibe orientación para continuar con admisión en Pucallpa, Ucayali.",
     mediaUrl: null
   },
   "hero-eyebrow": {
@@ -178,12 +178,12 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
     mediaUrl: null
   },
   "hero-primary-cta": {
-    title: "Solicitar información",
+    title: "Ir a admisión",
     body: "",
     mediaUrl: null
   },
   "hero-secondary-cta": {
-    title: "Ver catálogo completo",
+    title: "Hablar con orientación",
     body: "",
     mediaUrl: null
   },
@@ -195,7 +195,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   "hero-caption": {
     title: "Información general del programa.",
     body:
-      "Consulta la descripción, duración, modalidad y orientación de admisión de esta especialidad.",
+      "Consulta la descripción, duración, modalidad y orientación de admisión de esta especialidad presencial en Pucallpa, Ucayali.",
     mediaUrl: null
   },
   "metric-duration-label": {
@@ -269,7 +269,7 @@ const fallbackProgramDetailContent: ProgramDetailContent = {
   "contact-section": {
     title: "",
     body:
-      "Déjanos tu nombre, celular y correo para recibir orientación sobre esta especialidad.",
+      "Déjanos tu nombre, celular y correo para recibir orientación sobre esta especialidad si eres estudiante, padre de familia o público en general.",
     mediaUrl: null
   },
   "not-found-eyebrow": {

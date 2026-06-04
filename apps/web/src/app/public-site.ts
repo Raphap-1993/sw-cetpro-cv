@@ -16,6 +16,7 @@ export const institutionAddress = "Jr. Comandante Barrera 458, Pucallpa";
 export const institutionDistrict = "Pucallpa, Ucayali";
 export const publicNotesHref = "http://190.119.37.28:8085/apicetpro/#/login";
 export const publicNotesLabel = "Mis Notas";
+export const publicContactHref = "/contacto";
 
 export const publicPrimaryNav: PublicNavItem[] = [
   { href: "/institucion", label: "Institución" },
@@ -122,12 +123,12 @@ export type PublicVisualKey =
   | "complaints";
 
 const publicVisuals: Record<PublicVisualKey, string> = {
-  home: "/brand/hero-campus.svg",
-  institution: "/brand/hero-campus.svg",
-  admission: "/brand/hero-students.svg",
-  programs: "/brand/program-programacion-sistemas.svg",
-  management: "/brand/program-apoyo-administrativo.svg",
-  complaints: "/brand/program-apoyo-administrativo.svg"
+  home: "/brand/official-agreement-2026-04-21.jpg",
+  institution: "/brand/official-agreement-2026-04-21.jpg",
+  admission: "/brand/official-activity-barbering-2026-04-21.jpg",
+  programs: "/brand/official-activity-electrical-2026-04-21.jpg",
+  management: "/brand/official-agreement-2026-04-21.jpg",
+  complaints: "/brand/official-agreement-2026-04-21.jpg"
 };
 
 export function getPublicVisual(key: PublicVisualKey) {
@@ -144,6 +145,11 @@ export function getFeaturedManagementDocuments() {
 
 export function getOfficialComplaintBookUrl() {
   const value = process.env.NEXT_PUBLIC_OFFICIAL_COMPLAINT_BOOK_URL?.trim();
+  return value ? value : null;
+}
+
+export function getPublicWhatsAppHref() {
+  const value = process.env.NEXT_PUBLIC_WHATSAPP_URL?.trim();
   return value ? value : null;
 }
 

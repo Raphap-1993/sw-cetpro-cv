@@ -248,6 +248,11 @@ function revalidateSeoRoutes(pageKey: string) {
     return;
   }
 
+  if (normalized === "contacto") {
+    revalidatePath("/contacto");
+    return;
+  }
+
   if (normalized === "blog") {
     revalidatePath("/blog");
     return;
@@ -354,9 +359,6 @@ function getBlogPostPayload(formData: FormData): BlogPostPayload {
 }
 
 function getPageSeoPayload(formData: FormData): PageSeoPayload {
-  const hasRobotsIndex = formData.has("robotsIndex");
-  const hasRobotsFollow = formData.has("robotsFollow");
-
   return {
     title: requireValue(readText(formData, "title"), "El titulo es obligatorio."),
     description: requireValue(
@@ -367,19 +369,12 @@ function getPageSeoPayload(formData: FormData): PageSeoPayload {
     ogImageUrl: optionalText(formData, "ogImageUrl"),
     ogTitle: optionalText(formData, "ogTitle"),
     ogDescription: optionalText(formData, "ogDescription"),
-    robotsIndex: hasRobotsIndex
-      ? readBoolean(formData, "robotsIndex")
-      : !readBoolean(formData, "noIndex"),
-    robotsFollow: hasRobotsFollow
-      ? readBoolean(formData, "robotsFollow")
-      : !readBoolean(formData, "noFollow")
+    robotsIndex: readBoolean(formData, "robotsIndex"),
+    robotsFollow: readBoolean(formData, "robotsFollow")
   };
 }
 
 function getPublicDocumentPayload(formData: FormData): PublicDocumentPayload {
-  const linkedPageKey =
-    optionalText(formData, "linkedPageKey") ?? optionalText(formData, "pageKey");
-
   return {
     title: requireValue(readText(formData, "title"), "El titulo es obligatorio."),
     slug: requireValue(readText(formData, "slug"), "El slug es obligatorio."),
@@ -393,7 +388,7 @@ function getPublicDocumentPayload(formData: FormData): PublicDocumentPayload {
       "El documento debe vincularse a un asset de media."
     ),
     linkedPageKey: requireValue(
-      linkedPageKey ?? "",
+      readText(formData, "linkedPageKey"),
       "La pagina vinculada es obligatoria."
     ),
     linkedSectionKey: optionalText(formData, "linkedSectionKey"),

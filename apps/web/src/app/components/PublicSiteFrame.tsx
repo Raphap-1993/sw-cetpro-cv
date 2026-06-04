@@ -5,6 +5,7 @@ import { getSiteContent } from "../site-content";
 import {
   institutionAddress,
   publicNotesHref,
+  publicContactHref,
   publicNotesLabel,
   publicPrimaryNav,
   type PublicNavItem
@@ -21,7 +22,7 @@ type PublicSiteFrameProps = {
 export async function PublicSiteFrame(props: PublicSiteFrameProps) {
   const {
     children,
-    contactHref = "/admision",
+    contactHref = publicContactHref,
     navItems = publicPrimaryNav
   } = props;
   const siteContent = await getSiteContent();

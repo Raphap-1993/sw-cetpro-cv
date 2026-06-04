@@ -4,7 +4,7 @@ import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { LeadForm } from "@/app/components/LeadForm";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
-import { getPublicVisual } from "@/app/public-site";
+import { getPublicVisual, publicContactHref } from "@/app/public-site";
 import { listPublishedPrograms } from "@/app/programas/programs";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +41,7 @@ export default async function AdmissionPage({
   const selectedProgram =
     programs.find((program) => program.slug === requestedSlug) ?? null;
   const heroMediaUrl = getPublicVisual("admission");
-  const heroMediaKind = "illustration";
+  const heroMediaKind = "photo";
   const steps = [
     {
       title: "Revisa la oferta académica",
@@ -106,6 +106,9 @@ export default async function AdmissionPage({
             <div className={styles.actionRow} data-hero-item>
               <Link className={styles.secondaryAction} href="/programas">
                 {content["cta-secondary"].title}
+              </Link>
+              <Link className={styles.secondaryAction} href={publicContactHref}>
+                Hablar con orientación
               </Link>
             </div>
           </div>
@@ -184,6 +187,11 @@ export default async function AdmissionPage({
                 Solicitud asociada a {selectedProgram.title}.
               </div>
             ) : null}
+            <div className={styles.actionRow}>
+              <Link className={styles.inlineAction} href={publicContactHref}>
+                Ir a contacto
+              </Link>
+            </div>
           </aside>
         </div>
       </section>

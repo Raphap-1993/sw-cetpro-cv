@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import pageStyles from "@/app/public-site.module.css";
-import { buildAdmissionHref } from "@/app/public-site";
+import { buildAdmissionHref, publicContactHref } from "@/app/public-site";
 import { ProgramCard, type ProgramCardCopy } from "../ProgramCard";
 import { getProgramDetailContent, getProgramsCatalogContent } from "../content";
 import styles from "../programs.module.css";
@@ -113,7 +113,7 @@ export default async function ProgramDetailPage({
               <Link className={pageStyles.primaryAction} href={admissionHref}>
                 {content["hero-primary-cta"].title}
               </Link>
-              <Link className={pageStyles.secondaryAction} href="/programas">
+              <Link className={pageStyles.secondaryAction} href={publicContactHref}>
                 {content["hero-secondary-cta"].title}
               </Link>
             </div>
@@ -221,6 +221,29 @@ export default async function ProgramDetailPage({
               <p className={styles.emptyCopy}>{content["study-plan-empty"].body}</p>
             )}
           </article>
+        </div>
+      </section>
+
+      <section className={styles.detailSection}>
+        <div className={`shell ${pageStyles.detailGrid}`}>
+          <article className={styles.detailCard} data-reveal>
+            <p className={pageStyles.eyebrow}>{content["contact-eyebrow"].title}</p>
+            <h2>¿Tienes dudas sobre este programa?</h2>
+            <p>{content["contact-section"].body}</p>
+          </article>
+
+          <aside className={styles.detailCard} data-reveal>
+            <p className={pageStyles.eyebrow}>Siguiente paso</p>
+            <h2>Elige cómo quieres continuar.</h2>
+            <div className={pageStyles.actionRow}>
+              <Link className={pageStyles.primaryAction} href={admissionHref}>
+                Continuar con admisión
+              </Link>
+              <Link className={pageStyles.secondaryAction} href={publicContactHref}>
+                Ir a contacto
+              </Link>
+            </div>
+          </aside>
         </div>
       </section>
 
