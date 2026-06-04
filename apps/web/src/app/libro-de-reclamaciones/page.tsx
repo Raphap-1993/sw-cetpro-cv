@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
+import { buildPageMetadata } from "@/lib/public-seo";
 import {
   getOfficialComplaintBookUrl,
   getPublicVisual
@@ -13,20 +14,20 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPageContent("libro-de-reclamaciones");
 
-  return {
-    title: content.seo.title,
-    description: content.seo.body,
-    alternates: {
-      canonical: "/libro-de-reclamaciones"
-    }
-  };
+  return buildPageMetadata({
+    pageKey: "libro-de-reclamaciones",
+    fallbackTitle: content.seo.title,
+    fallbackDescription: content.seo.body,
+    canonicalPath: "/libro-de-reclamaciones",
+    fallbackOgImageUrl: getPublicVisual("complaints")
+  });
 }
 
 export default async function ComplaintBookPage() {
   const content = await getPageContent("libro-de-reclamaciones");
   const officialComplaintBookUrl = getOfficialComplaintBookUrl();
   const heroMediaUrl = getPublicVisual("complaints");
-  const heroMediaKind = "illustration";
+  const heroMediaKind = "photo";
   const requiredData = [
     "Nombre y documento de identidad del usuario.",
     "Descripción clara del hecho, canal o sede donde ocurrió.",

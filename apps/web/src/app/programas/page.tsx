@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import pageStyles from "@/app/public-site.module.css";
 import { getPublicVisual, publicContactHref } from "@/app/public-site";
+import { buildPageMetadata } from "@/lib/public-seo";
 import { ProgramCard, type ProgramCardCopy } from "./ProgramCard";
 import { getProgramsCatalogContent } from "./content";
 import styles from "./programs.module.css";
@@ -13,13 +14,13 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getProgramsCatalogContent();
 
-  return {
-    title: content.seo.title,
-    description: content.seo.body,
-    alternates: {
-      canonical: "/programas"
-    }
-  };
+  return buildPageMetadata({
+    pageKey: "programas",
+    fallbackTitle: content.seo.title,
+    fallbackDescription: content.seo.body,
+    canonicalPath: "/programas",
+    fallbackOgImageUrl: getPublicVisual("programs")
+  });
 }
 
 export default async function ProgramsCatalogPage() {

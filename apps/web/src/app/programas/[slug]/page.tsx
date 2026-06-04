@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import pageStyles from "@/app/public-site.module.css";
 import { buildAdmissionHref, publicContactHref } from "@/app/public-site";
+import { buildPageMetadata } from "@/lib/public-seo";
 import { ProgramCard, type ProgramCardCopy } from "../ProgramCard";
 import { getProgramDetailContent, getProgramsCatalogContent } from "../content";
 import styles from "../programs.module.css";
@@ -31,22 +32,29 @@ export async function generateMetadata({
   ]);
 
   if (!program) {
-    return {
-      title: content["not-found"].title,
-      description: content["not-found"].body
-    };
+    return buildPageMetadata({
+      pageKey: "program-detail",
+      fallbackTitle: content["not-found"].title,
+      fallbackDescription: content["not-found"].body,
+      canonicalPath: `/programas/${slug}`
+    });
   }
 
   const title = `${program.title} | ${content.seo.title}`;
   const description = getProgramCopy(program) || content.seo.body;
+  const ogImageUrl = getProgramIllustrationUrl(
+    program.slug,
+    program.title,
+    program.imageUrl
+  );
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/programas/${slug}`
-    }
-  };
+  return buildPageMetadata({
+    pageKey: "program-detail",
+    fallbackTitle: title,
+    fallbackDescription: description,
+    canonicalPath: `/programas/${slug}`,
+    fallbackOgImageUrl: ogImageUrl
+  });
 }
 
 export default async function ProgramDetailPage({

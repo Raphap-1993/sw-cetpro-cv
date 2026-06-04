@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
+import { buildPageMetadata } from "@/lib/public-seo";
 import { getPublicVisual, managementDocuments } from "@/app/public-site";
 
 export const dynamic = "force-dynamic";
@@ -10,19 +11,19 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPageContent("gestion-institucional");
 
-  return {
-    title: content.seo.title,
-    description: content.seo.body,
-    alternates: {
-      canonical: "/gestion-institucional"
-    }
-  };
+  return buildPageMetadata({
+    pageKey: "gestion-institucional",
+    fallbackTitle: content.seo.title,
+    fallbackDescription: content.seo.body,
+    canonicalPath: "/gestion-institucional",
+    fallbackOgImageUrl: getPublicVisual("management")
+  });
 }
 
 export default async function ManagementPage() {
   const content = await getPageContent("gestion-institucional");
   const heroMediaUrl = getPublicVisual("management");
-  const heroMediaKind = "illustration";
+  const heroMediaKind = "photo";
   const keyNotes = [
     "Documentos de consulta para estudiantes, familias y comunidad educativa.",
     "Información preparada para revisión y verificación institucional.",

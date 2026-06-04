@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
+import { institutionAddress } from "./public-site";
 import { getSiteContent } from "./site-content";
 
 const publicSans = Sora({
@@ -23,6 +24,23 @@ function getMetadataBase() {
   }
 }
 
+function buildEducationalOrganizationJsonLd(siteName: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: siteName,
+    url: getMetadataBase()?.toString() ?? "/",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: institutionAddress,
+      addressLocality: "Pucallpa",
+      addressRegion: "Ucayali",
+      addressCountry: "PE"
+    },
+    areaServed: ["Pucallpa", "Ucayali", "Peru"]
+  };
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const siteContent = await getSiteContent();
 
@@ -33,14 +51,23 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteContent = await getSiteContent();
+  const siteName = siteContent["default-title"].title || "CETPRO Cesar Vallejo";
+
   return (
     <html lang="es">
       <body className={publicSans.variable}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(buildEducationalOrganizationJsonLd(siteName))
+          }}
+          type="application/ld+json"
+        />
         {children}
       </body>
     </html>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { listPageContent, type PublicContentBlock } from "@/lib/public-data";
+import { buildPageMetadata } from "@/lib/public-seo";
 import {
   HomeProgramsCarousel,
   type HomeProgramCarouselItem
@@ -25,15 +26,15 @@ import {
 
 export const dynamic = "force-dynamic";
 
-export function generateMetadata(): Metadata {
-  return {
-    title: "CETPRO Cesar Vallejo | Formación técnica presencial en Pucallpa",
-    description:
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata({
+    pageKey: "home",
+    fallbackTitle: "CETPRO Cesar Vallejo | Formación técnica presencial en Pucallpa",
+    fallbackDescription:
       "Conoce la oferta académica, el proceso de admisión y la información institucional del CETPRO Cesar Vallejo de Pucallpa.",
-    alternates: {
-      canonical: "/"
-    }
-  };
+    canonicalPath: "/",
+    fallbackOgImageUrl: defaultHomeHeroSlides[0].mediaUrl
+  });
 }
 
 type HomeContentKey =

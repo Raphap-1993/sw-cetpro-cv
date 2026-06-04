@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
+import { buildPageMetadata } from "@/lib/public-seo";
 import {
   getPublicVisual,
   institutionAddress,
@@ -15,13 +16,13 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPageContent("institucion");
 
-  return {
-    title: content.seo.title,
-    description: content.seo.body,
-    alternates: {
-      canonical: "/institucion"
-    }
-  };
+  return buildPageMetadata({
+    pageKey: "institucion",
+    fallbackTitle: content.seo.title,
+    fallbackDescription: content.seo.body,
+    canonicalPath: "/institucion",
+    fallbackOgImageUrl: getPublicVisual("institution")
+  });
 }
 
 export default async function InstitutionPage() {

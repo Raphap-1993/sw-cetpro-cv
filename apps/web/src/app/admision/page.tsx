@@ -4,6 +4,7 @@ import { PublicSiteFrame } from "@/app/components/PublicSiteFrame";
 import { LeadForm } from "@/app/components/LeadForm";
 import { getPageContent } from "@/app/page-content";
 import styles from "@/app/public-site.module.css";
+import { buildPageMetadata } from "@/lib/public-seo";
 import { getPublicVisual, publicContactHref } from "@/app/public-site";
 import { listPublishedPrograms } from "@/app/programas/programs";
 
@@ -20,13 +21,13 @@ function getSearchValue(value?: string | string[]) {
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPageContent("admision");
 
-  return {
-    title: content.seo.title,
-    description: content.seo.body,
-    alternates: {
-      canonical: "/admision"
-    }
-  };
+  return buildPageMetadata({
+    pageKey: "admision",
+    fallbackTitle: content.seo.title,
+    fallbackDescription: content.seo.body,
+    canonicalPath: "/admision",
+    fallbackOgImageUrl: getPublicVisual("admission")
+  });
 }
 
 export default async function AdmissionPage({
