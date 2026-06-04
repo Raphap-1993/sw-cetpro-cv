@@ -12,6 +12,12 @@ export class SeoService {
     });
   }
 
+  findPublicByPageKey(pageKey: string) {
+    return this.prisma.pageSeo.findUnique({
+      where: { pageKey }
+    });
+  }
+
   upsert(pageKey: string, dto: UpsertPageSeoDto) {
     return this.prisma.pageSeo.upsert({
       where: { pageKey },

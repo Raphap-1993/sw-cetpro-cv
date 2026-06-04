@@ -24,6 +24,18 @@ export type PublicContentBlock = {
   title: string | null;
 };
 
+export type PublicPageSeo = {
+  pageKey: string;
+  title: string;
+  description: string;
+  canonicalUrl: string | null;
+  ogImageUrl: string | null;
+  ogTitle: string | null;
+  ogDescription: string | null;
+  robotsIndex: boolean;
+  robotsFollow: boolean;
+};
+
 function getApiUrl() {
   return (
     process.env.API_INTERNAL_URL ??
@@ -71,4 +83,16 @@ export async function listPageContent(page: string) {
   );
 
   return Array.isArray(data) ? data : [];
+}
+
+export async function getPublicPageSeo(pageKey: string) {
+  const data = await requestPublicJson<PublicPageSeo>(
+    `/seo/public/${encodeURIComponent(pageKey)}`
+  );
+
+  if (!data || typeof data !== "object" || data.pageKey !== pageKey) {
+    return null;
+  }
+
+  return data;
 }

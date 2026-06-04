@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Put } from "@nestjs/common";
+import { Public } from "../common/decorators/public.decorator";
 import { Roles } from "../common/decorators/roles.decorator";
 import { SeoService } from "./seo.service";
 import { UpsertPageSeoDto } from "./dto/upsert-page-seo.dto";
@@ -11,6 +12,12 @@ export class SeoController {
   @Get()
   findAll() {
     return this.seoService.findAll();
+  }
+
+  @Public()
+  @Get("public/:pageKey")
+  findPublicByPageKey(@Param("pageKey") pageKey: string) {
+    return this.seoService.findPublicByPageKey(pageKey);
   }
 
   @Roles("SUPER_ADMIN", "CONTENT_EDITOR")

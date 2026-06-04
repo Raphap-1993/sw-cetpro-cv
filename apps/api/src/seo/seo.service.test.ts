@@ -38,3 +38,25 @@ test("seo service upserts page metadata by page key", async () => {
     false
   );
 });
+
+test("seo service returns a public record by page key", async () => {
+  let findUniqueArgs: unknown = null;
+  const prisma = {
+    pageSeo: {
+      findUnique: async (args: unknown) => {
+        findUniqueArgs = args;
+        return {
+          pageKey: "home"
+        };
+      }
+    }
+  } as any;
+
+  const service = new SeoService(prisma);
+  const result = await service.findPublicByPageKey("home");
+
+  assert.equal(result?.pageKey, "home");
+  assert.deepEqual((findUniqueArgs as { where: { pageKey: string } }).where, {
+    pageKey: "home"
+  });
+});
