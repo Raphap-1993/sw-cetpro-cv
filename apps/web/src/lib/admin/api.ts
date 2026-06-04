@@ -1,6 +1,8 @@
 import "server-only";
 
 import type {
+  BlogPost,
+  BlogPostPayload,
   ContentBlock,
   ContentPayload,
   Lead,
@@ -8,6 +10,10 @@ import type {
   LoginResponse,
   MediaAsset,
   MediaAssetPayload,
+  PageSeo,
+  PageSeoPayload,
+  PublicDocument,
+  PublicDocumentPayload,
   Program,
   ProgramReorderDirection,
   ProgramPayload
@@ -190,6 +196,112 @@ export async function updateContentBlock(
     accessToken,
     body: JSON.stringify(payload),
     fallbackMessage: "No se pudo actualizar el bloque de contenido."
+  });
+}
+
+export async function listAdminBlogPosts(accessToken: string) {
+  return requestJson<BlogPost[]>("/blog/admin", {
+    method: "GET",
+    accessToken,
+    fallbackMessage: "No se pudo cargar el blog administrativo."
+  });
+}
+
+export async function createBlogPost(
+  accessToken: string,
+  payload: BlogPostPayload
+) {
+  return requestJson<BlogPost>("/blog", {
+    method: "POST",
+    accessToken,
+    body: JSON.stringify(payload),
+    fallbackMessage: "No se pudo crear la publicacion."
+  });
+}
+
+export async function updateBlogPost(
+  accessToken: string,
+  blogPostId: string,
+  payload: BlogPostPayload
+) {
+  return requestJson<BlogPost>(`/blog/${blogPostId}`, {
+    method: "PATCH",
+    accessToken,
+    body: JSON.stringify(payload),
+    fallbackMessage: "No se pudo actualizar la publicacion."
+  });
+}
+
+export async function deleteBlogPost(accessToken: string, blogPostId: string) {
+  return requestJson<BlogPost>(`/blog/${blogPostId}`, {
+    method: "DELETE",
+    accessToken,
+    fallbackMessage: "No se pudo eliminar la publicacion."
+  });
+}
+
+export async function listPageSeo(accessToken: string) {
+  return requestJson<PageSeo[]>("/seo", {
+    method: "GET",
+    accessToken,
+    fallbackMessage: "No se pudo cargar el SEO administrativo."
+  });
+}
+
+export async function upsertPageSeo(
+  accessToken: string,
+  pageKey: string,
+  payload: PageSeoPayload
+) {
+  return requestJson<PageSeo>(`/seo/${pageKey}`, {
+    method: "PUT",
+    accessToken,
+    body: JSON.stringify(payload),
+    fallbackMessage: "No se pudo guardar el SEO de la pagina."
+  });
+}
+
+export async function listPublicDocuments(accessToken: string) {
+  return requestJson<PublicDocument[]>("/documents/admin", {
+    method: "GET",
+    accessToken,
+    fallbackMessage: "No se pudo cargar la biblioteca documental."
+  });
+}
+
+export async function createPublicDocument(
+  accessToken: string,
+  payload: PublicDocumentPayload
+) {
+  return requestJson<PublicDocument>("/documents", {
+    method: "POST",
+    accessToken,
+    body: JSON.stringify(payload),
+    fallbackMessage: "No se pudo crear el documento."
+  });
+}
+
+export async function updatePublicDocument(
+  accessToken: string,
+  documentId: string,
+  payload: PublicDocumentPayload
+) {
+  return requestJson<PublicDocument>(`/documents/${documentId}`, {
+    method: "PATCH",
+    accessToken,
+    body: JSON.stringify(payload),
+    fallbackMessage: "No se pudo actualizar el documento."
+  });
+}
+
+export async function deletePublicDocument(
+  accessToken: string,
+  documentId: string
+) {
+  return requestJson<PublicDocument>(`/documents/${documentId}`, {
+    method: "DELETE",
+    accessToken,
+    fallbackMessage: "No se pudo eliminar el documento."
   });
 }
 

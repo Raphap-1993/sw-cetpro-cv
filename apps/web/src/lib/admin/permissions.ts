@@ -5,6 +5,7 @@ export type AdminSection =
   | "leads"
   | "programs"
   | "content"
+  | "publicContent"
   | "media";
 
 type SectionDefinition = {
@@ -42,6 +43,13 @@ export const adminSections: SectionDefinition[] = [
     key: "content",
     label: "Contenido",
     description: "Bloques institucionales editables por pagina.",
+    roles: ["SUPER_ADMIN", "CONTENT_EDITOR"]
+  },
+  {
+    href: "/admin/publico/seo",
+    key: "publicContent",
+    label: "Contenido publico",
+    description: "SEO y contenido publico administrable del sitio.",
     roles: ["SUPER_ADMIN", "CONTENT_EDITOR"]
   },
   {
