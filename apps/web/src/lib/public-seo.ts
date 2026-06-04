@@ -3,40 +3,40 @@ import "server-only";
 import type { Metadata } from "next";
 import { getPublicPageSeo } from "./public-data";
 
-type BuildPageMetadataInput = {
+type PageMetadataInput = {
   pageKey: string;
-  title: string;
-  description: string;
-  canonicalUrl?: string;
-  ogImageUrl?: string;
+  fallbackTitle: string;
+  fallbackDescription: string;
+  canonicalPath: string;
+  fallbackOgImageUrl?: string;
 };
 
 export async function buildPageMetadata(
-  input: BuildPageMetadataInput
+  input: PageMetadataInput
 ): Promise<Metadata> {
   const seo = await getPublicPageSeo(input.pageKey);
-  const title = seo?.title ?? input.title;
-  const description = seo?.description ?? input.description;
-  const canonicalUrl = seo?.canonicalUrl ?? input.canonicalUrl;
-  const ogImageUrl = seo?.ogImageUrl ?? input.ogImageUrl;
+  const title = seo?.title ?? input.fallbackTitle;
+  const description = seo?.description ?? input.fallbackDescription;
+  const canonical = seo?.canonicalUrl ?? input.canonicalPath;
+  const ogTitle = seo?.ogTitle ?? title;
+  const ogDescription = seo?.ogDescription ?? description;
+  const ogImage = seo?.ogImageUrl ?? input.fallbackOgImageUrl ?? undefined;
 
   return {
     title,
     description,
-    alternates: canonicalUrl
-      ? {
-          canonical: canonicalUrl
-        }
-      : undefined,
+    alternates: {
+      canonical
+    },
     robots: {
       index: seo?.robotsIndex ?? true,
       follow: seo?.robotsFollow ?? true
     },
     openGraph: {
-      title: seo?.ogTitle ?? title,
-      description: seo?.ogDescription ?? description,
-      url: canonicalUrl,
-      images: ogImageUrl ? [ogImageUrl] : undefined
+      title: ogTitle,
+      description: ogDescription,
+      url: canonical,
+      images: ogImage ? [{ url: ogImage }] : undefined
     }
   };
 }
