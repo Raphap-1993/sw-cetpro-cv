@@ -46,7 +46,18 @@ test("seo service returns a public record by page key", async () => {
       findUnique: async (args: unknown) => {
         findUniqueArgs = args;
         return {
-          pageKey: "home"
+          id: "seo-home",
+          pageKey: "home",
+          title: "Inicio",
+          description: "Desc",
+          canonicalUrl: "https://example.com/",
+          ogImageUrl: "https://example.com/og.jpg",
+          ogTitle: "Inicio OG",
+          ogDescription: "Desc OG",
+          robotsIndex: true,
+          robotsFollow: false,
+          createdAt: new Date("2026-01-01T00:00:00.000Z"),
+          updatedAt: new Date("2026-01-02T00:00:00.000Z")
         };
       }
     }
@@ -55,8 +66,29 @@ test("seo service returns a public record by page key", async () => {
   const service = new SeoService(prisma);
   const result = await service.findPublicByPageKey("home");
 
-  assert.equal(result?.pageKey, "home");
-  assert.deepEqual((findUniqueArgs as { where: { pageKey: string } }).where, {
-    pageKey: "home"
+  assert.deepEqual(result, {
+    pageKey: "home",
+    title: "Inicio",
+    description: "Desc",
+    canonicalUrl: "https://example.com/",
+    ogImageUrl: "https://example.com/og.jpg",
+    ogTitle: "Inicio OG",
+    ogDescription: "Desc OG",
+    robotsIndex: true,
+    robotsFollow: false
+  });
+  assert.deepEqual(findUniqueArgs, {
+    where: { pageKey: "home" },
+    select: {
+      pageKey: true,
+      title: true,
+      description: true,
+      canonicalUrl: true,
+      ogImageUrl: true,
+      ogTitle: true,
+      ogDescription: true,
+      robotsIndex: true,
+      robotsFollow: true
+    }
   });
 });

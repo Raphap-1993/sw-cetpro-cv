@@ -8,7 +8,7 @@ type PageMetadataInput = {
   fallbackTitle: string;
   fallbackDescription: string;
   canonicalPath: string;
-  fallbackOgImageUrl?: string;
+  fallbackOgImageUrl?: string | null;
 };
 
 export async function buildPageMetadata(
